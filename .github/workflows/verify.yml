@@ -35,7 +35,9 @@ jobs:
       - name: Install print dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends texlive-xetex texlive-latex-extra texlive-lang-chinese fonts-noto-cjk
+          sudo apt-get install -y --no-install-recommends \
+            texlive-xetex texlive-latex-extra texlive-lang-chinese texlive-fonts-recommended \
+            fonts-noto-cjk lmodern tex-gyre fonts-texgyre-math
       - name: Generate PDF
         run: python scripts/build.py
       - name: Package portable notebook
@@ -47,6 +49,7 @@ jobs:
           path: |
             output/
             tests/report.json
+            build/xelatex-console.log
           if-no-files-found: error
           retention-days: 90
       - name: Upload portable source package

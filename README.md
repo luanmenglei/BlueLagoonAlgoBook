@@ -19,6 +19,15 @@ cd BlueLagoonAlgoBook
 
 需要 Python 3.10+、GNU g++（支持 C++20）、XeLaTeX（TeX Live，含 xeCJK、fvextra、titlesec、unicode-math 等常见包）。Windows 使用宋体 SimSun；其他系统使用 Noto Serif CJK SC / Noto Sans Mono CJK SC。数学字体为 TeX Gyre Termes Math。格式化另外需要 clang-format 21。算法测试脚本只用 Python 标准库；打印使用 Pygments 进行 C++ 词法高亮，不需要 shell-escape。
 
+Ubuntu 24.04 的排版依赖与 CI 一致：
+
+```sh
+sudo apt-get update
+sudo apt-get install -y --no-install-recommends \
+  texlive-xetex texlive-latex-extra texlive-lang-chinese texlive-fonts-recommended \
+  fonts-noto-cjk lmodern tex-gyre fonts-texgyre-math
+```
+
 在项目根目录执行：
 
 ```sh
