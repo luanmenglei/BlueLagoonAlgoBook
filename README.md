@@ -25,7 +25,7 @@ Ubuntu 24.04 的排版依赖与 CI 一致：
 sudo apt-get update
 sudo apt-get install -y --no-install-recommends \
   texlive-xetex texlive-latex-extra texlive-lang-chinese texlive-fonts-recommended \
-  fonts-noto-cjk lmodern tex-gyre fonts-texgyre-math
+  fonts-noto-cjk lmodern tex-gyre fonts-texgyre fonts-texgyre-math
 ```
 
 在项目根目录执行：
