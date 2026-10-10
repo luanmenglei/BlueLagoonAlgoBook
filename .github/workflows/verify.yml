@@ -42,7 +42,9 @@ jobs:
       - name: Generate PDF
         run: python scripts/build.py
       - name: Package portable notebook
-        run: python scripts/pack.py
+        run: |
+          python scripts/pack.py
+          cp ../BlueLagoon.zip build/BlueLagoon.zip
       - name: Upload printable notebook and verification report
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
@@ -57,7 +59,7 @@ jobs:
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: BlueLagoon-portable
-          path: ../BlueLagoon.zip
+          path: build/BlueLagoon.zip
           if-no-files-found: error
           retention-days: 90
       - name: Upload failure diagnostics
