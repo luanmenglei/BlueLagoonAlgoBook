@@ -1,0 +1,18 @@
+build/
+__pycache__/
+*.pyc
+*.exe
+*.o
+
+# Generated reports and catalogs; keep the checked-in print snapshot.
+/tests/report.json
+/tests/all.cpp
+/output/*
+!/output/BlueLagoon.pdf
+
+# Local environments and editor files.
+.venv/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

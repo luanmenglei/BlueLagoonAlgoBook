@@ -1,0 +1,15 @@
+{
+  "kactl": {
+    "url": "https://github.com/kth-competitive-programming/kactl",
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "cp-book": {
+    "url": "https://github.com/ecnerwala/cp-book",
+    "commit": "248fdab618caec560fe7b4e3e2a2babe97a3aad1"
+  },
+  "koosaga": {
+    "url": "https://github.com/koosaga/olympiad",
+    "commit": "bdc7524704edadfa60082df14925753a95e61360"
+  },
+  "retrieved": "2026-10-09"
+}

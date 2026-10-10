@@ -1,0 +1,43 @@
+% Maintained paper, fonts, highlighting, headings and code layout.
+\usepackage[top=13mm,bottom=10mm,left=8mm,right=8mm,headheight=11pt,headsep=3mm]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setmainfont{TeX Gyre Termes}
+\setmonofont[BoldFont=lmmonolt10-bold.otf,ItalicFont=lmmono10-italic.otf,BoldItalicFont=lmmonolt10-boldoblique.otf]{Latin Modern Mono}
+\IfFontExistsTF{SimSun}{\setCJKmainfont[AutoFakeBold=2]{SimSun}\setCJKmonofont{SimSun}}{\setCJKmainfont{Noto Serif CJK SC}\setCJKmonofont{Noto Sans Mono CJK SC}}
+\usepackage{multicol,fancyhdr,lastpage,fvextra,xcolor,titlesec,needspace,hyperref,amsmath,amssymb}
+\usepackage{unicode-math}
+\setmathfont{TeX Gyre Termes Math}
+\input{build/highlight-style.tex}
+\VerbatimPygments{\BL}{\BL}
+\hypersetup{hidelinks,pdftitle={\blteam{} ICPC Team Reference},pdfauthor={\blteam}}
+\setlength{\columnsep}{6mm}
+\setlength{\columnseprule}{0.35pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\blteam\quad\textbar\quad\blstandard}
+\fancyhead[R]{\small Page \thepage\ of \pageref*{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\titleformat{\section}{\fontsize{12}{14}\selectfont\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\fontsize{10.5}{12}\selectfont\bfseries}{\thesubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{8pt}{4pt}
+\titlespacing*{\subsection}{0pt}{6pt}{3pt}
+\renewcommand{\contentsname}{目录}
+\setcounter{tocdepth}{2}
+\makeatletter
+\renewcommand{\l@section}{\@dottedtocline{1}{0em}{1.7em}}
+\renewcommand{\l@subsection}{\@dottedtocline{2}{1.1em}{2.5em}}
+\makeatother
+\fvset{fontsize=\fontsize{8.5}{10.2}\selectfont,
+ numbers=left,stepnumber=5,numbersep=3pt,
+ tabsize=4,breaklines=true,breakanywhere=true,breakautoindent=true,breakindent=10pt,
+ breaksymbolleft=\tiny$\hookrightarrow$,
+ xleftmargin=7pt}
+\renewcommand{\theFancyVerbLine}{\fontsize{5.5}{6}\selectfont\color[gray]{0.5}\arabic{FancyVerbLine}}
+\AtBeginDocument{\fontsize{9.25}{11.5}\selectfont}
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+\setlength{\abovedisplayshortskip}{3pt}
+\setlength{\belowdisplayshortskip}{3pt}

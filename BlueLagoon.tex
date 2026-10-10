@@ -1,0 +1,23 @@
+% Maintained entry point: chapter order and optional manual page/column breaks.
+\documentclass[10pt,a4paper]{article}
+\input{build/book-settings.tex}
+\input{tex/preamble.tex}
+\input{tex/commands.tex}
+
+\begin{document}
+\input{tex/frontmatter.tex}
+\begin{multicols}{2}
+  \blchapter{contest}
+  \blchapter{data-structures}
+  \blchapter{graph}
+  \blchapter{flow}
+  \blchapter{strings}
+  \blchapter{number-theory}
+  \blchapter{algebra}
+  \blchapter{geometry}
+  \blchapter{various}
+  \blchapter{supplement}
+  \needspace{12\baselineskip}
+  \blchapter{advanced}
+\end{multicols}
+\end{document}

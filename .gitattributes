@@ -1,0 +1,5 @@
+# Keep source hashes and tab indentation consistent on Windows and Linux.
+* text=auto eol=lf
+*.pdf binary
+*.zip binary
+third_party/originals/** -text

@@ -1,0 +1,427 @@
+{
+  "data-structures/UnionFindRollback.h": {
+    "repository": "kactl",
+    "path": "content/data-structures/UnionFindRollback.h",
+    "metadata": {
+      "Author": "Lukas Polacek, Simon Lindholm",
+      "License": "CC0",
+      "Status": "tested as part of DirectedMST.h",
+      "Source": "folklore"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "data-structures/LineContainer.h": {
+    "repository": "kactl",
+    "path": "content/data-structures/LineContainer.h",
+    "metadata": {
+      "Author": "Simon Lindholm",
+      "License": "CC0",
+      "Status": "stress-tested",
+      "Source": "own work"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "graph/EulerWalk.h": {
+    "repository": "kactl",
+    "path": "content/graph/EulerWalk.h",
+    "metadata": {
+      "Author": "Simon Lindholm",
+      "License": "CC0",
+      "Status": "stress-tested",
+      "Source": "folklore"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "graph/Dominator.h": {
+    "repository": "koosaga",
+    "path": "Library/codes/graph/dominator.cpp",
+    "commit": "bdc7524704edadfa60082df14925753a95e61360"
+  },
+  "flow/HopcroftKarp.h": {
+    "repository": "kactl",
+    "path": "content/graph/HopcroftKarp.h",
+    "metadata": {
+      "Author": "Adam Soltan",
+      "License": "CC0",
+      "Status": "stress-tested by MinimumVertexCover and tested on Library Checker"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "flow/MinimumVertexCover.h": {
+    "repository": "kactl",
+    "path": "content/graph/MinimumVertexCover.h",
+    "metadata": {
+      "Author": "Johan Sannemo, Simon Lindholm",
+      "License": "CC0",
+      "Status": "stress-tested"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "flow/WeightedMatching.h": {
+    "repository": "kactl",
+    "path": "content/graph/WeightedMatching.h",
+    "metadata": {
+      "Author": "Jeremy Lim, Joshua Andersson",
+      "License": "CC0",
+      "Status": "Tested on kattis:cordonbleu, kattis:engaging, stress-tested",
+      "Source": "https://github.com/scipy/scipy/blob/main/scipy/optimize/rectangular_lsap/rectangular_lsap.cpp"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "flow/Blossom.h": {
+    "repository": "koosaga",
+    "path": "Library/codes/combinatorial_optimization/matching_short.cpp",
+    "commit": "bdc7524704edadfa60082df14925753a95e61360"
+  },
+  "strings/SuffixArray.h": {
+    "repository": "kactl",
+    "path": "content/strings/SuffixArray.h",
+    "metadata": {
+      "Author": "罗穗骞, chilli",
+      "License": "Unknown",
+      "Status": "stress-tested",
+      "Source": "Suffix array - a powerful tool for dealing with strings"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "algebra/Simplex.h": {
+    "repository": "kactl",
+    "path": "content/numerical/Simplex.h",
+    "metadata": {
+      "Author": "Stanford",
+      "License": "MIT",
+      "Status": "seems to work?",
+      "Source": "Stanford Notebook"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "geometry/Point.h": {
+    "repository": "kactl",
+    "path": "content/geometry/Point.h",
+    "metadata": {
+      "Author": "Ulf Lundstrom",
+      "License": "CC0",
+      "Status": "Works fine, used a lot",
+      "Source": "My head with inspiration from tinyKACTL"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "geometry/OnSegment.h": {
+    "repository": "kactl",
+    "path": "content/geometry/OnSegment.h",
+    "metadata": {
+      "Author": "Victor Lecomte, chilli",
+      "License": "CC0",
+      "Source": "https://vlecomte.github.io/cp-geo.pdf"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "geometry/sideOf.h": {
+    "repository": "kactl",
+    "path": "content/geometry/sideOf.h",
+    "metadata": {
+      "Author": "Ulf Lundstrom",
+      "License": "CC0",
+      "Status": "tested"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "geometry/lineIntersection.h": {
+    "repository": "kactl",
+    "path": "content/geometry/lineIntersection.h",
+    "metadata": {
+      "Author": "Victor Lecomte, chilli",
+      "License": "CC0",
+      "Status": "stress-tested, and tested through half-plane tests",
+      "Source": "https://vlecomte.github.io/cp-geo.pdf"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "geometry/SegmentIntersection.h": {
+    "repository": "kactl",
+    "path": "content/geometry/SegmentIntersection.h",
+    "metadata": {
+      "Author": "Victor Lecomte, chilli",
+      "License": "CC0",
+      "Status": "stress-tested, tested on kattis:intersection",
+      "Source": "https://vlecomte.github.io/cp-geo.pdf"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "geometry/LineProjectionReflection.h": {
+    "repository": "kactl",
+    "path": "content/geometry/LineProjectionReflection.h",
+    "metadata": {
+      "Author": "Victor Lecomte, chilli",
+      "License": "CC0",
+      "Status": "stress-tested",
+      "Source": "https://vlecomte.github.io/cp-geo.pdf"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "geometry/lineDistance.h": {
+    "repository": "kactl",
+    "path": "content/geometry/lineDistance.h",
+    "metadata": {
+      "Author": "Ulf Lundstrom",
+      "License": "CC0",
+      "Status": "tested",
+      "Source": "Basic math"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "geometry/SegmentDistance.h": {
+    "repository": "kactl",
+    "path": "content/geometry/SegmentDistance.h",
+    "metadata": {
+      "Author": "Ulf Lundstrom",
+      "License": "CC0",
+      "Status": "tested"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "geometry/InsidePolygon.h": {
+    "repository": "kactl",
+    "path": "content/geometry/InsidePolygon.h",
+    "metadata": {
+      "Author": "Victor Lecomte, chilli",
+      "License": "CC0",
+      "Status": "stress-tested and tested on kattis:pointinpolygon",
+      "Source": "https://vlecomte.github.io/cp-geo.pdf"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "geometry/PolygonArea.h": {
+    "repository": "kactl",
+    "path": "content/geometry/PolygonArea.h",
+    "metadata": {
+      "Author": "Ulf Lundstrom",
+      "License": "CC0",
+      "Status": "Stress-tested and tested on kattis:polygonarea",
+      "Source": "tinyKACTL"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "geometry/ConvexHull.h": {
+    "repository": "kactl",
+    "path": "content/geometry/ConvexHull.h",
+    "metadata": {
+      "Author": "Stjepan Glavina, chilli",
+      "License": "Unlicense",
+      "Status": "stress-tested, tested with kattis:convexhull",
+      "Source": "https://github.com/stjepang/snippets/blob/master/convex_hull.cpp"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "geometry/HullDiameter.h": {
+    "repository": "kactl",
+    "path": "content/geometry/HullDiameter.h",
+    "metadata": {
+      "Author": "Oleksandr Bacherikov, chilli",
+      "License": "Boost Software License",
+      "Status": "stress-tested, tested on kattis:roberthood",
+      "Source": "https://codeforces.com/blog/entry/48868"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "geometry/ClosestPair.h": {
+    "repository": "kactl",
+    "path": "content/geometry/ClosestPair.h",
+    "metadata": {
+      "Author": "Simon Lindholm",
+      "License": "CC0",
+      "Status": "stress-tested",
+      "Source": "https://codeforces.com/blog/entry/58747"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "geometry/PointInsideHull.h": {
+    "repository": "kactl",
+    "path": "content/geometry/PointInsideHull.h",
+    "metadata": {
+      "Author": "chilli",
+      "License": "CC0",
+      "Status": "stress-tested",
+      "Source": "https://github.com/ngthanhtrung23/ACM_Notebook_new"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "geometry/LineHullIntersection.h": {
+    "repository": "kactl",
+    "path": "content/geometry/LineHullIntersection.h",
+    "metadata": {
+      "Author": "Oleksandr Bacherikov, chilli",
+      "License": "Boost Software License",
+      "Status": "stress-tested",
+      "Source": "https://github.com/AlCash07/ACTL/blob/master/include/actl/geometry/algorithm/intersect/line_convex_polygon.hpp"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "geometry/CircleIntersection.h": {
+    "repository": "kactl",
+    "path": "content/geometry/CircleIntersection.h",
+    "metadata": {
+      "Author": "Simon Lindholm",
+      "License": "CC0",
+      "Status": "stress-tested"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "geometry/CircleLine.h": {
+    "repository": "kactl",
+    "path": "content/geometry/CircleLine.h",
+    "metadata": {
+      "Author": "Victor Lecomte, chilli",
+      "License": "CC0",
+      "Status": "unit tested",
+      "Source": "https://vlecomte.github.io/cp-geo.pdf"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "geometry/CircleTangents.h": {
+    "repository": "kactl",
+    "path": "content/geometry/CircleTangents.h",
+    "metadata": {
+      "Author": "Victor Lecomte, chilli",
+      "License": "CC0",
+      "Status": "tested",
+      "Source": "https://vlecomte.github.io/cp-geo.pdf"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "geometry/circumcircle.h": {
+    "repository": "kactl",
+    "path": "content/geometry/circumcircle.h",
+    "metadata": {
+      "Author": "Ulf Lundstrom",
+      "License": "CC0",
+      "Status": "tested",
+      "Source": "http://en.wikipedia.org/wiki/Circumcircle"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "geometry/MinimumEnclosingCircle.h": {
+    "repository": "kactl",
+    "path": "content/geometry/MinimumEnclosingCircle.h",
+    "metadata": {
+      "Author": "Andrew He, chilli",
+      "License": "CC0",
+      "Status": "stress-tested",
+      "Source": "folklore"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "geometry/CirclePolygonIntersection.h": {
+    "repository": "kactl",
+    "path": "content/geometry/CirclePolygonIntersection.h",
+    "metadata": {
+      "Author": "chilli, Takanori MAEHARA",
+      "License": "CC0",
+      "Status": "Tested on GNYR 2019 Gerrymandering, stress-tested",
+      "Source": "https://github.com/spaghetti-source/algorithm/blob/master/geometry/_geom.cc#L744"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "geometry/Point3D.h": {
+    "repository": "kactl",
+    "path": "content/geometry/Point3D.h",
+    "metadata": {
+      "Author": "Ulf Lundstrom with inspiration from tinyKACTL",
+      "License": "CC0",
+      "Status": "tested, except for phi and theta"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "geometry/3dHull.h": {
+    "repository": "kactl",
+    "path": "content/geometry/3dHull.h",
+    "metadata": {
+      "Author": "Johan Sannemo",
+      "Status": "tested on SPOJ CH3D",
+      "Source": "derived from https://gist.github.com/msg555/4963794 by Mark Gordon"
+    },
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052"
+  },
+  "geometry/ConvexTangent.h": {
+    "repository": "koosaga",
+    "path": "Library/codes/geometry/tangent.cpp",
+    "commit": "bdc7524704edadfa60082df14925753a95e61360"
+  },
+  "various/DeBruijn.h": {
+    "repository": "koosaga",
+    "path": "Library/codes/ad_hoc/debruijn.cpp",
+    "commit": "bdc7524704edadfa60082df14925753a95e61360"
+  },
+  "supplement/ManhattanMST.h": {
+    "repository": "kactl",
+    "path": "content/geometry/ManhattanMST.h",
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052",
+    "metadata": {}
+  },
+  "advanced/Runs.h": {
+    "repository": "koosaga",
+    "path": "Library/codes/string/run_enumerate.cpp",
+    "commit": "bdc7524704edadfa60082df14925753a95e61360",
+    "metadata": {}
+  },
+  "advanced/EdgeColoring.h": {
+    "repository": "kactl",
+    "path": "content/graph/EdgeColoring.h",
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052",
+    "metadata": {}
+  },
+  "advanced/Chordal.h": {
+    "repository": "koosaga",
+    "path": "Library/codes/graph/chordal_graph.cpp",
+    "commit": "bdc7524704edadfa60082df14925753a95e61360",
+    "metadata": {}
+  },
+  "advanced/NimProduct.h": {
+    "repository": "koosaga",
+    "path": "Library/codes/math/nim_multiplication.cpp",
+    "commit": "bdc7524704edadfa60082df14925753a95e61360",
+    "metadata": {}
+  },
+  "advanced/GeneralWeightedMatching.h": {
+    "repository": "koosaga",
+    "path": "Library/codes/combinatorial_optimization/matching_weighted_dense.cpp",
+    "commit": "bdc7524704edadfa60082df14925753a95e61360",
+    "metadata": {}
+  },
+  "advanced/DirectedMSTFast.h": {
+    "repository": "kactl",
+    "path": "content/graph/DirectedMST.h",
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052",
+    "metadata": {}
+  },
+  "advanced/Delaunay.h": {
+    "repository": "kactl",
+    "path": "content/geometry/FastDelaunay.h",
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052",
+    "metadata": {}
+  },
+  "advanced/SuffixTree.h": {
+    "repository": "kactl",
+    "path": "content/strings/SuffixTree.h",
+    "commit": "27faa89f9b47e5fa4578eadea6122b59da544052",
+    "metadata": {}
+  },
+  "advanced/DynamicMST.h": {
+    "repository": "koosaga",
+    "path": "Library/codes/graph/offline_dynamic_mst.cpp",
+    "commit": "bdc7524704edadfa60082df14925753a95e61360",
+    "metadata": {}
+  },
+  "advanced/PRecursive.h": {
+    "repository": "koosaga",
+    "path": "Library/codes/math/recurrence/recurrence_precursive.cpp",
+    "commit": "bdc7524704edadfa60082df14925753a95e61360",
+    "metadata": {}
+  },
+  "advanced/ReedsSloane.h": {
+    "repository": "koosaga",
+    "path": "Library/codes/math/recurrence/recurrence_reedssloane.cpp",
+    "commit": "bdc7524704edadfa60082df14925753a95e61360",
+    "metadata": {}
+  }
+}

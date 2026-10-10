@@ -1,0 +1,25 @@
+% Public notebook commands. Data and highlighting are prepared by build.py.
+% Author-maintained files never contain generated entry descriptions or code.
+\newcommand{\blchapter}[1]{%
+  \def\blcurrentchapter{#1}%
+  \input{content/#1/chapter.tex}%
+}
+\newcommand{\blimport}[1]{%
+  \input{build/entries/\blcurrentchapter/#1.tex}%
+}
+\newcommand{\blnote}[2]{%
+  \input{build/entries/\blcurrentchapter/#1.tex}%
+}
+\newcommand{\blentry}[2]{%
+  \needspace{5\baselineskip}%
+  \subsection{#1}\label{#2}%
+}
+\newcommand{\blfield}[2]{%
+  \noindent\textbf{#1：}#2\par
+}
+\newcommand{\blprovenance}[2]{%
+  \noindent{\scriptsize #1\hfill\texttt{#2}}\par\smallskip
+}
+\newcommand{\blcode}[1]{%
+  \VerbatimInput[commandchars=\\\{\}]{#1}%
+}

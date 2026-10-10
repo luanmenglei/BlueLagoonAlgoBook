@@ -1,0 +1,144 @@
+# 来源与版本
+
+外部仓库按 `sources.lock.json` 的 commit 固定；链接指向实际参考版本。直接改写的上游原件存于 `third_party/originals`，用于追溯作者、原注释、接口和许可证。cp-book 用于选题与组织参考，本册没有直接导入其 C++23 泛型实现。
+
+本册不是统一许可证的代码库。BlueLagoon 自写部分标记 CC0-1.0；上游明确给出的 MIT、Boost、Unlicense、CC0 按各文件保留。未标明许可证的上游文件记录为 “Not specified upstream”，不能把它们归入自写 CC0 部分。许可证文本见 `third_party/licenses`。上游测试状态仅作历史记录，本册实际测试状态以 `tests/report.json` 与 `output/coverage.json` 为准。
+
+KACTL 风格的维护要点：单段源码、显式章节目录、作者/来源/约定/复杂度、短码、独立编译、随机对拍与 CI。本册页数没有固定上限。
+
+LaTeX 组织参考 [KACTL 的维护说明](https://github.com/kth-competitive-programming/kactl#customizing-kactl)：简短主文件导入每章 `chapter.tex`，代码通过导入命令和文件头元数据生成排版。BlueLagoon 的章节／条目命令为自写实现，保留 XeLaTeX 中文、双栏与 Pygments 高亮。上游文件历史元数据保存在 `third_party/attribution.json`，不参与章节选择。
+
+| 本册文件 | 作者 / 改编者 | 来源 | 许可证记录 |
+|---|---|---|---|
+| `advanced/BostanMori.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `advanced/Chordal.h` | koosaga; BlueLagoon adaptation | [koosaga](https://github.com/koosaga/olympiad/blob/bdc7524704edadfa60082df14925753a95e61360/Library/codes/graph/chordal_graph.cpp) | Not specified upstream; retain attribution |
+| `advanced/Delaunay.h` | Philippe Legault; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/geometry/FastDelaunay.h) | MIT |
+| `advanced/DirectedMSTFast.h` | chilli, Takanori MAEHARA, Benq, Simon Lindholm; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/graph/DirectedMST.h) | CC0 |
+| `advanced/DynamicMST.h` | koosaga; BlueLagoon adaptation | [koosaga](https://github.com/koosaga/olympiad/blob/bdc7524704edadfa60082df14925753a95e61360/Library/codes/graph/offline_dynamic_mst.cpp) | Not specified upstream; retain attribution |
+| `advanced/EdgeColoring.h` | Simon Lindholm; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/graph/EdgeColoring.h) | CC0 |
+| `advanced/FPSCompose.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `advanced/GeneralWeightedMatching.h` | koosaga / upstream blossom; BlueLagoon adaptation | [koosaga](https://github.com/koosaga/olympiad/blob/bdc7524704edadfa60082df14925753a95e61360/Library/codes/combinatorial_optimization/matching_weighted_dense.cpp) | Not specified upstream; retain attribution |
+| `advanced/KShortest.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `advanced/KthRoot.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `advanced/MatroidIntersection.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `advanced/MinCostCirculation.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `advanced/NimProduct.h` | koosaga / upstream nimbers; BlueLagoon adaptation | [koosaga](https://github.com/koosaga/olympiad/blob/bdc7524704edadfa60082df14925753a95e61360/Library/codes/math/nim_multiplication.cpp) | Not specified upstream; retain attribution |
+| `advanced/OnlineConvolution.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `advanced/PRecursive.h` | koosaga / upstream P-recursive; BlueLagoon adaptation | [koosaga](https://github.com/koosaga/olympiad/blob/bdc7524704edadfa60082df14925753a95e61360/Library/codes/math/recurrence/recurrence_precursive.cpp) | Not specified upstream; retain attribution |
+| `advanced/Pfaffian.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `advanced/RealFFT.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `advanced/ReedsSloane.h` | koosaga / upstream Reeds-Sloane; BlueLagoon adaptation | [koosaga](https://github.com/koosaga/olympiad/blob/bdc7524704edadfa60082df14925753a95e61360/Library/codes/math/recurrence/recurrence_reedssloane.cpp) | Not specified upstream; retain attribution |
+| `advanced/Runs.h` | koosaga; BlueLagoon adaptation | [koosaga](https://github.com/koosaga/olympiad/blob/bdc7524704edadfa60082df14925753a95e61360/Library/codes/string/run_enumerate.cpp) | Not specified upstream; retain attribution |
+| `advanced/SuffixTree.h` | Unknown / KACTL; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/strings/SuffixTree.h) | Not specified upstream; retain attribution |
+| `advanced/Tetration.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `algebra/ArbitraryConvolution.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `algebra/ConsecutiveInterpolation.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `algebra/FPS.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `algebra/FPSSqrt.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `algebra/Gauss.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `algebra/MatrixTree.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `algebra/NTT.h` | BlueLagoon | NTT structure informed by ecnerwala/cp-book src/fft; BlueLagoon C++20 implementation | CC0-1.0 |
+| `algebra/Polynomial.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `algebra/Recurrence.h` | BlueLagoon | Berlekamp-Massey / Kitamasa; reference cp-book and koosaga; BlueLagoon implementation | CC0-1.0 |
+| `algebra/Simplex.h` | Stanford; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/numerical/Simplex.h) | MIT |
+| `algebra/Transforms.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `algebra/XorBasis.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `contest/Base.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `contest/Int128.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `contest/OrderedSet.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `contest/RandomHash.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `contest/Template.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `data-structures/Cartesian.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `data-structures/Centroid.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `data-structures/DSU.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `data-structures/Fenwick.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `data-structures/HLD.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `data-structures/LCT.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `data-structures/LiChao.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `data-structures/LineContainer.h` | Simon Lindholm; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/data-structures/LineContainer.h) | CC0 |
+| `data-structures/Persistent.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `data-structures/SegmentTree.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `data-structures/SparseTable.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `data-structures/Treap.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `data-structures/UnionFindRollback.h` | Lukas Polacek, Simon Lindholm; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/data-structures/UnionFindRollback.h) | CC0 |
+| `data-structures/VirtualTree.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `flow/BipartiteEdgeColor.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `flow/Blossom.h` | koosaga; BlueLagoon adaptation | [koosaga](https://github.com/koosaga/olympiad/blob/bdc7524704edadfa60082df14925753a95e61360/Library/codes/combinatorial_optimization/matching_short.cpp) | Not specified upstream; retain attribution |
+| `flow/Dinic.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `flow/GomoryHu.h` | chilli, Takanori MAEHARA; BlueLagoon | KACTL GomoryHu.h (Gusfield); BlueLagoon Dinic adaptation | CC0-1.0 |
+| `flow/HopcroftKarp.h` | Adam Soltan; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/graph/HopcroftKarp.h) | CC0 |
+| `flow/LowerBound.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `flow/MinCostFlow.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `flow/MinimumVertexCover.h` | Johan Sannemo, Simon Lindholm; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/graph/MinimumVertexCover.h) | CC0 |
+| `flow/WeightedMatching.h` | Jeremy Lim, Joshua Andersson; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/graph/WeightedMatching.h) | CC0 |
+| `geometry/3dHull.h` | Johan Sannemo; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/geometry/3dHull.h) | Not specified upstream; retain attribution |
+| `geometry/CircleIntersection.h` | Simon Lindholm; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/geometry/CircleIntersection.h) | CC0 |
+| `geometry/CircleLine.h` | Victor Lecomte, chilli; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/geometry/CircleLine.h) | CC0 |
+| `geometry/CirclePolygonIntersection.h` | chilli, Takanori MAEHARA; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/geometry/CirclePolygonIntersection.h) | CC0 |
+| `geometry/CircleTangents.h` | Victor Lecomte, chilli; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/geometry/CircleTangents.h) | CC0 |
+| `geometry/ClosestPair.h` | Simon Lindholm; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/geometry/ClosestPair.h) | CC0 |
+| `geometry/ConvexHull.h` | Stjepan Glavina, chilli; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/geometry/ConvexHull.h) | Unlicense |
+| `geometry/ConvexTangent.h` | zigui; koosaga library; BlueLagoon adaptation | [koosaga](https://github.com/koosaga/olympiad/blob/bdc7524704edadfa60082df14925753a95e61360/Library/codes/geometry/tangent.cpp) | Not specified upstream; retain attribution |
+| `geometry/HalfPlane.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `geometry/HullDiameter.h` | Oleksandr Bacherikov, chilli; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/geometry/HullDiameter.h) | Boost Software License |
+| `geometry/InsidePolygon.h` | Victor Lecomte, chilli; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/geometry/InsidePolygon.h) | CC0 |
+| `geometry/LineHullIntersection.h` | Oleksandr Bacherikov, chilli; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/geometry/LineHullIntersection.h) | Boost Software License |
+| `geometry/LineProjectionReflection.h` | Victor Lecomte, chilli; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/geometry/LineProjectionReflection.h) | CC0 |
+| `geometry/MinimumEnclosingCircle.h` | Andrew He, chilli; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/geometry/MinimumEnclosingCircle.h) | CC0 |
+| `geometry/Minkowski.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `geometry/OnSegment.h` | Victor Lecomte, chilli; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/geometry/OnSegment.h) | CC0 |
+| `geometry/Point.h` | Ulf Lundstrom; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/geometry/Point.h) | CC0 |
+| `geometry/Point3D.h` | Ulf Lundstrom with inspiration from tinyKACTL; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/geometry/Point3D.h) | CC0 |
+| `geometry/PointInsideHull.h` | chilli; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/geometry/PointInsideHull.h) | CC0 |
+| `geometry/PolygonArea.h` | Ulf Lundstrom; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/geometry/PolygonArea.h) | CC0 |
+| `geometry/SegmentDistance.h` | Ulf Lundstrom; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/geometry/SegmentDistance.h) | CC0 |
+| `geometry/SegmentIntersection.h` | Victor Lecomte, chilli; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/geometry/SegmentIntersection.h) | CC0 |
+| `geometry/circumcircle.h` | Ulf Lundstrom; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/geometry/circumcircle.h) | CC0 |
+| `geometry/lineDistance.h` | Ulf Lundstrom; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/geometry/lineDistance.h) | CC0 |
+| `geometry/lineIntersection.h` | Victor Lecomte, chilli; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/geometry/lineIntersection.h) | CC0 |
+| `geometry/sideOf.h` | Ulf Lundstrom; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/geometry/sideOf.h) | CC0 |
+| `graph/BCC.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `graph/DirectedMST.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `graph/Dominator.h` | koosaga; BlueLagoon adaptation | [koosaga](https://github.com/koosaga/olympiad/blob/bdc7524704edadfa60082df14925753a95e61360/Library/codes/graph/dominator.cpp) | Not specified upstream; retain attribution |
+| `graph/DynamicConnectivity.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `graph/EulerWalk.h` | Simon Lindholm; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/graph/EulerWalk.h) | CC0 |
+| `graph/GlobalMinCut.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `graph/SCC.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `graph/ShortestPath.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `graph/TreeIsomorphism.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `graph/TwoSat.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `number-theory/Binomial.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `number-theory/DiscreteLog.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `number-theory/DuSieve.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `number-theory/Factor.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `number-theory/FloorSum.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `number-theory/Min25.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `number-theory/Modular.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `number-theory/PrimitiveRoot.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `number-theory/Sieve.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `strings/AhoCorasick.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `strings/BitsetLCS.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `strings/Duval.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `strings/Eertree.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `strings/Hash.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `strings/Manacher.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `strings/PrefixZ.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `strings/SAM.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `strings/SuffixArray.h` | 罗穗骞, chilli; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/strings/SuffixArray.h) | Unknown |
+| `strings/SuffixLCP.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `supplement/BinaryLifting.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `supplement/CombinatorialTables.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `supplement/FastIO.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `supplement/Fenwick2D.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `supplement/GaussBinary.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `supplement/LIS.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `supplement/ManhattanMST.h` | chilli, Takanori MAEHARA; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/geometry/ManhattanMST.h) | CC0 |
+| `supplement/Matrix.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `supplement/Mo.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `supplement/PolygonTools.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `supplement/SternBrocot.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `various/DeBruijn.h` | koosaga; BlueLagoon adaptation | [koosaga](https://github.com/koosaga/olympiad/blob/bdc7524704edadfa60082df14925753a95e61360/Library/codes/ad_hoc/debruijn.cpp) | Not specified upstream; retain attribution |
+| `various/DivideDP.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `various/KnuthDP.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `various/SMAWK.h` | BlueLagoon | SMAWK; oracle interface inspired by ecnerwala/cp-book/src/smawk.hpp; BlueLagoon recursive implementation | CC0-1.0 |
+| `various/Simpson.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
