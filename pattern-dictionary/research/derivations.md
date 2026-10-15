@@ -30,7 +30,7 @@ $S(n,k)=\sum_{j=0}^{k}\frac{j^n}{j!}\frac{(-1)^{k-j}}{(k-j)!}$：数组 $j^n/j!$
 
 $P_m(n)$ 为把 $n$ 分成至多 $m$ 个正部件的方案数，也等于每部件至多 $m$：$\sum_nP_m(n)x^n=\prod_{i=1}^{m}(1-x^i)^{-1}$。取对数后第 $j$ 项为 $j^{-1}\sum_{d\mid j,d\le m}d$，约数筛加 FPS exp，前 $N$ 项 $O(N\log N)$；不是集合分块的斯特林数。 把整数 $n$ 无序拆成至多 $m$ 个正数，等价于每个正数至多 $m$，记为 $P_m(n)$；重复部件允许。求所有 $n\le N$：对每个 $1\le d\le\min(m,N)$，向 $d$ 的正倍数位置加 $d$，再把第 $j$ 项除以 $j$，常数项置 0 后做 Exp，总 $O(N\log N)$；$P_m(0)=1$。
 
-## C24 长排列恰有 k 个逆序对
+## C24 排列逆序数：同时求一段计数
 
 $F_n(x)=\prod_{i=1}^n(1-x^i)/(1-x)^n$；$[x^t]\log F_n=(n-\sum_{d\mid t,d\le n}d)/t$。筛约数和后 Exp，前 $k+1$ 项 $O(k\log k)$；先排除 $k>\binom n2$，单问可将 $k$ 换为 $\min(k,\binom n2-k)$。
 
@@ -38,7 +38,7 @@ $F_n(x)=\prod_{i=1}^n(1-x^i)/(1-x)^n$；$[x^t]\log F_n=(n-\sum_{d\mid t,d\le n}d
 
 仅当 $n\ge k$，分子可换为 $E(x)=1+\sum_{r\ge1}(-1)^r(x^{r(3r-1)/2}+x^{r(3r+1)/2})$；令 $B_j=\binom{n+j-1}{j}$，答案为 $\sum_g E_g B_{k-g}$。$O(k)$ 预处理 B 后单问 $O(\sqrt k)$，全部前 k 项朴素 $O(k\sqrt k)$。
 
-## C26 任意 n、k 的逆序数免 NTT 做法
+## C26 排列逆序数：不用 NTT 的分层做法
 
 若 $n\le\sqrt k$ 用滑窗 DP $O(nk)$；否则令 $R_r=(1-x)^{-n}\prod_{j=1}^r(1-x^j)^{-1}$，$F_n=E(x)\sum_{r\ge0}x^{r(n+1)}R_r$。只做 $r\le k/(n+1)$ 层完全背包，再乘稀疏 E，总计 $O(k\sqrt k)$。 操作细节：令 H 全零；依次 r=0..floor(k/(n+1))，r>0 时按 j=r..k 递增执行 A[j]+=A[j-r]，随后对 j≤k-r(n+1) 加 H[j+r(n+1)]+=A[j]。输出 F[t]=H[t]+sum_{r≥1}(-1)^r(H[t-r(3r-1)/2]+H[t-r(3r+1)/2])，负下标视为 0。
 

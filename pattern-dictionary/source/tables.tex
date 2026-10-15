@@ -1,27 +1,27 @@
-\begingroup\fontsize{9.4}{13.5}\selectfont\setlength{\tabcolsep}{5pt}\renewcommand{\arraystretch}{1.55}
-\textbf{\color{Accent}十二重计数：n 个球全部放入 m 个盒子}\par\vspace{5pt}
-\(S\) 为第二类斯特林数；\(P_m(t)\) 表示把 \(t\) 无序拆成至多 \(m\) 个正整数的方案数，允许重复；方括号为条件是否成立。\par\vspace{4pt}
+\begingroup\fontsize{10}{14.5}\selectfont\setlength{\tabcolsep}{5pt}\renewcommand{\arraystretch}{1.55}
+\textbf{\color{Accent}十二重计数：把 n 个球全部放入 m 个盒子}\par\vspace{5pt}
+“可区分”指交换两个球或盒子的身份会成为另一方案。\(S(n,k)\) 数可区分元素的无序非空分组；\(P_m(t)\) 数把整数 \(t\) 无序拆成至多 \(m\) 个正数，重复部件允许。最后一格先给每个非空盒放一个球，再划分剩下的 \(n-m\) 个；方括号为条件成立时取 1，否则取 0。\par\vspace{4pt}
 \begin{tabularx}{\linewidth}{ll>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X}\toprule
-球 & 盒 & 允许空盒 & 每盒至多 1 个 & 每盒至少 1 个\\\midrule
-有标号 & 有标号 & \(m^n\) & \(m^{\underline n}=m!/(m-n)!\) & \(m!S(n,m)\)\\
-有标号 & 无标号 & \(\sum_{k=0}^{\min(n,m)}S(n,k)\) & \([n\le m]\) & \(S(n,m)\)\\
-无标号 & 有标号 & \(\binom{n+m-1}{m-1}\) & \(\binom mn\) & \(\binom{n-1}{m-1}\)\\
-无标号 & 无标号 & \(P_m(n)\) & \([n\le m]\) & \(P_m(n-m)\)\\
+球 & 盒子 & 可以空着 & 每盒至多一个 & 每盒必须非空\\\midrule
+可区分 & 可区分 & \(m^n\) & \(m(m-1)\cdots(m-n+1)\) & \(m!S(n,m)\)\\
+可区分 & 不可区分 & \(\sum_{k=0}^{\min(n,m)}S(n,k)\) & \([n\le m]\) & \(S(n,m)\)\\
+不可区分 & 可区分 & \(\binom{n+m-1}{m-1}\) & \(\binom mn\) & \(\binom{n-1}{m-1}\)\\
+不可区分 & 不可区分 & \(P_m(n)\) & \([n\le m]\) & \(P_m(n-m)\)\\
 \bottomrule\end{tabularx}\par\vspace{5pt}
-表中二项式／下降阶乘超范围为 0；负数下标的 \(P_m\) 为 0。统一单独处理 \(m=0\)：\(n=0\) 时十二种均为 1，否则均为 0。\(n=0,m>0\) 时允许空盒及至多 1 均为 1，至少 1 均为 0；\(0^0=1\)。\par\vspace{5pt}
-阶乘预处理后组合数可 \(O(1)\)；第二类整行一次卷积；划分数用对数系数约数筛加 exp。令 \(L=\max(n,m)\)，十二个答案一起可 \(O(L\log L)\)，无需十二套 DP。\par\vspace{8pt}
-\textbf{\color{Accent}斯特林数行／列计算表}\par\vspace{5pt}
-\(c(n,k)\) 固定表示无符号第一类，\(S(n,k)\) 为第二类；有符号第一类为 \((-1)^{n-k}c(n,k)\)。\par\vspace{4pt}
+先处理空对象：\(m=0\) 时，只有 \(n=0\) 才有一种方案，十二种口径相同。\(n=0,m>0\) 时，“可以空着”和“每盒至多一个”均为 1，“每盒必须非空”为 0。其余情况下，超范围组合数、负下标划分数均记 0；下降连乘在 \(n>m\) 时记 0，空乘积和 \(0^0\) 都记 1。\par\vspace{5pt}
+组合数用阶乘预处理；整行第二类斯特林数用一次卷积；整数划分可按无限件商品处理。令 \(L=\max(n,m)\)，在适用的模数下，这十二个答案一起可 \(O(L\log L)\) 求出。公式的区别来自标签和空盒要求，无需为每一格重新设计 DP。\par\vspace{8pt}
+\textbf{\color{Accent}斯特林数：固定元素数看一行，固定组数看一列}\par\vspace{5pt}
+\(c(n,k)\) 数 n 元排列恰有 k 个环，称无符号第一类；\(S(n,k)\) 数 n 个可区分元素分成 k 个无序非空组，称第二类。若需要有符号第一类，再乘 \((-1)^{n-k}\)。\par\vspace{4pt}
 \begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{28mm}>{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{40mm}}\toprule
-任务 & 计数对象／数组转化 & 方法与时间\\\midrule
-第一类，固定 n 求所有 k & \(F_n=\prod_{0\le i<n}(x+i)\)；\(F_{2m}=F_m(x)F_m(x+m)\) & Taylor 平移倍增，\(O(n\log n)\)\\
-第二类，固定 n 求所有 k & \(S(n,k)=\frac1{k!}\sum_{j=0}^k(-1)^{k-j}\binom kjj^n\) & 一次卷积，\(O(n\log n)\)\\
-第一类，固定 k 求 \(n\le N\) & 令 \(a_0=0,a_t=1/t\)；求底数组的 k 次幂，第 n 项乘 \(n!/k!\) & 去零前缀，Log／Exp 求幂，\(O(N\log N)\)\\
-第二类，固定 k 求 \(n\le N\) & 令 \(a_0=0,a_t=1/t!\)；求底数组的 k 次幂，第 n 项乘 \(n!/k!\) & 去零前缀，Log／Exp 求幂，\(O(N\log N)\)\\
+要数什么 & 为什么这样算 & 批量算法\\\midrule
+固定 n，求每种环数 k & 新元素可自成一环，或插到旧环中；答案是连续一次式 \(x(x+1)\cdots(x+n-1)\) 的系数。 & 只求半段再平移倍增，\(O(n\log n)\)。\\
+固定 n，求每种非空组数 k & 先给组编号，容斥删去空组，再除组标签数；可拆成 \(j^n/j!\) 与 \((-1)^j/j!\) 两列卷积。 & 一次卷积，含快速幂 \(O(n\log n)\)。\\
+固定 k 个环，求所有 \(n\le N\) & 一个大小 t 的环有 \((t-1)!\) 种排列；除去元素标签后，单环数组为 \(a_0=0,a_t=1/t\)。 & 求 k 次幂，第 n 项乘 \(n!/k!\)；Log／Exp，\(O(N\log N)\)。\\
+固定 k 个非空组，求所有 \(n\le N\) & 一个大小 t 的集合只有一种内部结构；除去元素标签后，单组数组为 \(a_0=0,a_t=1/t!\)。 & 求 k 次幂，第 n 项乘 \(n!/k!\)；Log／Exp，\(O(N\log N)\)。\\
 \bottomrule\end{tabularx}\par\vspace{5pt}
-一整张 \(n,k\le N\) 的三角表有 \(\Theta(N^2)\) 项，递推 \(c(n,k)=c(n-1,k-1)+(n-1)c(n-1,k)\)、\(S(n,k)=S(n-1,k-1)+kS(n-1,k)\) 已是 \(\Theta(N^2)\)；行列快速算法不使整表变成近线性。\par\vspace{5pt}
+两类都约定第 \((0,0)\) 项为 1；\(k>n\) 或 \(n>0,k=0\) 时为 0。固定列求幂时，先移去零前缀；\(k=0\) 直接返回仅第 0 项为 1。整张 \(n,k\le N\) 表本身有 \(\Theta(N^2)\) 项，用递推 \(c(n,k)=c(n-1,k-1)+(n-1)c(n-1,k)\)、\(S(n,k)=S(n-1,k-1)+kS(n-1,k)\) 已是 \(\Theta(N^2)\)；只算一行／列才有近线性收益。\par\vspace{5pt}
 \vspace{5pt}\textbf{\color{Accent}任意定向链：可直接还原的卷积递推}\par
-\(s_1,\ldots,s_{n-1}\in\{<,>\}\) 表示相邻约束；\(d_i\) 是前 \(i\) 个符号中的大于号数，\(d_0=0\)。\(f_i\) 是长度 \(i\) 前缀的合法排列数除以 \(i!\)，\(f_0=1\)。\par
-\(f_i=\sum_{0\le j<i,\ j=0\ \mathrm{or}\ s_j=\texttt{>}}f_j\,(-1)^{d_{i-1}-d_j}/(i-j)!\)。\par
-转移中的符号分解成 \((-1)^{d_{i-1}}(-1)^{d_j}\)，因此把已求出的 \(f_j(-1)^{d_j}[j=0\text{ 或 }s_j=\texttt{>}]\) 与 \(1/t!\) 卷积即可。答案为 \(n!f_n\)，CDQ+NTT 为 \(O(n\log^2n)\)。
+令 \(s_i\) 为第 i 与第 i+1 个位置间的大小号，\(d_i\) 数前 i 个符号中有多少个大于号，\(d_0=0\)。令 \(f_i\) 为前 i 个位置的合法相对排列数除以 \(i!\)，并设 \(f_0=1\)；除阶乘是为了让“给各段分配标签”的组合数从转移中消失，最后再乘回 \(n!\)。\par
+按最后一个递增段的起点 j 分类，前面部分由 \(f_j\) 负责，最后一段长 \(i-j\)，贡献 \(1/(i-j)!\)。只能在原有大于号处断段，段内每个被改成小于的大于号给一个负号，因此 \(f_i=\sum_{0\le j<i,\ j=0\ \mathrm{or}\ s_j=\texttt{>}}f_j(-1)^{d_{i-1}-d_j}/(i-j)!\)。\par
+转移权的符号可拆成只看目标 i 的 \((-1)^{d_{i-1}}\)，以及只看来源 j 的 \((-1)^{d_j}\)；剩余系数只看距离 \(i-j\)。因此让已求出的 \(f_j(-1)^{d_j}[j=0\text{ 或 }s_j=\texttt{>}]\) 与 \(1/t!\) 卷积，就能批量推进后面的状态；CDQ 保证使用来源时它已算好，总时间 \(O(n\log^2n)\)，答案为 \(n!f_n\)。
 \endgroup

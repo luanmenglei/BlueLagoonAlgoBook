@@ -1,36 +1,15 @@
 {
-  "date": "2026-10-16",
-  "version": "题面索引与计数分层版",
   "entries": 157,
-  "pages": 12,
-  "sections": {
-    "M": 12,
-    "D": 48,
-    "N": 29,
-    "C": 42,
-    "Q": 17,
-    "I": 9
-  },
+  "all_highlights_present": true,
+  "all_math_delimiters_paired": true,
+  "math_scope": "Rephrased existing models and formulas; no new theoretical claims.",
+  "layout": "A4 single column, 10.5 pt body, 15 pt baseline, separate title and keyword lines.",
+  "date": "2026-10-16",
+  "version": "单列可读版",
+  "compiler": "Built-in document editor compiler",
+  "compile_status": "success",
+  "pdf_export": "Current single-column source was compiled in the existing editor; no separate PDF was exported.",
   "keywords": 629,
-  "source_sha256": "51e0dd74b30045ad26f7018621f3fa7e03d6bd1613f2af4569d53eb058702984",
-  "checks": [
-    "all source IDs, highlights, references and shape-index coverage",
-    "all local HTML links and anchors",
-    "KaTeX generation and 12 search checks",
-    "629 keyword self-return checks",
-    "12 PDF pages rendered and visually reviewed; dense counting/table pages reviewed at full size",
-    "no missing glyph or TeX overflow warnings"
-  ],
-  "browser_checks": [
-    "157 initial entries",
-    "tree-path/colour synonym query returns 3 matching entries",
-    "nested allowed sets query returns C42",
-    "strict approximate query returns C25 with notice",
-    "counting filter returns 42 entries and 3 tables",
-    "browser console has no errors or warnings"
-  ],
-  "math_checks": [
-    "research/counting-checks.md: 2372 checks with reproducible Python",
-    "research/structure-checks.md: dynamic invariants and new combinatorial models"
-  ]
+  "search_checks": 12,
+  "source_sha256": "de1fd54b16a4f7085d7f71abba2c66b18b240988abb754dbb331a17651cf381f"
 }

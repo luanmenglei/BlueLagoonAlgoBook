@@ -2,7 +2,7 @@
 
 独立的比赛参考册，现有 **157 条**，按 **M → D → N → C → Q → I** 排列。正文用问题形态描述，离开原题和网页也能读懂。
 
-[打印版](dictionary.pdf) · [可编辑正文](dictionary.md) · [离线检索](index.html) · [公式推导](research/derivations.md) · [来源记录](research/sources.md)
+[单列打印源](dictionary.tex) · [可编辑正文](dictionary.md) · [离线检索](index.html) · [公式推导](research/derivations.md) · [来源记录](research/sources.md)
 
 每条先给常见说法作为检索入口，再写精确对象、操作、限制与可用做法；加粗突出必要条件和容易混淆的区别。题面索引按模糊线索找编号，完整目录列出全部条目，内部编号保持稳定。
 
