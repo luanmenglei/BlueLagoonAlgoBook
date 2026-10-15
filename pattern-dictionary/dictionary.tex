@@ -1,0 +1,622 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage{fontspec,xeCJK,amsmath,amssymb,unicode-math}
+\setmainfont{texgyretermes-regular.otf}[BoldFont=texgyretermes-bold.otf]
+\setmathfont{texgyretermes-math.otf}
+\IfFontExistsTF{SimSun}{\setCJKmainfont[AutoFakeBold=2]{SimSun}}{\IfFontExistsTF{Noto Serif CJK SC}{\setCJKmainfont[AutoFakeBold=2]{Noto Serif CJK SC}}{\IfFontExistsTF{Songti SC}{\setCJKmainfont{Songti SC}[BoldFont=Songti SC Bold]}{\setCJKmainfont{FandolSong-Regular.otf}[BoldFont=FandolSong-Bold.otf]}}}
+\usepackage[top=14mm,bottom=13mm,left=10mm,right=10mm,headheight=12pt,headsep=3mm,footskip=7mm]{geometry}
+\usepackage{multicol,fancyhdr,lastpage,xcolor,needspace,hyperref,booktabs,tabularx,array}
+\definecolor{Accent}{HTML}{244A53}\colorlet{Teal}{Accent}\definecolor{Muted}{HTML}{4B5960}\definecolor{Rule}{HTML}{CBD3D6}
+\hypersetup{hidelinks,pdftitle={BlueLagooon常见题目模式字典+图灵奖速查表},pdfauthor={BlueLagoon}}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\scriptsize BlueLagooon 常见题目模式字典}
+\fancyhead[R]{\scriptsize 图灵奖速查表 · 题面检索版}
+\fancyfoot[L]{\scriptsize 2026-10-16 · 157 条 · M D N C Q I}
+\fancyfoot[R]{\scriptsize\thepage\,/\,\pageref*{LastPage}}
+\renewcommand{\headrulewidth}{.35pt}
+\setlength{\columnsep}{6mm}\setlength{\columnseprule}{.25pt}
+\setlength{\parindent}{0pt}\setlength{\parskip}{0pt}\setlength{\emergencystretch}{3em}\tolerance=3000
+\newcommand{\grouphead}[1]{\needspace{7\baselineskip}\par\vspace{7pt}{\large\bfseries #1}\par\vspace{5pt}}
+\newcommand{\entry}[4]{\begin{minipage}{\linewidth}{\fontsize{8.7}{10.5}\selectfont\bfseries\color{Accent}#3}\hfill{\bfseries #1}\par\vspace{2pt}\textbf{#2}\quad#4\end{minipage}\par\vspace{3pt}{\color{Rule}\hrule}\vspace{3pt}}
+\begin{document}\fontsize{9.25}{12}\selectfont
+
+{\fontsize{18}{23}\selectfont\bfseries BlueLagooon常见题目模式字典\\+图灵奖速查表}\par\vspace{8pt}
+\textbf{从模糊题面找到精确模型。}先按下方关键词找编号，再核对正文中加粗的约束与区别；括号内为页码。关键词仅作入口，不能代替适用条件。\par\vspace{5pt}
+复杂度按赛场常用精确实现，数值按机器字／模数运算；$w$ 为机器字长。全文不依赖外部题号。\par\vspace{7pt}
+\textbf{分区：}\quad\hyperref[secM]{M 矩阵\,(\pageref*{secM})}\quad\hyperref[secD]{D 数据结构\,(\pageref*{secD})}\quad\hyperref[secN]{N 一般难题\,(\pageref*{secN})}\quad\hyperref[secC]{C 计数\,(\pageref*{secC})}\quad\hyperref[secQ]{Q 背包与瓶颈\,(\pageref*{secQ})}\quad\hyperref[secI]{I 信息论\,(\pageref*{secI})}\par
+\begin{multicols}{2}\raggedcolumns
+\grouphead{矩阵、图与路径}
+\begin{minipage}{\linewidth}\textbf{矩阵相乘／是否存在／压位}\par{\fontsize{8.5}{11}\selectfont \hyperref[M01]{M01\,(\pageref*{M01})}\hspace{.5em}\allowbreak \hyperref[M02]{M02\,(\pageref*{M02})}\hspace{.5em}\allowbreak \hyperref[M03]{M03\,(\pageref*{M03})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{集合两两相交／三角形}\par{\fontsize{8.5}{11}\selectfont \hyperref[M04]{M04\,(\pageref*{M04})}\hspace{.5em}\allowbreak \hyperref[M05]{M05\,(\pageref*{M05})}\hspace{.5em}\allowbreak \hyperref[Q13]{Q13\,(\pageref*{Q13})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{走恰好几步／可重复点边}\par{\fontsize{8.5}{11}\selectfont \hyperref[M06]{M06\,(\pageref*{M06})}\hspace{.5em}\allowbreak \hyperref[M07]{M07\,(\pageref*{M07})}\hspace{.5em}\allowbreak \hyperref[M08]{M08\,(\pageref*{M08})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{删一条边／备用路线／次短路}\par{\fontsize{8.5}{11}\selectfont \hyperref[M09]{M09\,(\pageref*{M09})}\hspace{.5em}\allowbreak \hyperref[M10]{M10\,(\pageref*{M10})}\hspace{.5em}\allowbreak \hyperref[D28]{D28\,(\pageref*{D28})}\hspace{.5em}\allowbreak \hyperref[D29]{D29\,(\pageref*{D29})}\hspace{.5em}\allowbreak \hyperref[D30]{D30\,(\pageref*{D30})}\hspace{.5em}\allowbreak \hyperref[D31]{D31\,(\pageref*{D31})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{最小环／负三角形／距离矩阵}\par{\fontsize{8.5}{11}\selectfont \hyperref[M11]{M11\,(\pageref*{M11})}\hspace{.5em}\allowbreak \hyperref[M12]{M12\,(\pageref*{M12})}\hspace{.5em}\allowbreak \hyperref[N23]{N23\,(\pageref*{N23})}}\end{minipage}\par\vspace{5pt}
+\grouphead{区间、树与平面查询}
+\begin{minipage}{\linewidth}\textbf{区间批量改／懒标记／能否合并}\par{\fontsize{8.5}{11}\selectfont \hyperref[D01]{D01\,(\pageref*{D01})}\hspace{.5em}\allowbreak \hyperref[D02]{D02\,(\pageref*{D02})}\hspace{.5em}\allowbreak \hyperref[D03]{D03\,(\pageref*{D03})}\hspace{.5em}\allowbreak \hyperref[D04]{D04\,(\pageref*{D04})}\hspace{.5em}\allowbreak \hyperref[D05]{D05\,(\pageref*{D05})}\hspace{.5em}\allowbreak \hyperref[D06]{D06\,(\pageref*{D06})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{取模／开方／摊还次数}\par{\fontsize{8.5}{11}\selectfont \hyperref[D07]{D07\,(\pageref*{D07})}\hspace{.5em}\allowbreak \hyperref[D08]{D08\,(\pageref*{D08})}\hspace{.5em}\allowbreak \hyperref[D47]{D47\,(\pageref*{D47})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{最大子段／括号／整体平移}\par{\fontsize{8.5}{11}\selectfont \hyperref[D09]{D09\,(\pageref*{D09})}\hspace{.5em}\allowbreak \hyperref[D10]{D10\,(\pageref*{D10})}\hspace{.5em}\allowbreak \hyperref[D11]{D11\,(\pageref*{D11})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{染色／颜色段／有几种颜色}\par{\fontsize{8.5}{11}\selectfont \hyperref[D12]{D12\,(\pageref*{D12})}\hspace{.5em}\allowbreak \hyperref[D13]{D13\,(\pageref*{D13})}\hspace{.5em}\allowbreak \hyperref[D14]{D14\,(\pageref*{D14})}\hspace{.5em}\allowbreak \hyperref[D33]{D33\,(\pageref*{D33})}\hspace{.5em}\allowbreak \hyperref[D34]{D34\,(\pageref*{D34})}\hspace{.5em}\allowbreak \hyperref[D35]{D35\,(\pageref*{D35})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{第 k 小／众数／中位数／mex}\par{\fontsize{8.5}{11}\selectfont \hyperref[D15]{D15\,(\pageref*{D15})}\hspace{.5em}\allowbreak \hyperref[D16]{D16\,(\pageref*{D16})}\hspace{.5em}\allowbreak \hyperref[D17]{D17\,(\pageref*{D17})}\hspace{.5em}\allowbreak \hyperref[D18]{D18\,(\pageref*{D18})}\hspace{.5em}\allowbreak \hyperref[D19]{D19\,(\pageref*{D19})}\hspace{.5em}\allowbreak \hyperref[D20]{D20\,(\pageref*{D20})}\hspace{.5em}\allowbreak \hyperref[D21]{D21\,(\pageref*{D21})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{树上路径／子树／合并}\par{\fontsize{8.5}{11}\selectfont \hyperref[D25]{D25\,(\pageref*{D25})}\hspace{.5em}\allowbreak \hyperref[D36]{D36\,(\pageref*{D36})}\hspace{.5em}\allowbreak \hyperref[D37]{D37\,(\pageref*{D37})}\hspace{.5em}\allowbreak \hyperref[D44]{D44\,(\pageref*{D44})}\hspace{.5em}\allowbreak \hyperref[D45]{D45\,(\pageref*{D45})}\hspace{.5em}\allowbreak \hyperref[D46]{D46\,(\pageref*{D46})}\hspace{.5em}\allowbreak \hyperref[D47]{D47\,(\pageref*{D47})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{矩形／贴边／不能相减}\par{\fontsize{8.5}{11}\selectfont \hyperref[D32]{D32\,(\pageref*{D32})}\hspace{.5em}\allowbreak \hyperref[D38]{D38\,(\pageref*{D38})}\hspace{.5em}\allowbreak \hyperref[D39]{D39\,(\pageref*{D39})}\hspace{.5em}\allowbreak \hyperref[D40]{D40\,(\pageref*{D40})}\hspace{.5em}\allowbreak \hyperref[D41]{D41\,(\pageref*{D41})}\hspace{.5em}\allowbreak \hyperref[D42]{D42\,(\pageref*{D42})}\hspace{.5em}\allowbreak \hyperref[D43]{D43\,(\pageref*{D43})}\hspace{.5em}\allowbreak \hyperref[D48]{D48\,(\pageref*{D48})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{动态连通／动态 DP／相等约束}\par{\fontsize{8.5}{11}\selectfont \hyperref[D23]{D23\,(\pageref*{D23})}\hspace{.5em}\allowbreak \hyperref[D24]{D24\,(\pageref*{D24})}\hspace{.5em}\allowbreak \hyperref[D26]{D26\,(\pageref*{D26})}\hspace{.5em}\allowbreak \hyperref[D27]{D27\,(\pageref*{D27})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{异或／线性基／最少选几个}\par{\fontsize{8.5}{11}\selectfont \hyperref[D22]{D22\,(\pageref*{D22})}\hspace{.5em}\allowbreak \hyperref[N13]{N13\,(\pageref*{N13})}\hspace{.5em}\allowbreak \hyperref[C12]{C12\,(\pageref*{C12})}}\end{minipage}\par\vspace{5pt}
+\grouphead{选点、匹配与一般难题}
+\begin{minipage}{\linewidth}\textbf{二元决策／真假／最少违规}\par{\fontsize{8.5}{11}\selectfont \hyperref[N01]{N01\,(\pageref*{N01})}\hspace{.5em}\allowbreak \hyperref[N02]{N02\,(\pageref*{N02})}\hspace{.5em}\allowbreak \hyperref[N03]{N03\,(\pageref*{N03})}\hspace{.5em}\allowbreak \hyperref[C07]{C07\,(\pageref*{C07})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{独立／支配／覆盖／最远距离}\par{\fontsize{8.5}{11}\selectfont \hyperref[N04]{N04\,(\pageref*{N04})}\hspace{.5em}\allowbreak \hyperref[N05]{N05\,(\pageref*{N05})}\hspace{.5em}\allowbreak \hyperref[N06]{N06\,(\pageref*{N06})}\hspace{.5em}\allowbreak \hyperref[N07]{N07\,(\pageref*{N07})}\hspace{.5em}\allowbreak \hyperref[N08]{N08\,(\pageref*{N08})}\hspace{.5em}\allowbreak \hyperref[N22]{N22\,(\pageref*{N22})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{分组／三元匹配／配额／时间窗}\par{\fontsize{8.5}{11}\selectfont \hyperref[N09]{N09\,(\pageref*{N09})}\hspace{.5em}\allowbreak \hyperref[N12]{N12\,(\pageref*{N12})}\hspace{.5em}\allowbreak \hyperref[N14]{N14\,(\pageref*{N14})}\hspace{.5em}\allowbreak \hyperref[N29]{N29\,(\pageref*{N29})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{经过所有点／两条不相交路径}\par{\fontsize{8.5}{11}\selectfont \hyperref[N11]{N11\,(\pageref*{N11})}\hspace{.5em}\allowbreak \hyperref[N15]{N15\,(\pageref*{N15})}\hspace{.5em}\allowbreak \hyperref[N16]{N16\,(\pageref*{N16})}\hspace{.5em}\allowbreak \hyperref[N17]{N17\,(\pageref*{N17})}\hspace{.5em}\allowbreak \hyperref[N20]{N20\,(\pageref*{N20})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{多种货物／预算路径／连接终端}\par{\fontsize{8.5}{11}\selectfont \hyperref[N18]{N18\,(\pageref*{N18})}\hspace{.5em}\allowbreak \hyperref[N19]{N19\,(\pageref*{N19})}\hspace{.5em}\allowbreak \hyperref[N21]{N21\,(\pageref*{N21})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{染色／去环／删点成森林}\par{\fontsize{8.5}{11}\selectfont \hyperref[N10]{N10\,(\pageref*{N10})}\hspace{.5em}\allowbreak \hyperref[N23]{N23\,(\pageref*{N23})}\hspace{.5em}\allowbreak \hyperref[N24]{N24\,(\pageref*{N24})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{一样的子序列／同时包含多串}\par{\fontsize{8.5}{11}\selectfont \hyperref[N25]{N25\,(\pageref*{N25})}\hspace{.5em}\allowbreak \hyperref[N26]{N26\,(\pageref*{N26})}\hspace{.5em}\allowbreak \hyperref[N27]{N27\,(\pageref*{N27})}\hspace{.5em}\allowbreak \hyperref[N28]{N28\,(\pageref*{N28})}\hspace{.5em}\allowbreak \hyperref[Q10]{Q10\,(\pageref*{Q10})}\hspace{.5em}\allowbreak \hyperref[Q11]{Q11\,(\pageref*{Q11})}\hspace{.5em}\allowbreak \hyperref[Q12]{Q12\,(\pageref*{Q12})}}\end{minipage}\par\vspace{5pt}
+\grouphead{计数、排列与多项式}
+\begin{minipage}{\linewidth}\textbf{格路／不越线／括号／包含关系}\par{\fontsize{8.5}{11}\selectfont \hyperref[C37]{C37\,(\pageref*{C37})}\hspace{.5em}\allowbreak \hyperref[C38]{C38\,(\pageref*{C38})}\hspace{.5em}\allowbreak \hyperref[C39]{C39\,(\pageref*{C39})}\hspace{.5em}\allowbreak \hyperref[C40]{C40\,(\pageref*{C40})}\hspace{.5em}\allowbreak \hyperref[C41]{C41\,(\pageref*{C41})}\hspace{.5em}\allowbreak \hyperref[C42]{C42\,(\pageref*{C42})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{先后约束／拓扑序／相邻不等号}\par{\fontsize{8.5}{11}\selectfont \hyperref[C01]{C01\,(\pageref*{C01})}\hspace{.5em}\allowbreak \hyperref[C14]{C14\,(\pageref*{C14})}\hspace{.5em}\allowbreak \hyperref[C15]{C15\,(\pageref*{C15})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{匹配／欧拉回路／生成树}\par{\fontsize{8.5}{11}\selectfont \hyperref[C02]{C02\,(\pageref*{C02})}\hspace{.5em}\allowbreak \hyperref[C03]{C03\,(\pageref*{C03})}\hspace{.5em}\allowbreak \hyperref[C04]{C04\,(\pageref*{C04})}\hspace{.5em}\allowbreak \hyperref[C10]{C10\,(\pageref*{C10})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{通配符／独立集／路径数}\par{\fontsize{8.5}{11}\selectfont \hyperref[C05]{C05\,(\pageref*{C05})}\hspace{.5em}\allowbreak \hyperref[C06]{C06\,(\pageref*{C06})}\hspace{.5em}\allowbreak \hyperref[C08]{C08\,(\pageref*{C08})}\hspace{.5em}\allowbreak \hyperref[C09]{C09\,(\pageref*{C09})}\hspace{.5em}\allowbreak \hyperref[C11]{C11\,(\pageref*{C11})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{去重／同一结果／除阶乘}\par{\fontsize{8.5}{11}\selectfont \hyperref[C13]{C13\,(\pageref*{C13})}\hspace{.5em}\allowbreak \hyperref[C22]{C22\,(\pageref*{C22})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{球盒／分组／环数／斯特林}\par{\fontsize{8.5}{11}\selectfont \hyperref[C16]{C16\,(\pageref*{C16})}\hspace{.5em}\allowbreak \hyperref[C17]{C17\,(\pageref*{C17})}\hspace{.5em}\allowbreak \hyperref[C18]{C18\,(\pageref*{C18})}\hspace{.5em}\allowbreak \hyperref[C19]{C19\,(\pageref*{C19})}\hspace{.5em}\allowbreak \hyperref[C20]{C20\,(\pageref*{C20})}\hspace{.5em}\allowbreak \hyperref[C21]{C21\,(\pageref*{C21})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{逆序对恰好 k／排列很长}\par{\fontsize{8.5}{11}\selectfont \hyperref[C24]{C24\,(\pageref*{C24})}\hspace{.5em}\allowbreak \hyperref[C25]{C25\,(\pageref*{C25})}\hspace{.5em}\allowbreak \hyperref[C26]{C26\,(\pageref*{C26})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{取几件／选哪些物品／背包计数}\par{\fontsize{8.5}{11}\selectfont \hyperref[C27]{C27\,(\pageref*{C27})}\hspace{.5em}\allowbreak \hyperref[C28]{C28\,(\pageref*{C28})}\hspace{.5em}\allowbreak \hyperref[C29]{C29\,(\pageref*{C29})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{拆整数／顺序拼接／定长序列}\par{\fontsize{8.5}{11}\selectfont \hyperref[C21]{C21\,(\pageref*{C21})}\hspace{.5em}\allowbreak \hyperref[C30]{C30\,(\pageref*{C30})}\hspace{.5em}\allowbreak \hyperref[C31]{C31\,(\pageref*{C31})}\hspace{.5em}\allowbreak \hyperref[C36]{C36\,(\pageref*{C36})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{短条／骨牌／允许重叠}\par{\fontsize{8.5}{11}\selectfont \hyperref[C23]{C23\,(\pageref*{C23})}\hspace{.5em}\allowbreak \hyperref[C32]{C32\,(\pageref*{C32})}\hspace{.5em}\allowbreak \hyperref[C33]{C33\,(\pageref*{C33})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{大下标／递推／多项式接口}\par{\fontsize{8.5}{11}\selectfont \hyperref[C34]{C34\,(\pageref*{C34})}\hspace{.5em}\allowbreak \hyperref[C35]{C35\,(\pageref*{C35})}\hspace{.5em}\allowbreak \hyperref[C36]{C36\,(\pageref*{C36})}}\end{minipage}\par\vspace{5pt}
+\grouphead{二次瓶颈与背包}
+\begin{minipage}{\linewidth}\textbf{三数和／等差／共线／共点}\par{\fontsize{8.5}{11}\selectfont \hyperref[Q01]{Q01\,(\pageref*{Q01})}\hspace{.5em}\allowbreak \hyperref[Q02]{Q02\,(\pageref*{Q02})}\hspace{.5em}\allowbreak \hyperref[Q03]{Q03\,(\pageref*{Q03})}\hspace{.5em}\allowbreak \hyperref[Q04]{Q04\,(\pageref*{Q04})}\hspace{.5em}\allowbreak \hyperref[Q05]{Q05\,(\pageref*{Q05})}\hspace{.5em}\allowbreak \hyperref[Q06]{Q06\,(\pageref*{Q06})}\hspace{.5em}\allowbreak \hyperref[Q08]{Q08\,(\pageref*{Q08})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{四数和／最小加法卷积}\par{\fontsize{8.5}{11}\selectfont \hyperref[Q07]{Q07\,(\pageref*{Q07})}\hspace{.5em}\allowbreak \hyperref[Q09]{Q09\,(\pageref*{Q09})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{可不可达／总重量小／压位}\par{\fontsize{8.5}{11}\selectfont \hyperref[Q14]{Q14\,(\pageref*{Q14})}\hspace{.5em}\allowbreak \hyperref[Q16]{Q16\,(\pageref*{Q16})}\hspace{.5em}\allowbreak \hyperref[Q17]{Q17\,(\pageref*{Q17})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{恰好选 k 个／罚分二分}\par{\fontsize{8.5}{11}\selectfont \hyperref[Q15]{Q15\,(\pageref*{Q15})}\hspace{.5em}\allowbreak \hyperref[C36]{C36\,(\pageref*{C36})}}\end{minipage}\par\vspace{5pt}
+\grouphead{信息量与状态}
+\begin{minipage}{\linewidth}\textbf{输入输出很大／只要总和}\par{\fontsize{8.5}{11}\selectfont \hyperref[I01]{I01\,(\pageref*{I01})}\hspace{.5em}\allowbreak \hyperref[I08]{I08\,(\pageref*{I08})}\hspace{.5em}\allowbreak \hyperref[I09]{I09\,(\pageref*{I09})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{黑盒／比较／交互问几次}\par{\fontsize{8.5}{11}\selectfont \hyperref[I02]{I02\,(\pageref*{I02})}\hspace{.5em}\allowbreak \hyperref[I03]{I03\,(\pageref*{I03})}\hspace{.5em}\allowbreak \hyperref[I04]{I04\,(\pageref*{I04})}}\end{minipage}\par\vspace{5pt}
+\begin{minipage}{\linewidth}\textbf{摘要相同／状态能否合并／哈希}\par{\fontsize{8.5}{11}\selectfont \hyperref[I05]{I05\,(\pageref*{I05})}\hspace{.5em}\allowbreak \hyperref[I06]{I06\,(\pageref*{I06})}\hspace{.5em}\allowbreak \hyperref[I07]{I07\,(\pageref*{I07})}}\end{minipage}\par\vspace{5pt}
+\end{multicols}\clearpage
+\pdfbookmark[0]{完整条目目录}{catalog}\grouphead{完整条目目录}
+内部编号在各版本间保持稳定；先看条目名，再按页码定位。十二重计数、斯特林行列与链递推见第\pageref*{tables}页。\par
+\begin{multicols}{3}\fontsize{8.2}{10.4}\selectfont\raggedcolumns
+\needspace{5\baselineskip}\par\vspace{6pt}\textbf{M 矩阵乘法规约相关}\par\vspace{3pt}
+\noindent\hyperref[M01]{M01 普通矩阵乘法\nobreak\hfill\pageref*{M01}}\par\vspace{1.5pt}
+\noindent\hyperref[M02]{M02 布尔／GF(2) 矩乘\nobreak\hfill\pageref*{M02}}\par\vspace{1.5pt}
+\noindent\hyperref[M03]{M03 APSP／min-plus 矩乘\nobreak\hfill\pageref*{M03}}\par\vspace{1.5pt}
+\noindent\hyperref[M04]{M04 所有集合对的交大小\nobreak\hfill\pageref*{M04}}\par\vspace{1.5pt}
+\noindent\hyperref[M05]{M05 三角形计数\nobreak\hfill\pageref*{M05}}\par\vspace{1.5pt}
+\noindent\hyperref[M06]{M06 定长游走计数\nobreak\hfill\pageref*{M06}}\par\vspace{1.5pt}
+\noindent\hyperref[M07]{M07 恰走 k 条边的最小代价\nobreak\hfill\pageref*{M07}}\par\vspace{1.5pt}
+\noindent\hyperref[M08]{M08 静态有向可达性\nobreak\hfill\pageref*{M08}}\par\vspace{1.5pt}
+\noindent\hyperref[M09]{M09 有向图独立删边最短路\nobreak\hfill\pageref*{M09}}\par\vspace{1.5pt}
+\noindent\hyperref[M10]{M10 第二条最短简单路径\nobreak\hfill\pageref*{M10}}\par\vspace{1.5pt}
+\noindent\hyperref[M11]{M11 最小权环与负权三角形\nobreak\hfill\pageref*{M11}}\par\vspace{1.5pt}
+\noindent\hyperref[M12]{M12 三角不等式／min-plus 乘积验证\nobreak\hfill\pageref*{M12}}\par\vspace{1.5pt}
+\needspace{5\baselineskip}\par\vspace{6pt}\textbf{D 数据结构与动态维护}\par\vspace{3pt}
+\noindent\hyperref[D01]{D01 区间仿射修改＋区间和\nobreak\hfill\pageref*{D01}}\par\vspace{1.5pt}
+\noindent\hyperref[D02]{D02 区间整数仿射＋区间 gcd\nobreak\hfill\pageref*{D02}}\par\vspace{1.5pt}
+\noindent\hyperref[D03]{D03 区间异或＋区间和\nobreak\hfill\pageref*{D03}}\par\vspace{1.5pt}
+\noindent\hyperref[D04]{D04 区间 chmin＋区间和\nobreak\hfill\pageref*{D04}}\par\vspace{1.5pt}
+\noindent\hyperref[D05]{D05 区间 chmin/chmax/add＋区间和\nobreak\hfill\pageref*{D05}}\par\vspace{1.5pt}
+\noindent\hyperref[D06]{D06 区间夹取／加／赋值＋单点查询\nobreak\hfill\pageref*{D06}}\par\vspace{1.5pt}
+\noindent\hyperref[D07]{D07 区间取模＋点赋值＋区间和\nobreak\hfill\pageref*{D07}}\par\vspace{1.5pt}
+\noindent\hyperref[D08]{D08 区间开方＋点赋值＋区间和\nobreak\hfill\pageref*{D08}}\par\vspace{1.5pt}
+\noindent\hyperref[D09]{D09 区间加＋最大子段和\nobreak\hfill\pageref*{D09}}\par\vspace{1.5pt}
+\noindent\hyperref[D10]{D10 区间赋值／取负＋最大子段和\nobreak\hfill\pageref*{D10}}\par\vspace{1.5pt}
+\noindent\hyperref[D11]{D11 区间括号互换＋合法性\nobreak\hfill\pageref*{D11}}\par\vspace{1.5pt}
+\noindent\hyperref[D12]{D12 小颜色数：赋色＋不同颜色数\nobreak\hfill\pageref*{D12}}\par\vspace{1.5pt}
+\noindent\hyperref[D13]{D13 区间赋色＋连续颜色段数\nobreak\hfill\pageref*{D13}}\par\vspace{1.5pt}
+\noindent\hyperref[D14]{D14 静态区间不同数\nobreak\hfill\pageref*{D14}}\par\vspace{1.5pt}
+\noindent\hyperref[D15]{D15 静态区间第 k 小\nobreak\hfill\pageref*{D15}}\par\vspace{1.5pt}
+\noindent\hyperref[D16]{D16 单点修改＋区间第 k 小\nobreak\hfill\pageref*{D16}}\par\vspace{1.5pt}
+\noindent\hyperref[D17]{D17 区间加＋区间第 k 小\nobreak\hfill\pageref*{D17}}\par\vspace{1.5pt}
+\noindent\hyperref[D18]{D18 全局动态中位数＋绝对距离和\nobreak\hfill\pageref*{D18}}\par\vspace{1.5pt}
+\noindent\hyperref[D19]{D19 静态离线区间 mex\nobreak\hfill\pageref*{D19}}\par\vspace{1.5pt}
+\noindent\hyperref[D20]{D20 区间众数\nobreak\hfill\pageref*{D20}}\par\vspace{1.5pt}
+\noindent\hyperref[D21]{D21 众数摘要不足\nobreak\hfill\pageref*{D21}}\par\vspace{1.5pt}
+\noindent\hyperref[D22]{D22 区间异或线性基\nobreak\hfill\pageref*{D22}}\par\vspace{1.5pt}
+\noindent\hyperref[D23]{D23 动态有向可达性\nobreak\hfill\pageref*{D23}}\par\vspace{1.5pt}
+\noindent\hyperref[D24]{D24 离线无向动态图连通性\nobreak\hfill\pageref*{D24}}\par\vspace{1.5pt}
+\noindent\hyperref[D25]{D25 固定树的路径／子树修改查询\nobreak\hfill\pageref*{D25}}\par\vspace{1.5pt}
+\noindent\hyperref[D26]{D26 动态 DP\nobreak\hfill\pageref*{D26}}\par\vspace{1.5pt}
+\noindent\hyperref[D27]{D27 固定相等约束\nobreak\hfill\pageref*{D27}}\par\vspace{1.5pt}
+\noindent\hyperref[D28]{D28 单位权有向图独立删边\nobreak\hfill\pageref*{D28}}\par\vspace{1.5pt}
+\noindent\hyperref[D29]{D29 无向正权图独立删边\nobreak\hfill\pageref*{D29}}\par\vspace{1.5pt}
+\noindent\hyperref[D30]{D30 任意端点的独立故障查询\nobreak\hfill\pageref*{D30}}\par\vspace{1.5pt}
+\noindent\hyperref[D31]{D31 离线累计删边／倒序加边\nobreak\hfill\pageref*{D31}}\par\vspace{1.5pt}
+\noindent\hyperref[D32]{D32 森林中的矩形连通块\nobreak\hfill\pageref*{D32}}\par\vspace{1.5pt}
+\noindent\hyperref[D33]{D33 任意树链的不同颜色数\nobreak\hfill\pageref*{D33}}\par\vspace{1.5pt}
+\noindent\hyperref[D34]{D34 祖先到后代链的不同颜色数\nobreak\hfill\pageref*{D34}}\par\vspace{1.5pt}
+\noindent\hyperref[D35]{D35 树链颜色：小值域与颜色段\nobreak\hfill\pageref*{D35}}\par\vspace{1.5pt}
+\noindent\hyperref[D36]{D36 树链频数、值域计数与第 k 小\nobreak\hfill\pageref*{D36}}\par\vspace{1.5pt}
+\noindent\hyperref[D37]{D37 所有子树的颜色频率统计\nobreak\hfill\pageref*{D37}}\par\vspace{1.5pt}
+\noindent\hyperref[D38]{D38 矩形点数与权值和：可减\nobreak\hfill\pageref*{D38}}\par\vspace{1.5pt}
+\noindent\hyperref[D39]{D39 贴边矩形的可合并摘要\nobreak\hfill\pageref*{D39}}\par\vspace{1.5pt}
+\noindent\hyperref[D40]{D40 四边矩形：不可减但可合并\nobreak\hfill\pageref*{D40}}\par\vspace{1.5pt}
+\noindent\hyperref[D41]{D41 贴边矩形的不同颜色数\nobreak\hfill\pageref*{D41}}\par\vspace{1.5pt}
+\noindent\hyperref[D42]{D42 一般矩形的不同颜色数\nobreak\hfill\pageref*{D42}}\par\vspace{1.5pt}
+\noindent\hyperref[D43]{D43 矩形中指定颜色的频数\nobreak\hfill\pageref*{D43}}\par\vspace{1.5pt}
+\noindent\hyperref[D44]{D44 两棵树的子树交：点数与权和\nobreak\hfill\pageref*{D44}}\par\vspace{1.5pt}
+\noindent\hyperref[D45]{D45 两子树交的 max/gcd：合并可省一维\nobreak\hfill\pageref*{D45}}\par\vspace{1.5pt}
+\noindent\hyperref[D46]{D46 不同儿子子树之间的同色点对\nobreak\hfill\pageref*{D46}}\par\vspace{1.5pt}
+\noindent\hyperref[D47]{D47 线段树合并：复杂度按被消耗节点算\nobreak\hfill\pageref*{D47}}\par\vspace{1.5pt}
+\noindent\hyperref[D48]{D48 时间维＋平面点修改＋矩形权和\nobreak\hfill\pageref*{D48}}\par\vspace{1.5pt}
+\needspace{5\baselineskip}\par\vspace{6pt}\textbf{N NP-hard 问题}\par\vspace{3pt}
+\noindent\hyperref[N01]{N01 3-SAT\nobreak\hfill\pageref*{N01}}\par\vspace{1.5pt}
+\noindent\hyperref[N02]{N02 MAX-2-SAT\nobreak\hfill\pageref*{N02}}\par\vspace{1.5pt}
+\noindent\hyperref[N03]{N03 任意二元代价\nobreak\hfill\pageref*{N03}}\par\vspace{1.5pt}
+\noindent\hyperref[N04]{N04 指定点数的最小割／最小二等分\nobreak\hfill\pageref*{N04}}\par\vspace{1.5pt}
+\noindent\hyperref[N05]{N05 最大独立集／最大团\nobreak\hfill\pageref*{N05}}\par\vspace{1.5pt}
+\noindent\hyperref[N06]{N06 平面点集间距选点\nobreak\hfill\pageref*{N06}}\par\vspace{1.5pt}
+\noindent\hyperref[N07]{N07 最小支配集\nobreak\hfill\pageref*{N07}}\par\vspace{1.5pt}
+\noindent\hyperref[N08]{N08 最少覆盖／最少击中\nobreak\hfill\pageref*{N08}}\par\vspace{1.5pt}
+\noindent\hyperref[N09]{N09 三元匹配／精确覆盖\nobreak\hfill\pageref*{N09}}\par\vspace{1.5pt}
+\noindent\hyperref[N10]{N10 三染色\nobreak\hfill\pageref*{N10}}\par\vspace{1.5pt}
+\noindent\hyperref[N11]{N11 可变模式的子图匹配\nobreak\hfill\pageref*{N11}}\par\vspace{1.5pt}
+\noindent\hyperref[N12]{N12 分成等和三元组\nobreak\hfill\pageref*{N12}}\par\vspace{1.5pt}
+\noindent\hyperref[N13]{N13 最少异或变量\nobreak\hfill\pageref*{N13}}\par\vspace{1.5pt}
+\noindent\hyperref[N14]{N14 时间窗内不可中断排程\nobreak\hfill\pageref*{N14}}\par\vspace{1.5pt}
+\noindent\hyperref[N15]{N15 最长简单路／Hamilton 路\nobreak\hfill\pageref*{N15}}\par\vspace{1.5pt}
+\noindent\hyperref[N16]{N16 旅行商 TSP\nobreak\hfill\pageref*{N16}}\par\vspace{1.5pt}
+\noindent\hyperref[N17]{N17 两对有向不交路径\nobreak\hfill\pageref*{N17}}\par\vspace{1.5pt}
+\noindent\hyperref[N18]{N18 整数多商品流\nobreak\hfill\pageref*{N18}}\par\vspace{1.5pt}
+\noindent\hyperref[N19]{N19 资源预算最短路\nobreak\hfill\pageref*{N19}}\par\vspace{1.5pt}
+\noindent\hyperref[N20]{N20 一般有向图最小路径覆盖\nobreak\hfill\pageref*{N20}}\par\vspace{1.5pt}
+\noindent\hyperref[N21]{N21 Steiner Tree\nobreak\hfill\pageref*{N21}}\par\vspace{1.5pt}
+\noindent\hyperref[N22]{N22 删点限制直径\nobreak\hfill\pageref*{N22}}\par\vspace{1.5pt}
+\noindent\hyperref[N23]{N23 有向删边去环\nobreak\hfill\pageref*{N23}}\par\vspace{1.5pt}
+\noindent\hyperref[N24]{N24 删点去环／最大诱导森林\nobreak\hfill\pageref*{N24}}\par\vspace{1.5pt}
+\noindent\hyperref[N25]{N25 相同双子序列\nobreak\hfill\pageref*{N25}}\par\vspace{1.5pt}
+\noindent\hyperref[N26]{N26 多串 LCS\nobreak\hfill\pageref*{N26}}\par\vspace{1.5pt}
+\noindent\hyperref[N27]{N27 多串最短公共超序列\nobreak\hfill\pageref*{N27}}\par\vspace{1.5pt}
+\noindent\hyperref[N28]{N28 最短公共超串\nobreak\hfill\pageref*{N28}}\par\vspace{1.5pt}
+\noindent\hyperref[N29]{N29 任意集合配额选点\nobreak\hfill\pageref*{N29}}\par\vspace{1.5pt}
+\needspace{5\baselineskip}\par\vspace{6pt}\textbf{C 计数与多项式}\par\vspace{3pt}
+\par\vspace{3pt}\textbf{先判断能不能数}\par
+\noindent\hyperref[C01]{C01 拓扑序计数\nobreak\hfill\pageref*{C01}}\par\vspace{1.5pt}
+\noindent\hyperref[C02]{C02 完美匹配计数\nobreak\hfill\pageref*{C02}}\par\vspace{1.5pt}
+\noindent\hyperref[C03]{C03 无向欧拉回路计数\nobreak\hfill\pageref*{C03}}\par\vspace{1.5pt}
+\noindent\hyperref[C04]{C04 有向欧拉回路计数\nobreak\hfill\pageref*{C04}}\par\vspace{1.5pt}
+\noindent\hyperref[C05]{C05 通配符模式并集\nobreak\hfill\pageref*{C05}}\par\vspace{1.5pt}
+\noindent\hyperref[C06]{C06 通配符模式交集\nobreak\hfill\pageref*{C06}}\par\vspace{1.5pt}
+\noindent\hyperref[C07]{C07 2-SAT 解数\nobreak\hfill\pageref*{C07}}\par\vspace{1.5pt}
+\noindent\hyperref[C08]{C08 独立集总数\nobreak\hfill\pageref*{C08}}\par\vspace{1.5pt}
+\noindent\hyperref[C09]{C09 简单路径计数\nobreak\hfill\pageref*{C09}}\par\vspace{1.5pt}
+\noindent\hyperref[C10]{C10 生成树计数\nobreak\hfill\pageref*{C10}}\par\vspace{1.5pt}
+\noindent\hyperref[C11]{C11 保持连通的选边计数\nobreak\hfill\pageref*{C11}}\par\vspace{1.5pt}
+\noindent\hyperref[C12]{C12 异或方程解数\nobreak\hfill\pageref*{C12}}\par\vspace{1.5pt}
+\noindent\hyperref[C13]{C13 不同结果不等于操作序列数\nobreak\hfill\pageref*{C13}}\par\vspace{1.5pt}
+\noindent\hyperref[C14]{C14 有向链拓扑序计数：方向可反复改变\nobreak\hfill\pageref*{C14}}\par\vspace{1.5pt}
+\noindent\hyperref[C15]{C15 几条同向链互不相交\nobreak\hfill\pageref*{C15}}\par\vspace{1.5pt}
+\noindent\hyperref[C23]{C23 窄棋盘骨牌覆盖\nobreak\hfill\pageref*{C23}}\par\vspace{1.5pt}
+\noindent\hyperref[C32]{C32 长度为 2 的短条铺满\nobreak\hfill\pageref*{C32}}\par\vspace{1.5pt}
+\noindent\hyperref[C33]{C33 长 2 短条允许重叠的全覆盖\nobreak\hfill\pageref*{C33}}\par\vspace{1.5pt}
+\par\vspace{3pt}\textbf{组合计数与多项式模式}\par
+\noindent\hyperref[C37]{C37 只向右上走：经过一串指定点\nobreak\hfill\pageref*{C37}}\par\vspace{1.5pt}
+\noindent\hyperref[C38]{C38 大网格、少量禁点：按首次撞点扣除\nobreak\hfill\pageref*{C38}}\par\vspace{1.5pt}
+\noindent\hyperref[C39]{C39 不越过一条斜边界：反射／投票\nobreak\hfill\pageref*{C39}}\par\vspace{1.5pt}
+\noindent\hyperref[C40]{C40 卡特兰：括号、非交叉配对、有序二叉树\nobreak\hfill\pageref*{C40}}\par\vspace{1.5pt}
+\noindent\hyperref[C41]{C41 每盒相同上下限：先平移，再按超额盒容斥\nobreak\hfill\pageref*{C41}}\par\vspace{1.5pt}
+\noindent\hyperref[C42]{C42 允许集合真正嵌套：单射分配可直接连乘\nobreak\hfill\pageref*{C42}}\par\vspace{1.5pt}
+\noindent\hyperref[C16]{C16 看到“分成若干非空组”先辨标号\nobreak\hfill\pageref*{C16}}\par\vspace{1.5pt}
+\noindent\hyperref[C17]{C17 看到“排列有 k 个环／k 次前缀新最大”\nobreak\hfill\pageref*{C17}}\par\vspace{1.5pt}
+\noindent\hyperref[C18]{C18 第一类斯特林数：一整行\nobreak\hfill\pageref*{C18}}\par\vspace{1.5pt}
+\noindent\hyperref[C19]{C19 第二类斯特林数：一整行\nobreak\hfill\pageref*{C19}}\par\vspace{1.5pt}
+\noindent\hyperref[C20]{C20 两类斯特林数：固定列到第 N 项\nobreak\hfill\pageref*{C20}}\par\vspace{1.5pt}
+\noindent\hyperref[C21]{C21 无标号球与盒：整数划分\nobreak\hfill\pageref*{C21}}\par\vspace{1.5pt}
+\noindent\hyperref[C22]{C22 无标号不能一律除阶乘\nobreak\hfill\pageref*{C22}}\par\vspace{1.5pt}
+\noindent\hyperref[C24]{C24 长排列恰有 k 个逆序对\nobreak\hfill\pageref*{C24}}\par\vspace{1.5pt}
+\noindent\hyperref[C25]{C25 逆序数很小而排列很长\nobreak\hfill\pageref*{C25}}\par\vspace{1.5pt}
+\noindent\hyperref[C26]{C26 任意 n、k 的逆序数免 NTT 做法\nobreak\hfill\pageref*{C26}}\par\vspace{1.5pt}
+\noindent\hyperref[C27]{C27 无限件商品的全部体积计数\nobreak\hfill\pageref*{C27}}\par\vspace{1.5pt}
+\noindent\hyperref[C28]{C28 每种物品有上限的背包计数\nobreak\hfill\pageref*{C28}}\par\vspace{1.5pt}
+\noindent\hyperref[C29]{C29 可区分的 0/1 物品计数\nobreak\hfill\pageref*{C29}}\par\vspace{1.5pt}
+\noindent\hyperref[C30]{C30 整数拆分与五边形数\nobreak\hfill\pageref*{C30}}\par\vspace{1.5pt}
+\noindent\hyperref[C31]{C31 有序拼接与无序多重集\nobreak\hfill\pageref*{C31}}\par\vspace{1.5pt}
+\noindent\hyperref[C34]{C34 多项式求逆、Log、Exp 的适用条件\nobreak\hfill\pageref*{C34}}\par\vspace{1.5pt}
+\noindent\hyperref[C35]{C35 巨大下标的有理生成函数\nobreak\hfill\pageref*{C35}}\par\vspace{1.5pt}
+\noindent\hyperref[C36]{C36 恰选 k 个有序对象的和分布\nobreak\hfill\pageref*{C36}}\par\vspace{1.5pt}
+\needspace{5\baselineskip}\par\vspace{6pt}\textbf{Q 二次瓶颈、背包与状态 DP}\par\vspace{3pt}
+\noindent\hyperref[Q01]{Q01 3SUM\nobreak\hfill\pageref*{Q01}}\par\vspace{1.5pt}
+\noindent\hyperref[Q02]{Q02 三数线性等式／三项等差\nobreak\hfill\pageref*{Q02}}\par\vspace{1.5pt}
+\noindent\hyperref[Q03]{Q03 三点共线／零面积三角形\nobreak\hfill\pageref*{Q03}}\par\vspace{1.5pt}
+\noindent\hyperref[Q04]{Q04 三条平行线各取一点\nobreak\hfill\pageref*{Q04}}\par\vspace{1.5pt}
+\noindent\hyperref[Q05]{Q05 三条直线共点\nobreak\hfill\pageref*{Q05}}\par\vspace{1.5pt}
+\noindent\hyperref[Q06]{Q06 退化三角形与普通三角形\nobreak\hfill\pageref*{Q06}}\par\vspace{1.5pt}
+\noindent\hyperref[Q07]{Q07 两组 pair sum／4SUM\nobreak\hfill\pageref*{Q07}}\par\vspace{1.5pt}
+\noindent\hyperref[Q08]{Q08 下标卷积型 3SUM\nobreak\hfill\pageref*{Q08}}\par\vspace{1.5pt}
+\noindent\hyperref[Q09]{Q09 min/max-plus 卷积\nobreak\hfill\pageref*{Q09}}\par\vspace{1.5pt}
+\noindent\hyperref[Q10]{Q10 LCS／编辑距离\nobreak\hfill\pageref*{Q10}}\par\vspace{1.5pt}
+\noindent\hyperref[Q11]{Q11 两串 SCS／仅增删编辑距离\nobreak\hfill\pageref*{Q11}}\par\vspace{1.5pt}
+\noindent\hyperref[Q12]{Q12 最长回文子序列\nobreak\hfill\pageref*{Q12}}\par\vspace{1.5pt}
+\noindent\hyperref[Q13]{Q13 任意集合判空交\nobreak\hfill\pageref*{Q13}}\par\vspace{1.5pt}
+\noindent\hyperref[Q14]{Q14 子集和\nobreak\hfill\pageref*{Q14}}\par\vspace{1.5pt}
+\noindent\hyperref[Q15]{Q15 WQS 二分会跳过数量\nobreak\hfill\pageref*{Q15}}\par\vspace{1.5pt}
+\noindent\hyperref[Q16]{Q16 总重量小的全部可达和\nobreak\hfill\pageref*{Q16}}\par\vspace{1.5pt}
+\noindent\hyperref[Q17]{Q17 可达和的卷积乘积树\nobreak\hfill\pageref*{Q17}}\par\vspace{1.5pt}
+\needspace{5\baselineskip}\par\vspace{6pt}\textbf{I 信息论、查询与状态压缩}\par\vspace{3pt}
+\noindent\hyperref[I01]{I01 显式输出量\nobreak\hfill\pageref*{I01}}\par\vspace{1.5pt}
+\noindent\hyperref[I02]{I02 任意函数查询\nobreak\hfill\pageref*{I02}}\par\vspace{1.5pt}
+\noindent\hyperref[I03]{I03 比较排序与选择\nobreak\hfill\pageref*{I03}}\par\vspace{1.5pt}
+\noindent\hyperref[I04]{I04 交互询问的信息量\nobreak\hfill\pageref*{I04}}\par\vspace{1.5pt}
+\noindent\hyperref[I05]{I05 精确集合摘要\nobreak\hfill\pageref*{I05}}\par\vspace{1.5pt}
+\noindent\hyperref[I06]{I06 状态何时能合并\nobreak\hfill\pageref*{I06}}\par\vspace{1.5pt}
+\noindent\hyperref[I07]{I07 固定哈希与精确判等\nobreak\hfill\pageref*{I07}}\par\vspace{1.5pt}
+\noindent\hyperref[I08]{I08 两两贡献求和\nobreak\hfill\pageref*{I08}}\par\vspace{1.5pt}
+\noindent\hyperref[I09]{I09 指数参数已经写入输入\nobreak\hfill\pageref*{I09}}\par\vspace{1.5pt}
+\end{multicols}\clearpage
+\begin{multicols}{2}\raggedcolumns
+\phantomsection\label{secM}\pdfbookmark[0]{M 矩阵乘法规约相关}{secM}
+\grouphead{M 矩阵乘法规约相关}
+{\small\color{Muted}先辨认是普通加乘、布尔运算，还是 min-plus。}\par\vspace{6pt}
+\pdfbookmark[1]{M01 普通矩阵乘法}{M01}
+\entry{\phantomsection\label{M01}M01}{普通矩阵乘法}{矩阵 · 两层关系 · 计数转移 · 三重循环}{任意 \(n\times n\) 整数／模数矩阵的\textbf{普通乘积}按 \(O(n^3)\)，存储 \(O(n^2)\)；0/1 输入的整数乘积\textbf{统计中间点数量}，布尔乘积\textbf{只看有无}，二者不能混用。}
+\pdfbookmark[1]{M02 布尔／GF(2) 矩乘}{M02}
+\entry{\phantomsection\label{M02}M02}{布尔／GF(2) 矩乘}{01矩阵 · 压位 · 奇偶 · 存不存在}{0/1 矩阵按行、列打包，以 AND 配合\textbf{非零判断}／\textbf{popcount 奇偶}，分别求布尔／GF(2) 乘积；时间 \(O(n^2\lceil n/w\rceil)\)、空间 \(O(n\lceil n/w\rceil)\) 个字。\textbf{普通数值矩乘}不能照此除以 \(w\)。}
+\pdfbookmark[1]{M03 APSP／min-plus 矩乘}{M03}
+\entry{\phantomsection\label{M03}M03}{APSP／min-plus 矩乘}{所有点对 · 最短路 · 最小加法 · 稠密图}{静态一般稠密带权图、\textbf{保证无负环}，\textbf{全部点对}最短距离按 Floyd \(O(n^3)\) 时间、\(O(n^2)\) 空间；任意 min-plus 矩乘同按三次估算。稀疏图、少量源点、\textbf{仅问可达性}另算。}
+\pdfbookmark[1]{M04 所有集合对的交大小}{M04}
+\entry{\phantomsection\label{M04}M04}{所有集合对的交大小}{集合交 · 公共元素 · 成对统计 · 压位}{两组各 \(n\) 个集合、全集大小 \(d\)，\((XY^{\mathsf T})_{ij}=|S_i\cap T_j|\)。每集合打包，用 \textbf{AND＋popcount} 求\textbf{所有集合对}的交大小：时间 \(O(n^2\lceil d/w\rceil)\)，输入掩码占 \(O(n\lceil d/w\rceil)\) 个字，\textbf{输出另占} \(O(n^2)\)。}
+\pdfbookmark[1]{M05 三角形计数}{M05}
+\entry{\phantomsection\label{M05}M05}{三角形计数}{三角形 · 三元环 · 公共邻居 · 压位}{\textbf{无向简单图}的三角形数为 \(\operatorname{tr}(A^3)/6\)。按编号从小到大定向，每条边累加两端\textbf{出邻居}的交大小，\textbf{每个三角形恰计一次}；bitset 时间 \(O((n+m)\lceil n/w\rceil)\)、空间 \(O(n\lceil n/w\rceil)\) 个字。}
+\pdfbookmark[1]{M06 定长游走计数}{M06}
+\entry{\phantomsection\label{M06}M06}{定长游走计数}{走k步 · 路径计数 · 重复经过 · 矩阵幂}{邻接矩阵 \(A_{uv}\) 为 \(u\to v\) 的\textbf{边数}，\((A^k)_{uv}\) 统计恰走 \(k\) 条边、\textbf{允许重复点边}的游走。按给定模数计数，快速幂 \(O(n^3\log(k+2))\)、空间 \(O(n^2)\)；\(k=0\) 用单位矩阵，\textbf{简单路径}不能这样数。}
+\pdfbookmark[1]{M07 恰走 k 条边的最小代价}{M07}
+\entry{\phantomsection\label{M07}M07}{恰走 k 条边的最小代价}{走k步 · 最小代价 · 恰好与至多 · 矩阵幂}{带权图求\textbf{恰走} \(k\) 条边的最小代价，\textbf{允许重复点边及负权}；邻接矩阵做 min-plus 快速幂，时间 \(O(n^3\log(k+2))\)、空间 \(O(n^2)\)。无边填无穷大，对角仅填\textbf{真实自环}；随意置 0 会混入少于 \(k\) 条边的路线。}
+\pdfbookmark[1]{M08 静态有向可达性}{M08}
+\entry{\phantomsection\label{M08}M08}{静态有向可达性}{能否到达 · 传递闭包 · 有向图 · 压位}{\textbf{静态有向图}每点存可达点 bitset；令\textbf{自身可达}，\(k\) 为\textbf{最外层}，若 \(i\) 可达 \(k\) 就令 \(R_i\gets R_i\cup R_k\)。预处理 \(O(n^2\lceil n/w\rceil)\)、空间 \(O(n\lceil n/w\rceil)\) 个字，之后每问 \(O(1)\)；\textbf{不支持在线加删边}。}
+\pdfbookmark[1]{M09 有向图独立删边最短路}{M09}
+\entry{\phantomsection\label{M09}M09}{有向图独立删边最短路}{删一条边 · 路坏了 · 替换路 · 有向图}{静态非负权有向图，\textbf{固定} \(s,t\)，每问\textbf{独立禁一条边并恢复}。选一条\textbf{简单最短路} \(P\)，仅其至多 \(n-1\) 条边需重算，\textbf{其余答案不变}；稠密 \(m=O(n^2)\) 时整批预处理 \(O(n^3)\)、存储 \(O(n^2)\)，每问 \(O(1)\)。原来不通则删边后仍不通。}
+\pdfbookmark[1]{M10 第二条最短简单路径}{M10}
+\entry{\phantomsection\label{M10}M10}{第二条最短简单路径}{次短路 · 第二条路径 · 等长路径 · 不能绕圈}{非负权有向图、固定不同端点 \(s,t\)，求\textbf{边序列不同}于给定最短\textbf{简单路径} \(P\) 的最短\textbf{简单路径}。对 \(P\) 各边独立禁用所得距离取 min；稠密图按 \(O(n^3)\)，答案\textbf{可与原路等长}。\textbf{要求严格更长}、或允许重复点边的次短游走，均是不同模型。}
+\pdfbookmark[1]{M11 最小权环与负权三角形}{M11}
+\entry{\phantomsection\label{M11}M11}{最小权环与负权三角形}{最小环 · 负三角形 · 负环 · 三个点}{一般稠密\textbf{非负权}有向图求最小权\textbf{非空环}，按 \(O(n^3)\)；任意边权图判是否有\textbf{三个不同点}组成的负权三角形，也按 \(O(n^3)\)。有无\textbf{任意长度负环}可用 Bellman-Ford \(O(nm)\)，与负权三角形不是同一判定。}
+\pdfbookmark[1]{M12 三角不等式／min-plus 乘积验证}{M12}
+\entry{\phantomsection\label{M12}M12}{三角不等式／min-plus 乘积验证}{距离合法 · 三角不等式 · 验答案 · 最小加法}{给定任意 \(n\times n\) 矩阵，检查\textbf{全部} \(D_{ij}\le D_{ik}+D_{kj}\)，或给定 \(A,B,C\) 验证 \(C_{ij}=\min_k(A_{ik}+B_{kj})\)，均按 \(O(n^3)\)。前者\textbf{只检查三角不等式}，\textbf{完整度量}还须查非负、对角、对称等；普通矩乘的\textbf{随机向量验算}不能直接用于 min-plus。}
+\phantomsection\label{secD}\pdfbookmark[0]{D 数据结构与动态维护}{secD}
+\grouphead{D 数据结构与动态维护}
+{\small\color{Muted}先分清可减、可合并、静态／动态、点／颜色；单个摘要失效不是问题下界。}\par\vspace{6pt}
+\pdfbookmark[1]{D01 区间仿射修改＋区间和}{D01}
+\entry{\phantomsection\label{D01}D01}{区间仿射修改＋区间和}{区间加乘 · 区间赋值 · 懒标记 · 求和}{\textbf{固定长} \(n\) 数组，区间 \(a_i\gets ba_i+c\)、区间求和：存 sum 与 len，整段令 \(sum\gets b\,sum+c\,len\)，\textbf{按执行顺序}复合仿射标记。含加、乘、赋值（\(b=0\)），每次 \(O(\log n)\)；可在整数或\textbf{同一模数}下运算。}
+\pdfbookmark[1]{D02 区间整数仿射＋区间 gcd}{D02}
+\entry{\phantomsection\label{D02}D02}{区间整数仿射＋区间 gcd}{区间加乘 · 最大公约数 · 差分 · 不可减}{\textbf{整数数组}的区间仿射修改与区间 gcd：存首尾 \(F,T\) 及\textbf{相邻差分} gcd \(G\)，拼接再计 \(|F_R-T_L|\)；整段 \(x\gets bx+c\) 令 \(G\gets|b|G\)、首尾照变，答案 \(\gcd(|F|,G)\)。每次访问 \(O(\log n)\) 个节点，\textbf{gcd 运算成本另计}；\textbf{不在模数下维护}。}
+\pdfbookmark[1]{D03 区间异或＋区间和}{D03}
+\entry{\phantomsection\label{D03}D03}{区间异或＋区间和}{区间异或 · 位翻转 · 区间和 · 拆位}{\(B\) 位\textbf{非负整数}数组，区间异或、区间求和：\textbf{每位保存} 1 的个数，异或掩码为 1 的位令 \(cnt\gets len-cnt\)，\textbf{标记异或复合}。每次 \(O(B\log n)\)、空间 \(O(nB)\)；修改掩码也须在这 \(B\) 位内，\textbf{仅存总和不够}。}
+\pdfbookmark[1]{D04 区间 chmin＋区间和}{D04}
+\entry{\phantomsection\label{D04}D04}{区间 chmin＋区间和}{区间取小 · 上限截断 · 势能 · Beats}{\textbf{仅区间} \(a_i\gets\min(a_i,x)\) 与区间和，用 Beats 存最大值、\textbf{严格次大值}、最大值个数及和；\(x\ge max\) 跳过，仅 \(second<x<max\) 时整段改，否则下递。\(q\) 次操作总计 \(O((n+q)\log n)\) \textbf{摊还}；\textbf{加入区间加}后不能沿用此界。}
+\pdfbookmark[1]{D05 区间 chmin/chmax/add＋区间和}{D05}
+\entry{\phantomsection\label{D05}D05}{区间 chmin/chmax/add＋区间和}{区间取大取小 · 整体加 · 势能 · Beats}{区间 chmin、chmax、add 与区间和，用 Beats 同存最大／\textbf{严格次大}、最小／\textbf{严格次小}、各自个数及和，维护加法标记与上下限。\(q\) 次操作总计按 \(O((n+q)\log^2n)\) \textbf{摊还}，空间 \(O(n)\)；\textbf{不保证单次最坏} \(O(\log n)\)。}
+\pdfbookmark[1]{D06 区间夹取／加／赋值＋单点查询}{D06}
+\entry{\phantomsection\label{D06}D06}{区间夹取／加／赋值＋单点查询}{区间夹取 · 上下限 · 函数复合 · 只问单点}{区间 chmin、chmax、加、赋值，\textbf{只问单点值}时，标记可复合成 \(f(x)=\min(R,\max(L,x+a))\)。普通懒线段树\textbf{按时间顺序}复合，每次修改／查询 \(O(\log n)\)、空间 \(O(n)\)；若\textbf{改问区间和}，仅此函数标记\textbf{不能直接更新总和}。}
+\pdfbookmark[1]{D07 区间取模＋点赋值＋区间和}{D07}
+\entry{\phantomsection\label{D07}D07}{区间取模＋点赋值＋区间和}{区间取模 · 变化减半 · 点赋值 · 势能}{\textbf{非负整数}数组支持区间对 \(x>0\) 取模、点赋值及区间和。存 sum/max，遇 \(max<x\) 跳过；每个实际变化的值\textbf{至少减半}。\(q\) 次操作含 \(p\) 次点赋值，\textbf{初值与赋值均不超} \(A\ge2\) 时，总计 \(O((q+(n+p)\log A)\log n)\)；\textbf{不含任意区间增大}。}
+\pdfbookmark[1]{D08 区间开方＋点赋值＋区间和}{D08}
+\entry{\phantomsection\label{D08}D08}{区间开方＋点赋值＋区间和}{区间开方 · 快速收敛 · 点赋值 · 势能}{非负整数数组支持区间\textbf{向下取整}平方根、点赋值及区间和。存 sum/max，遇 \(max\le1\) 跳过。\(q\) 次操作含 \(p\) 次点赋值，\textbf{初值与赋值均不超} \(A\ge4\) 时，总计 \(O((q+(n+p)\log\log A)\log n)\)；\textbf{不含任意区间增大}。}
+\pdfbookmark[1]{D09 区间加＋最大子段和}{D09}
+\entry{\phantomsection\label{D09}D09}{区间加＋最大子段和}{整体加 · 最大子段和 · 摘要不够 · 懒标记失效}{区间统一加后查询\textbf{最大非空子段和}，仅存 len、sum、最大前缀／后缀／子段和不足：\([-2,1,-2,1]\) 与 \([-1,-1,-1,1]\) 的这份\textbf{摘要相同}，整体加 1 后答案分别为 3、2。此反例\textbf{只否定该摘要}的懒更新，\textbf{不是一般算法下界}。}
+\pdfbookmark[1]{D10 区间赋值／取负＋最大子段和}{D10}
+\entry{\phantomsection\label{D10}D10}{区间赋值／取负＋最大子段和}{整体取负 · 区间赋值 · 最大子段和 · 正负交换}{区间赋值、取负及最大\textbf{非空}子段和：存 len、sum，以及最大／最小\textbf{非空}前缀、后缀、子段和。取负将\textbf{最大、最小取负交换}，赋值由长度和新值重算；每次 \(O(\log n)\)、空间 \(O(n)\)。\textbf{统一加法不能照搬}，\textbf{允许空子段}时须统一改摘要定义。}
+\pdfbookmark[1]{D11 区间括号互换＋合法性}{D11}
+\entry{\phantomsection\label{D11}D11}{区间括号互换＋合法性}{括号翻转 · 左右互换 · 合法子串 · 前缀和}{区间内\textbf{每个左右括号互换}，查询子串是否合法：括号记 \(\pm1\)，存和 \(S\) 及\textbf{含空前缀}的最小／最大值 \(L,H\)；翻转变为 \((-S,-H,-L)\)，\textbf{合法当且仅当} \(S=0,L\ge0\)。每次 \(O(\log n)\)；这是字符互换，\textbf{不是子串逆序}。}
+\pdfbookmark[1]{D12 小颜色数：赋色＋不同颜色数}{D12}
+\entry{\phantomsection\label{D12}D12}{小颜色数：赋色＋不同颜色数}{区间染色 · 颜色少 · 不同数 · 压位}{固定数组、\textbf{总颜色域}大小 \(C\)，支持区间赋色与\textbf{不同颜色数}：节点存 \(C\) 位 bitset、合并取 OR、赋色改成单色掩码。每次 \(O(\lceil C/w\rceil\log n)\)、\textbf{空间} \(O(n\lceil C/w\rceil)\) 个字；只有\textbf{小颜色域}时才能视掩码为常数。}
+\pdfbookmark[1]{D13 区间赋色＋连续颜色段数}{D13}
+\entry{\phantomsection\label{D13}D13}{区间赋色＋连续颜色段数}{区间染色 · 连续段 · 相邻相同 · 首尾颜色}{固定数组、区间赋色及区间\textbf{连续颜色段数}：存首尾颜色与段数，拼接时若\textbf{相接颜色相同}则减一，整段赋色后段数为 1。每次 \(O(\log n)\)、空间 \(O(n)\)；aba 有 3 个连续段、2 种不同颜色，\textbf{两种统计不可混用}。}
+\pdfbookmark[1]{D14 静态区间不同数}{D14}
+\entry{\phantomsection\label{D14}D14}{静态区间不同数}{区间不同数 · 出现过几种 · 上次出现 · 离线扫描}{\textbf{静态数组}、\textbf{全部询问离线}，按右端点扫描；Fenwick 只在每种值的\textbf{最近出现位置}记 1，区间和即不同值数。\(q\) 问总计 \(O((n+q)\log n)\)、辅助空间 \(O(n)\)（另存询问）；原数组\textbf{带修改}时不能直接复用单向扫描。}
+\pdfbookmark[1]{D15 静态区间第 k 小}{D15}
+\entry{\phantomsection\label{D15}D15}{静态区间第 k 小}{区间排名 · 第k小 · 主席树 · 前缀相减}{\textbf{静态}长 \(n\) 数组，离散化后建前缀频数主席树；以 \(root_r-root_{l-1}\) 同步下降，求第 \(k\) 小（\textbf{含重复}，\(1\le k\le r-l+1\)）。\textbf{预处理／空间} \(O(n\log n)\)、每问 \(O(\log n)\)；\textbf{原数组修改后}旧前缀版本不能直接复用。}
+\pdfbookmark[1]{D16 单点修改＋区间第 k 小}{D16}
+\entry{\phantomsection\label{D16}D16}{单点修改＋区间第 k 小}{单点改值 · 区间排名 · 第k小 · 树套树}{\textbf{固定长} \(n\) 数组，值域 \([0,U)\)，\textbf{单点改值}与区间第 \(k\) 小：Fenwick 套计数线段树，查询令 \(r,l-1\) 的 \(O(\log n)\) 棵树\textbf{同步下降}。每次 \(O(\log n\log U)\)；懒建空间保守计 \(O((n+p)\log n\log U)\)，\(p\) 为改值次数，\textbf{值可预知时先离散化}。}
+\pdfbookmark[1]{D17 区间加＋区间第 k 小}{D17}
+\entry{\phantomsection\label{D17}D17}{区间加＋区间第 k 小}{整段加 · 区间排名 · 第k小 · 分块}{\textbf{整数数组}支持区间加与第 \(k\) 小，块长 \(s\)、块内排序及懒加。修改 \(O(s\log s+n/s)\)；在已知\textbf{当前答案范围} \([L,H]\) 内\textbf{二分}，令 \(U=H-L+1\ge2\)，每问 \(O((s+(n/s)\log s)\log U)\)、空间 \(O(n)\)。\textbf{不能只按初值离散化}。}
+\pdfbookmark[1]{D18 全局动态中位数＋绝对距离和}{D18}
+\entry{\phantomsection\label{D18}D18}{全局动态中位数＋绝对距离和}{中位数 · 距离和 · 动态集合 · 绝对值}{对\textbf{整个动态多重集合}维护有序的左右两半及各自和，\textbf{左半所有值不大于右半}，两半大小差不超 1。插入／\textbf{删除一个出现} \(O(\log n)\)；\textbf{非空}时取中位数及最小 \(\sum_i|a_i-x|\) 为 \(O(1)\)，空间 \(O(n)\)。这里 \(n\) 为当前元素数，\textbf{任意下标区间查询}是另一模型。}
+\pdfbookmark[1]{D19 静态离线区间 mex}{D19}
+\entry{\phantomsection\label{D19}D19}{静态离线区间 mex}{最小没出现 · mex · 上次出现 · 离线扫描}{\textbf{静态数组}的离线区间 mex：按右端点扫描，线段树存每个值最后出现位置的\textbf{区间最小值}，向下找首个 \(last[x]<l\) 的\textbf{非负} \(x\)。只需值域 \([0,n]\)，\textbf{其余值忽略}；总计 \(O((n+q)\log n)\)、空间 \(O(n+q)\)。}
+\pdfbookmark[1]{D20 区间众数}{D20}
+\entry{\phantomsection\label{D20}D20}{区间众数}{出现最多 · 众数 · 任意颜色 · 莫队}{\textbf{静态}长 \(n\) 数组，\(q=O(n)\) 个\textbf{离线精确}区间众数查询，常用莫队／分块按 \(O(n\sqrt n)\)；\textbf{并列最多}的值可任取。不要只凭查询快判断不可做，还须核算预处理与空间；颜色少、序列单调、只问超过一半的\textbf{严格多数}均另算。}
+\pdfbookmark[1]{D21 众数摘要不足}{D21}
+\entry{\phantomsection\label{D21}D21}{众数摘要不足}{众数合并 · 摘要不够 · 严格多数 · 候选}{只存每段众数及其频数\textbf{不能合并}出总众数：aaaxx 与 bbbxx 各自众数为 a、b，拼接后却为 x。此例\textbf{只否定这份摘要}；超过区间长度一半的\textbf{严格多数}，可先合并候选，再用可计频结构\textbf{核验候选的真实频数}。}
+\pdfbookmark[1]{D22 区间异或线性基}{D22}
+\entry{\phantomsection\label{D22}D22}{区间异或线性基}{区间异或 · 线性基 · 前缀不能减 · 位置标签}{\textbf{静态数组}，每项为 \(B\le w\) 位向量；离线按右端点插入\textbf{带位置}的线性基，查询只用位置不小于左端点的基向量，可求区间\textbf{子集}最大异或／可表示性，总计 \(O((n+q)B)\)。\textbf{普通前缀基不能相减}：两数组 [1,2,3]、[1,2,1] 的前缀张成空间相同，末项却不同。}
+\pdfbookmark[1]{D23 动态有向可达性}{D23}
+\entry{\phantomsection\label{D23}D23}{动态有向可达性}{边加加删删 · 有向图 · 能否到达 · 在线}{一般有向图，\textbf{在线任意加删边}，并精确查询固定 \(s\) 是否到固定 \(t\)；即使\textbf{固定端点}，也不要期待多项式预处理后更新、查询\textbf{同时 polylog}。直接\textbf{每问重新搜索} \(O(n+m)\)、空间 \(O(n+m)\)；无向连通、静态闭包、离线特殊结构另算。}
+\pdfbookmark[1]{D24 离线无向动态图连通性}{D24}
+\entry{\phantomsection\label{D24}D24}{离线无向动态图连通性}{边有生存期 · 动态连通 · 离线删除 · 回滚并查集}{\textbf{无向初始空图}，全部 \(q\) 次加边、删边、连通询问\textbf{离线已知}；\textbf{按边 ID} 求存活时间段，挂时间线段树，配按大小合并且\textbf{不路径压缩}的回滚 DSU。总计 \(O(n+q\log q\log n)\)、空间 \(O(n+q\log q)\)；平行边分别计存活期。}
+\pdfbookmark[1]{D25 固定树的路径／子树修改查询}{D25}
+\entry{\phantomsection\label{D25}D25}{固定树的路径／子树修改查询}{树上路径 · 子树 · 区间化 · 树链剖分}{\textbf{固定根、固定边集}的树，\textbf{点权}路径／子树加与求和：DFS 序使子树为一个区间，HLD 使路径为 \(O(\log n)\) 段，配懒线段树每次\textbf{子树操作} \(O(\log n)\)、路径操作 \(O(\log^2n)\)。空间 \(O(n)\)；非交换摘要须按\textbf{路径方向}拼接。}
+\pdfbookmark[1]{D26 动态 DP}{D26}
+\entry{\phantomsection\label{D26}D26}{动态 DP}{动态DP · 最长上升链 · 只动前几个 · 小影响集}{二维点集的 \(x,y\) \textbf{各自互异}，维护严格双升最长链。若\textbf{插入点必在}最小 \(k\) 个 \(y\) 中、\textbf{删除点必在}最小 \(k\) 个 \(x\) 中，存从点出发的链长：暂删受影响低点／左点，再按 \(y\) 降序／\(x\) 降序重算，用另一轴后缀 max 转移。两棵有序区间 max 树每次 \(O(k\log N)\)、空间 \(O(N)\)，\(N\) 为点数上界；\textbf{一般动态 LIS} 不具此前提。}
+\pdfbookmark[1]{D27 固定相等约束}{D27}
+\entry{\phantomsection\label{D27}D27}{固定相等约束}{必须相等 · 回文限制 · 镜像位置 · 并查集}{固定位置集合，只给\textbf{预先确定}的\textbf{相等约束} \(s_i=s_j\)，用 DSU 合并即可；若部分位置已有字符，检查每个分量内是否冲突。固定回文区间可连镜像位置，复杂度按\textbf{实际加入的配对数}算；\textbf{自由选择}两条相同子序列不属于此模型。}
+\pdfbookmark[1]{D28 单位权有向图独立删边}{D28}
+\entry{\phantomsection\label{D28}D28}{单位权有向图独立删边}{删一条边 · 无权图 · 替换路 · 重跑BFS}{静态\textbf{单位权有向图}、\textbf{固定} \(s,t\)，每问\textbf{独立禁一条边并恢复}。选一条最短路 \(P\)，只对其各边重跑 BFS，其余边答原距离；预处理 \(O(n(n+m))\)、空间 \(O(n+m)\)，每问 \(O(1)\)。原来不通则全不通；这是\textbf{易写基线}，不是通用下界。}
+\pdfbookmark[1]{D29 无向正权图独立删边}{D29}
+\entry{\phantomsection\label{D29}D29}{无向正权图独立删边}{删一条边 · 无向图 · 绕路 · 区间取小}{静态\textbf{无向严格正权图}、固定 \(s,t\)，每问\textbf{独立禁一条边并恢复}。令两棵最短路树包含\textbf{同一条原最短路} \(P\)，把绕路候选转为 \(P\) 上区间取 min；预处理 \(O((n+m)\log n)\)、空间 \(O(n+m)\)，每问 \(O(1)\)。只排除 \(P\) 的\textbf{原边 ID}，同端点平行备用边保留。}
+\pdfbookmark[1]{D30 任意端点的独立故障查询}{D30}
+\entry{\phantomsection\label{D30}D30}{任意端点的独立故障查询}{任意两点 · 故障查询 · 预处理换查询 · 删一条边}{静态非负权图，每问给定\textbf{任意} \(s,t,e\)，只禁边 \(e\) 并在\textbf{问后恢复}。固定端点的替换路数组不能回答此模型；必须\textbf{同时预算}预处理、空间和查询。例如每条禁边各跑 Floyd，\(O(mn^3)\) 预处理、\(O(mn^2)\) 空间即可 \(O(1)\) 答距离，但代价很高，也\textbf{不支持累计删边}。}
+\pdfbookmark[1]{D31 离线累计删边／倒序加边}{D31}
+\entry{\phantomsection\label{D31}D31}{离线累计删边／倒序加边}{不断删边 · 倒序加边 · 全对距离 · 离线}{非负权图，\textbf{离线累计删边}及距离询问：先求最终图 APSP，倒放时每恢复 \(u\to v\)，用\textbf{恢复前的旧距离}令 \(D_{ij}\gets\min(D_{ij},D_{iu}+w+D_{vj})\)。\(r\) 次\textbf{实际恢复}、\(q\) 次操作总计 \(O(n^3+rn^2+q)\)、空间 \(O(n^2+n+m+q)\)；无向同时计反向候选，\textbf{重复删同边}须计数到归零才恢复。}
+\pdfbookmark[1]{D32 森林中的矩形连通块}{D32}
+\entry{\phantomsection\label{D32}D32}{森林中的矩形连通块}{网格矩形 · 连通块 · 点数减边数 · 森林}{静态\textbf{四邻接}网格、有效格点诱导图\textbf{保证是森林}，矩形内连通分量数等于有效点数减内部横边数再减内部竖边数。网格 \(H\times W\) 时预处理／空间 \(O(HW)\)，三张二维前缀和每问 \(O(1)\)；边计数须让\textbf{两个端点均在}矩形内，\textbf{一般有环网格不适用}。}
+\pdfbookmark[1]{D33 任意树链的不同颜色数}{D33}
+\entry{\phantomsection\label{D33}D33}{任意树链的不同颜色数}{树链颜色 · 不同种类 · 任意两端 · 莫队}{\textbf{静态点染色树}、大颜色域，询问\textbf{任意两端点}路径的精确不同色数；不要期待\textbf{近线性预处理、近线性空间}下通用 polylog 查询。\(q=O(n)\) 且点增删 \(O(1)\) 时，\textbf{离线}树上莫队按 \(O(n\sqrt n)\) 总时；小颜色域、祖先链、指定颜色频数均另算。}
+\pdfbookmark[1]{D34 祖先到后代链的不同颜色数}{D34}
+\entry{\phantomsection\label{D34}D34}{祖先到后代链的不同颜色数}{祖先链 · 同色前驱 · 不同种类 · 主席树}{\textbf{静态有根点染色树}，询问\textbf{祖先} \(u\) 到后代 \(v\) 的不同色数。令 \(pre(x)\) 为最近同色\textbf{真祖先}深度，无则 \(-1\)；答案是链上 \(pre(x)<dep(u)\) 的点数。沿根路径建 \(pre\) 频数主席树，查 \(root_v-root_{fa(u)}\) 的\textbf{前缀计数}；预处理／空间 \(O(n\log n)\)，每问 \(O(\log n)\)。}
+\pdfbookmark[1]{D35 树链颜色：小值域与颜色段}{D35}
+\entry{\phantomsection\label{D35}D35}{树链颜色：小值域与颜色段}{树链染色 · 颜色少 · 连续段 · 压位}{\textbf{固定树}上的路径赋色与\textbf{不同色数}：总颜色域 \(C\) 时，HLD＋bitset 每次 \(O(\lceil C/w\rceil\log^2n)\)、空间 \(O(n\lceil C/w\rceil)\) 个字。若问\textbf{连续颜色段数}，首尾颜色＋段数即可每次 \(O(\log^2n)\)、空间 \(O(n)\)，但跨链拼接必须\textbf{处理方向}。}
+\pdfbookmark[1]{D36 树链频数、值域计数与第 k 小}{D36}
+\entry{\phantomsection\label{D36}D36}{树链频数、值域计数与第 k 小}{树链排名 · 指定值频数 · 第k小 · 四棵主席树}{\textbf{静态树点权}离散化，沿根建频数主席树；\(l=LCA(u,v)\)，路径\textbf{直方图}为 \(R_u+R_v-R_l-R_{fa(l)}\)。预处理／空间 \(O(n\log n)\)，指定值频数、值域个数、第 \(k\) 小（\textbf{含重复}）每问 \(O(\log n)\)；不同色数不能将\textbf{四个答案标量}照此相减。}
+\pdfbookmark[1]{D37 所有子树的颜色频率统计}{D37}
+\entry{\phantomsection\label{D37}D37}{所有子树的颜色频率统计}{每个子树 · 颜色频率 · 众数 · 保留重儿子}{\textbf{静态点染色树}，\textbf{离线}求各子树的不同色数、众数频次、出现至少 \(k\) 次的颜色数。DSU on tree 保留重儿子，配每色频数及 \(ge[t]=\) 频数至少为 \(t\) 的颜色数；一色从 \(t\) 变 \(t+1\) \textbf{只增加} \(ge[t+1]\)，删除同理。\(q\) 问总时 \(O(n\log n+q)\)、空间 \(O(n+q)\)，\textbf{阈值要求} \(k\ge1\)。}
+\pdfbookmark[1]{D38 矩形点数与权值和：可减}{D38}
+\entry{\phantomsection\label{D38}D38}{矩形点数与权值和：可减}{矩形数点 · 区域求和 · 四个前缀 · 扫描线}{\textbf{静态} \(n\) 个带权点、\(q\) 个\textbf{离线}轴对齐矩形点数／权和查询：拆四个前缀，扫 \(x\)、Fenwick 维护 \(y\)。总时 \(O((n+q)\log n)\)、空间 \(O(n+q)\)；\textbf{闭边界}须统一处理等坐标，因统计\textbf{可容斥相减}，矩形不贴边也不必分治。}
+\pdfbookmark[1]{D39 贴边矩形的可合并摘要}{D39}
+\entry{\phantomsection\label{D39}D39}{贴边矩形的可合并摘要}{贴边矩形 · 三边查询 · 最大最小 · 扫描线}{\textbf{静态带权点}，\textbf{离线}查询 \(x\le X,L\le y\le R\)。按 \(X\) 扫描插点，用线段树查 \(y\) 区间，可做 max/min/gcd/按位 OR 等\textbf{可交换、可结合}的摘要，总时 \(O((n+q)\log n)\)、空间 \(O(n+q)\)；按合并常数成本计，过程中\textbf{仅插入}，不删除过期点。}
+\pdfbookmark[1]{D40 四边矩形：不可减但可合并}{D40}
+\entry{\phantomsection\label{D40}D40}{四边矩形：不可减但可合并}{任意矩形 · 不能相减 · 最大最小 · 二维线段树}{\textbf{静态带权点}的轴对齐四边矩形 max/min/gcd/OR，虽\textbf{不可四前缀相减}，却能\textbf{合并不相交块}。压缩二维线段树预处理／空间 \(O(n\log n)\)，每问 \(O(\log^2n)\)（按合并常数成本计）；离线按 \(x\) 分治成贴边查询也可，\textbf{分治并非必需}。}
+\pdfbookmark[1]{D41 贴边矩形的不同颜色数}{D41}
+\entry{\phantomsection\label{D41}D41}{贴边矩形的不同颜色数}{贴边矩形 · 不同颜色 · 同色前驱 · 多一维}{\textbf{静态彩色点}，\textbf{离线}查询 \(x\le X,L\le y\le R\) 的不同色数。扫 \(X\)，同色同 \(y\) 只在\textbf{首次出现时插入}；每色维护 \(y\) 前驱 \(pre\)，答案为记录中 \(L\le y\le R,pre<L\) 的个数。每次只改本点及\textbf{同色后继}，预演坐标后用二维 Fenwick：总时 \(O((n+q)\log^2n)\)、空间 \(O(n\log n+q)\)。}
+\pdfbookmark[1]{D42 一般矩形的不同颜色数}{D42}
+\entry{\phantomsection\label{D42}D42}{一般矩形的不同颜色数}{任意矩形 · 不同颜色 · 共有几种 · 不能容斥}{\textbf{静态彩色点}，四边矩形内\textbf{精确}数不同色；在\textbf{近线性预处理与空间}下，不要期待通用 polylog 查询。切成两块后须扣两块共有颜色，四个前缀的不同色数标量也不能直接容斥；小颜色域可保存 bitset 并 OR，但\textbf{时间、空间都须乘}掩码大小。}
+\pdfbookmark[1]{D43 矩形中指定颜色的频数}{D43}
+\entry{\phantomsection\label{D43}D43}{矩形中指定颜色的频数}{矩形颜色 · 指定一种 · 出现几次 · 是否出现}{\textbf{静态彩色点}，每问\textbf{明确给定颜色} \(c\) 及轴对齐矩形；对每色分别建立二维数点结构，求 \(c\) 的\textbf{出现次数／是否出现}。总预处理／空间 \(O(n\log n)\)、每问 \(O(\log^2n)\)；该模型只统计\textbf{一个指定颜色}，不是统计矩形里有几种颜色。}
+\pdfbookmark[1]{D44 两棵树的子树交：点数与权和}{D44}
+\entry{\phantomsection\label{D44}D44}{两棵树的子树交：点数与权和}{两棵树 · 子树交 · 同一批点 · 二维化}{两棵静态有根树共用\textbf{同一批顶点 ID}；把 \(v\) 映为 \((dfn_1(v),dfn_2(v))\)，两子树\textbf{公共顶点}的数量／点权和就是矩形查询。\(q\) 问\textbf{离线}总时 \(O((n+q)\log n)\)、空间 \(O(n+q)\)；这里交的是顶点 ID，\textbf{不是两子树各自出现的颜色集合}。}
+\pdfbookmark[1]{D45 两子树交的 max/gcd：合并可省一维}{D45}
+\entry{\phantomsection\label{D45}D45}{两子树交的 max/gcd：合并可省一维}{两棵树 · 子树交 · 不可减摘要 · 线段树合并}{静态离线，两棵有根树\textbf{共用顶点 ID}，查询两子树\textbf{公共顶点}的 max/gcd 等。按第一树后序合并以第二树 DFS 序为轴的线段树，\textbf{在并入父亲前}回答本节点的全部查询。总时 \(O((n+q)\log n)\)、空间 \(O(n\log n+q)\)（合并常数成本）；\textbf{破坏性合并后}不能继续独立查询旧子树版本。}
+\pdfbookmark[1]{D46 不同儿子子树之间的同色点对}{D46}
+\entry{\phantomsection\label{D46}D46}{不同儿子子树之间的同色点对}{不同儿子 · 同色点对 · LCA分组 · 线段树合并}{静态点染色有根树，对每个节点数不同儿子子树之间的\textbf{无序同色点对}，\textbf{不含该节点自身}。按颜色合并频数线段树，\textbf{同色叶贡献} \(cnt_Acnt_B\)，全部节点总时／空间 \(O(n\log(C+1))\)，\(C\) 为颜色数；本节点自身须在\textbf{儿子合并后插入}。}
+\pdfbookmark[1]{D47 线段树合并：复杂度按被消耗节点算}{D47}
+\entry{\phantomsection\label{D47}D47}{线段树合并：复杂度按被消耗节点算}{线段树合并 · 小并大 · 消耗节点 · 旧版本}{两棵树使用\textbf{同一值域划分}，\textbf{破坏性合并}遇空即挂接、双非空递归消耗一个旧节点，且节点摘要\textbf{常数时间合并}。累计创建 \(K\) 个节点、调用 \(r\) 次合并，总时 \(O(K+r)\)；合并后的输入\textbf{不再独立复用}。持久化或反复合并同一旧版本不能直接沿用此界。}
+\pdfbookmark[1]{D48 时间维＋平面点修改＋矩形权和}{D48}
+\entry{\phantomsection\label{D48}D48}{时间维＋平面点修改＋矩形权和}{平面动态点 · 矩形求和 · 时间维 · CDQ}{\textbf{全部操作离线}，支持平面点插入、删除、改权及矩形权和。把更新转为带时间的加权点，\textbf{删除记负权、改权记差值}；矩形拆四个前缀，CDQ 时间分治配扫描线与 Fenwick。\textbf{含初始点}的 \(N\) 个事件总时 \(O(N\log^2N)\)、空间 \(O(N)\)；不能把原始颜色点直接当权 1 求不同色数，也\textbf{不直接支持 max}。}
+\phantomsection\label{secN}\pdfbookmark[0]{N NP-hard 问题}{secN}
+\grouphead{N NP-hard 问题}
+{\small\color{Muted}一般规模不找通用精确快解，先检查题目的额外限制。}\par\vspace{6pt}
+\pdfbookmark[1]{N01 3-SAT}{N01}
+\entry{\phantomsection\label{N01}N01}{3-SAT}{布尔条件 · 三选一 · 可满足 · 逻辑冲突}{每个子句是至多三个布尔变量或其否定的或，判定能否\textbf{同时满足全部子句}，一般不可做；\textbf{每句至多两个文字}用 2-SAT。变量少可枚举；变量—子句\textbf{关联图为森林}可树 DP。}
+\pdfbookmark[1]{N02 MAX-2-SAT}{N02}
+\entry{\phantomsection\label{N02}N02}{MAX-2-SAT}{尽量满足 · 少违规 · 二元约束 · 最小割}{每句至多两个布尔文字，求\textbf{最大满足条数}，或最小化非负违规费用，一般不可做；\textbf{判定能否全满足}用 2-SAT。变量交互图为森林可 DP；各变量对的\textbf{总代价满足次模条件}可最小割。}
+\pdfbookmark[1]{N03 任意二元代价}{N03}
+\entry{\phantomsection\label{N03}N03}{任意二元代价}{选或不选 · 两两代价 · 最大割 · 次模}{0/1 变量最小化点代价与\textbf{任意两两代价}之和，包含 Max-Cut，一般不可做；\textbf{固定 0/1 编码}、合并同一变量对后，若\textbf{每对均满足} \(E_{00}+E_{11}\le E_{01}+E_{10}\)，可最小割。\textbf{交互图为森林}可 DP。}
+\pdfbookmark[1]{N04 指定点数的最小割／最小二等分}{N04}
+\entry{\phantomsection\label{N04}N04}{指定点数的最小割／最小二等分}{恰选几个 · 均分两边 · 割边 · 点数限制}{无向非负权图中，要求割的一侧\textbf{恰有输入给定的 k 个点}，并\textbf{最小化跨边总权}，一般不可做；偶数 n 且 \(k=n/2\) 即最小二等分。普通最小割不限制点数，给点加罚分\textbf{不能保证}解出恰好 k 点的最优值。}
+\pdfbookmark[1]{N05 最大独立集／最大团}{N05}
+\entry{\phantomsection\label{N05}N05}{最大独立集／最大团}{互不冲突 · 两两相连 · 最多选点 · 独立集}{一般无向图选最多个两两不相邻顶点，即\textbf{最大独立集}，\textbf{平面图仍难}；\textbf{二分图}答案为点数减最大匹配，森林可 DP。一维区间选最多\textbf{互不重叠区间}按右端点贪心；最大团等于补图\textbf{最大独立集}。}
+\pdfbookmark[1]{N06 平面点集间距选点}{N06}
+\entry{\phantomsection\label{N06}N06}{平面点集间距选点}{选点 · 距离限制 · 禁距 · 奇偶染色}{平面点选最多点使\textbf{两两欧氏距离大于} \(R>0\)，一般不可做。特例：n 个互异整点，\textbf{只禁平方距离}为正整数 \(D_1,D_2\)，可取至少 \(\lceil n/4\rceil\) 点。各 \(D=4^td\) 且 \(4\nmid d\)，令 \(X=\lfloor x/2^t\rfloor,Y=\lfloor y/2^t\rfloor\)；d 奇按 \(X+Y\) 奇偶染色，否则按 X 奇偶。取两次染色的\textbf{最大共同类}；这只保证数量，\textbf{不求最多}。}
+\pdfbookmark[1]{N07 最小支配集}{N07}
+\entry{\phantomsection\label{N07}N07}{最小支配集}{覆盖邻点 · 选代表 · 支配集 · 点覆盖}{一般无向图选最少顶点，使\textbf{每个点自身入选或有入选邻点}，即最小支配集，一般不可做；森林按“已选、被子节点覆盖、待父节点覆盖”三状态 DP，\textbf{根不能待父覆盖}。点覆盖要求\textbf{每条边至少有一端入选}，是另一模型。}
+\pdfbookmark[1]{N08 最少覆盖／最少击中}{N08}
+\entry{\phantomsection\label{N08}N08}{最少覆盖／最少击中}{覆盖全集 · 选最少集合 · 每组挑一个 · 击中}{集合族任意给出，选最少集合使\textbf{并集为全集}，或选最少元素使\textbf{每个集合至少含一个}所选元素，均一般不可做。全集小可状压，待选对象少可枚举；集合是数轴区间时，\textbf{最少点刺穿所有区间}可按右端点贪心。}
+\pdfbookmark[1]{N09 三元匹配／精确覆盖}{N09}
+\entry{\phantomsection\label{N09}N09}{三元匹配／精确覆盖}{每个恰用一次 · 三人组队 · 三元匹配 · 精确覆盖}{合法三元组任意给出，判定能否选若干组使\textbf{每个元素恰用一次}，一般不可做；即使元素分为三类、\textbf{每组各取一类中的一个}仍难。元素总数小可状压；分别做两次二分匹配\textbf{不能保证三元组合法}。}
+\pdfbookmark[1]{N10 三染色}{N10}
+\entry{\phantomsection\label{N10}N10}{三染色}{相邻不同 · 分三类 · 三染色 · 稀疏图}{一般无向图判定能否用\textbf{至多三色}染顶点，使\textbf{每条边两端异色}，一般不可做；\textbf{至多两色}用二分图判定，森林可直接构造，小点数可枚举。仅保证\textbf{边数为线性级别}仍不足以使三染色容易。}
+\pdfbookmark[1]{N11 可变模式的子图匹配}{N11}
+\entry{\phantomsection\label{N11}N11}{可变模式的子图匹配}{找形状 · 子图匹配 · 嵌入 · 长路径}{输入模式图 H 与宿主图 G，判定是否存在从 H 到 G 的\textbf{单射}且保留 H 的全部边，\textbf{允许映射点间有额外边}，一般不可做；H 为\textbf{长度可变的路径}也难。H 仅 k 点可枚举 \(O(n^k)\) 个映射再验边，验边另计；此处\textbf{不要求诱导子图}。}
+\pdfbookmark[1]{N12 分成等和三元组}{N12}
+\entry{\phantomsection\label{N12}N12}{分成等和三元组}{分组等和 · 三数一组 · 装箱 · 三划分}{输入 3m 个正整数及 B，判定能否分成 m 个三元组且\textbf{每组和恰为 B}，一般不可做，即使 \(B/4<a_i<B/2\) 且总和为 mB。\textbf{组数随输入增长}；一维背包只记录一组的和，不能同时保证\textbf{多组互不重复地用完元素}。}
+\pdfbookmark[1]{N13 最少异或变量}{N13}
+\entry{\phantomsection\label{N13}N13}{最少异或变量}{异或方程 · 最少翻转 · 最少选数 · 高斯消元}{给定 GF(2) 线性方程组 \(Ax=b\)，在可行解中\textbf{最小化 x 的 1 的个数}，一般不可做；高斯消元\textbf{只保证找可行解}。\textbf{自由变量少}可枚举解空间；变量少可折半并保留每个异或值的最小选取数；\textbf{秩小}可按异或状态 DP。}
+\pdfbookmark[1]{N14 时间窗内不可中断排程}{N14}
+\entry{\phantomsection\label{N14}N14}{时间窗内不可中断排程}{任务排程 · 时间窗 · 不能中断 · 截止时间}{单机独立任务各有处理时长、释放时刻和截止时刻，判定能否不重叠且\textbf{不中断地全部完成}，一般不可做。若\textbf{全部同时释放}，按截止时刻排序后检验；若\textbf{允许随时中断并恢复}，则始终执行\textbf{当前已释放任务}中截止最早者即可判定可行性。}
+\pdfbookmark[1]{N15 最长简单路／Hamilton 路}{N15}
+\entry{\phantomsection\label{N15}N15}{最长简单路／Hamilton 路}{最长路 · 每点一次 · 不能延伸 · 极大最大}{一般图求\textbf{不重复顶点}的最长路径，或判定是否有\textbf{经过全部顶点}的 Hamilton 路，一般不可做；DAG 可拓扑 DP，无权无向树可求直径。若只要两端都不能再接入未用顶点的\textbf{极大简单路径}，双端贪心 \(O(n+m)\)；\textbf{极大不等于最长}。}
+\pdfbookmark[1]{N16 旅行商 TSP}{N16}
+\entry{\phantomsection\label{N16}N16}{旅行商 TSP}{绕一圈 · 每点一次 · 最短环游 · 旅行商}{非负权完全图中求经过\textbf{每点恰一次}的\textbf{最短回路}，即 TSP，一般不可做，满足\textbf{三角不等式也不够}。小 n 可用 \(O(n^2 2^n)\) \textbf{子集 DP}；最小生成树既不保证每点度数为 2，也不保证构成最优回路。}
+\pdfbookmark[1]{N17 两对有向不交路径}{N17}
+\entry{\phantomsection\label{N17}N17}{两对有向不交路径}{两条路 · 端点配对 · 顶点不交 · 最大流}{一般有向图给定\textbf{四个互异端点} \(s_1,t_1,s_2,t_2\)，判定能否同时找到 \(s_i\to t_i\) 的两条\textbf{顶点不交路径}，一般不可做。超级源汇最大流允许交换终点，\textbf{不能保证指定配对}；DAG 且\textbf{路径对数为固定常数}时可用乘积状态 DP。}
+\pdfbookmark[1]{N18 整数多商品流}{N18}
+\entry{\phantomsection\label{N18}N18}{整数多商品流}{多对运输 · 共享容量 · 多商品流 · 整数流}{多组指定源汇各有需求，共用边容量，每商品分别守恒并要求\textbf{逐边整数流}，判定能否全部满足，一般不可做；无向、仅两商品且边容量均为 1 仍难，\textbf{需求量随输入增长}。可任意分割的\textbf{分数流}能写线性规划；所有商品\textbf{同源同汇}时可合并。}
+\pdfbookmark[1]{N19 资源预算最短路}{N19}
+\entry{\phantomsection\label{N19}N19}{资源预算最短路}{限时最短路 · 两种边权 · 资源预算 · 状态分层}{边有非负费用和非负整数耗时，求给定 \(s\to t\) 路径中\textbf{总耗时不超过 B} 的最小费用，即使 DAG 也一般不可做，B 用二进制给出。\textbf{B 数值小时}可按“\textbf{顶点、已耗时}”分层求最短路；仅为每点保留\textbf{一个最小费用状态}会丢失可行解。}
+\pdfbookmark[1]{N20 一般有向图最小路径覆盖}{N20}
+\entry{\phantomsection\label{N20}N20}{一般有向图最小路径覆盖}{覆盖所有点 · 最少几条路 · 点不交 · 拆点匹配}{一般有向图用最少条\textbf{点不交简单路径}恰好覆盖全部顶点，\textbf{允许单点路径}，一般不可做；DAG 可\textbf{按原有向边}建左右副本二分图，答案为 \(n-\text{最大匹配}\)。一般图直接匹配\textbf{可能选出环}；改用传递闭包会允许路径共享原图中间点。}
+\pdfbookmark[1]{N21 Steiner Tree}{N21}
+\entry{\phantomsection\label{N21}N21}{Steiner Tree}{连接指定点 · 可借中间点 · 斯坦纳树 · 最小连通}{无向非负权图中连通给定终端集合，\textbf{允许选用非终端}，最小化\textbf{所选边的总权}，即 Steiner Tree，一般不可做。\textbf{终端数少}可子集 DP；底图本来就是树时取终端间\textbf{路径的并}。只在终端最短路距离构成的完全图上求 MST 不保证原问题最优。}
+\pdfbookmark[1]{N22 删点限制直径}{N22}
+\entry{\phantomsection\label{N22}N22}{删点限制直径}{删点 · 直径限制 · 保留最多 · 树中心}{无权无向图删最少点，使\textbf{剩余非空诱导图}连通且直径至多 K，一般不可做；\textbf{K=1} 等价于保留最大团。底图为树时，K 偶数枚举\textbf{点中心}并保留半径 K/2 的球；K 奇数枚举\textbf{边中心}，保留到任一端距离至多 \((K-1)/2\) 的点。单点树直接保留。}
+\pdfbookmark[1]{N23 有向删边去环}{N23}
+\entry{\phantomsection\label{N23}N23}{有向删边去环}{删边 · 去环 · 消除负环 · 反馈边}{有向图\textbf{删最少条边}使剩余图为 DAG，一般不可做；删最少边\textbf{消除全部负环}也难，因为全边长为 \(-1\) 时恰好要求去掉所有有向环。判原图有无负环可\textbf{加超级源}后 Bellman-Ford；\textbf{无向图}\textbf{删最少条边}成森林则保留任一生成森林。}
+\pdfbookmark[1]{N24 删点去环／最大诱导森林}{N24}
+\entry{\phantomsection\label{N24}N24}{删点去环／最大诱导森林}{删点 · 去环 · 诱导森林 · 反馈点}{无向图\textbf{删最少顶点}使剩余诱导图成为森林，一般不可做，等价于找最多顶点的\textbf{诱导森林}；有向图\textbf{删最少顶点}成 DAG 也难。小规模可枚举删点集再验环；无向\textbf{删边成森林}的简单结论\textbf{不能替代删点}。}
+\pdfbookmark[1]{N25 相同双子序列}{N25}
+\entry{\phantomsection\label{N25}N25}{相同双子序列}{拆成两份 · 相同子序列 · 交织 · 字符串分割}{给定一个串，判定能否将\textbf{全部位置恰好分为两组}，使各组按原下标顺序读出的串完全相同，\textbf{目标串未知}，即使\textbf{二元字母表}也一般不可做。若\textbf{目标串 T 已给定}，验证原串是否为 T 与 T 的交织可做 \(O(|T|^2)\) 二维 DP。}
+\pdfbookmark[1]{N26 多串 LCS}{N26}
+\entry{\phantomsection\label{N26}N26}{多串 LCS}{很多字符串 · 共同子序列 · 逐对合并 · 多串 LCS}{\textbf{输入条数可变}的多个串，求它们的\textbf{最长公共子序列}，即使字母表只有 0/1 也一般不可做；串数固定且长度小时，可用\textbf{各串已处理位置}组成状态，状态数为 \(\prod_i(|s_i|+1)\)。逐对取一个 LCS 再与下一串求 LCS，\textbf{不保证全局最优}。}
+\pdfbookmark[1]{N27 多串最短公共超序列}{N27}
+\entry{\phantomsection\label{N27}N27}{多串最短公共超序列}{把多串合起来 · 最短超序列 · 不要求连续 · LCS}{求最短字符串，使输入的每条串都\textbf{作为子序列出现}，\textbf{输入串数可变}时一般不可做。\textbf{只有两串} A、B 时，最短长度为 \(|A|+|B|-\operatorname{LCS}(A,B)\)，可由 LCS DP 构造；少量短串可按各串\textbf{已匹配位置}做多维 DP。}
+\pdfbookmark[1]{N28 最短公共超串}{N28}
+\entry{\phantomsection\label{N28}N28}{最短公共超串}{拼接字符串 · 必须连续 · 前后缀重叠 · 最短超串}{求最短字符串，使每条输入串都作为\textbf{连续子串}出现，一般不可做。先去重并\textbf{删去被其他串包含的串}，若剩 k 串，预处理任意两串\textbf{最大前后缀重叠}，再做 \(O(k^2 2^k)\) \textbf{子集 DP}；该复杂度不含读入与重叠预处理。}
+\pdfbookmark[1]{N29 任意集合配额选点}{N29}
+\entry{\phantomsection\label{N29}N29}{任意集合配额选点}{配额选点 · 每组限额 · 四面限制 · 排名槽 · 费用流}{\textbf{任意集合}各限“最多选 b 个”，求所选点最大总收益，一般不可做，边两端限选 1 即最大独立集。特例：仅有 \(x\le a,x\ge a,y\le a,y\ge a\) \textbf{四类半平面上限}。\textbf{枚举选点数 K}，将每维第 i 小坐标限制成区间；建“源—x 排名槽—点入—点出—y 排名槽—汇”，槽只连对应坐标落入其区间的点，\textbf{各边容量 1}，点入到点出记收益，最大费用流 K。}
+\needspace{16\baselineskip}
+\phantomsection\label{secC}\pdfbookmark[0]{C 计数与多项式}{secC}
+\grouphead{C 计数与多项式}
+{\small\color{Muted}快速计数默认模适用 NTT 的素数 p，所用阶乘下标／积分分母均小于 p；背包体积为正整数。}\par\vspace{6pt}
+\grouphead{先判断能不能数}
+\begin{minipage}{\linewidth}\textbf{满足先后约束的排列数}：任意 DAG 困难；祖先约束森林、互不相交同向链可公式；底图为链且方向任意可 CDQ；森林／同向链 O(n) 预处理；任意定向链 O(n log² n)\end{minipage}\par\vspace{4pt}
+\begin{minipage}{\linewidth}\textbf{二分图完美配对方案}：一般精确计数困难；一侧点数小可状压；只求奇偶性可行列式；状压 O(n·\(2^n\))；奇偶性 O(n³)\end{minipage}\par\vspace{4pt}
+\begin{minipage}{\linewidth}\textbf{每条边恰走一次的闭合边序列}：无向一般困难；有向且平衡、非孤立部分强连通，固定首边后可 BEST；有向 O(n³+m)，含行列式与阶乘预处理\end{minipage}\par\vspace{4pt}
+\begin{minipage}{\linewidth}\textbf{选边保持连通／选生成树}：指定两点仍连通的任意选边一般困难；要求恰成一棵生成树可行列式；生成树 O(n³)；原图为树时两点连通计数可线性\end{minipage}\par\vspace{4pt}
+\begin{minipage}{\linewidth}\textbf{布尔赋值／通配符匹配数}：2-SAT 解数、模式并集去重一般困难；模式交集逐列；异或方程用线性秩；模式交集 O(输入长度)；异或方程高消可压位\end{minipage}\par\vspace{4pt}
+\begin{minipage}{\linewidth}\textbf{分成非空组／排列环数／前缀新纪录}：先分清元素、组有无标号；组内为集合、循环、线性次序是不同模型；斯特林一行或一列 O(N log N)；整张表 Θ(N²)\end{minipage}\par\vspace{4pt}
+\begin{minipage}{\linewidth}\textbf{不可区分的球盒／无序整数拆分}：允许重复部件，用划分数；至多 m 个部件等价于每个部件至多 m；前 N 项 O(N log N)；五边形递推 O(N√N)\end{minipage}\par\vspace{4pt}
+\begin{minipage}{\linewidth}\textbf{长排列恰有 k 个逆序对}：只需计算逆序数不超过 k 的截断；n≥k 时可用五边形稀疏修正；前 k+1 项 O(k log k) 或免 NTT 的 O(k√k)；n≥k 单问 O(k) 预处理＋O(√k)\end{minipage}\par\vspace{4pt}
+\begin{minipage}{\linewidth}\textbf{无限件／限量件／可区分 0/1 物品计数}：正整数体积，计各类取用数量、不计顺序；按体积频次做倍数加减，再 Exp；n 类／件，全部容量 0…m：O(n+m log m)\end{minipage}\par\vspace{4pt}
+\begin{minipage}{\linewidth}\textbf{重复选块，有序拼接／恰选 k 次}：顺序计入方案，使用单次长度或权值分布；恰 k 次是分布的 k 次幂；前 m 项 O(m log m)；巨大 k 的系数幂另加 O(log(k+1))\end{minipage}\par\vspace{4pt}
+\begin{minipage}{\linewidth}\textbf{短条铺满／允许重叠覆盖／窄棋盘}：先辨每格恰盖一次或至少一次；一维常有组合数，窄棋盘按宽度做轮廓 DP；一维单值常为 O(log n)；宽 h、长 n 棋盘 O(hn·\(2^h\))\end{minipage}\par\vspace{4pt}
+\begin{minipage}{\linewidth}\textbf{固定阶递推的巨大下标项}：已知有理生成式或已证明 d 阶常系数递推；少量样本拟合不等于已证明；第 N 项 O(d log(d+1) log(N+1))；常数分母直接取对应系数\end{minipage}\par\vspace{4pt}
+\begin{minipage}{\linewidth}\textbf{格路与边界约束}：单调走法用组合数；单边界可反射，少量禁点可按首次到达排除；单边界单问 \(O(1)\)；r 个禁点 \(O(r^2)\)，均另计组合数准备\end{minipage}\par\vspace{4pt}
+\begin{minipage}{\linewidth}\textbf{嵌套允许集合的匹配}：允许集合按包含关系排成一条链；每个位置选一个互异对象；已知各集合大小后，按可选剩余数相乘 \(O(n)\)\end{minipage}\par\vspace{4pt}
+\pdfbookmark[1]{C01 拓扑序计数}{C01}
+\entry{\phantomsection\label{C01}C01}{拓扑序计数}{先后顺序 · 排列数 · 偏序 · 拓扑排序}{给定任意 DAG 的先后约束，精确数出顶点的\textbf{所有合法排列}，一般不可做；有向环则答案为 0。有根森林\textbf{仅要求祖先在后代之前}时可用子树大小公式；小点数可状压。\textbf{求一个拓扑序}只需线性时间。}
+\pdfbookmark[1]{C02 完美匹配计数}{C02}
+\entry{\phantomsection\label{C02}C02}{完美匹配计数}{配对方案 · 二分图 · 完美匹配 · 奇偶性}{两侧各 \(n\) 个点的任意二分图，数\textbf{每点恰配一次}的方案，一般不可做；小 \(n\) 可 \(O(n2^n)\) 状压。\textbf{只求奇偶性}等于邻接矩阵模 2 的行列式，\textbf{其他普通模数}不能因此直接套行列式。}
+\pdfbookmark[1]{C03 无向欧拉回路计数}{C03}
+\entry{\phantomsection\label{C03}C03}{无向欧拉回路计数}{走完所有边 · 无向回路 · 欧拉计数 · 边不重复}{一般无向欧拉图，固定起点、首边及其行进方向，精确数走完\textbf{每条边恰一次}的\textbf{边序列}，仍一般不可做；\textbf{找一条则容易}。无向边拆成两条反向弧会把原边用两次，不能套有向 BEST 公式。}
+\pdfbookmark[1]{C04 有向欧拉回路计数}{C04}
+\entry{\phantomsection\label{C04}C04}{有向欧拉回路计数}{走完所有边 · 有向回路 · BEST · 矩阵树}{至少有一条边，删孤立点后\textbf{强连通且各点入度等于出度}，\textbf{边可区分}。\textbf{固定首边}从 \(r\) 出发，边序列数为 \(t_r\prod_v(d^+(v)-1)!\)；\(t_r\) 是朝根 \(r\) 的生成树数，用矩阵树定理算。\textbf{只固定起点}而不\textbf{固定首边}，再乘 \(d^+(r)\)。}
+\pdfbookmark[1]{C05 通配符模式并集}{C05}
+\entry{\phantomsection\label{C05}C05}{通配符模式并集}{问号匹配 · 至少一个 · 并集去重 · 通配符}{\(n\) 个长度 \(n\) 的 01? 模式，? 可独立取 0 或 1；数\textbf{至少匹配一个}模式的不同二进制串，一般不可做。同一串匹配多个模式\textbf{仍只算一次}；\textbf{模式数少可容斥}，串长短可枚举所有串。}
+\pdfbookmark[1]{C06 通配符模式交集}{C06}
+\entry{\phantomsection\label{C06}C06}{通配符模式交集}{问号匹配 · 同时满足 · 交集 · 自由位置}{数\textbf{同时匹配所有}等长 01? 模式的二进制串：逐列合并固定要求，\textbf{一列同时要求 0 和 1} 则无解；否则答案 \(2^q\)，\(q\) 是\textbf{没有任何固定要求}的列数。总时间为输入字符数。}
+\pdfbookmark[1]{C07 2-SAT 解数}{C07}
+\entry{\phantomsection\label{C07}C07}{2-SAT 解数}{布尔赋值 · 二元子句 · 2-SAT · 解的个数}{每个子句至多两个文字的布尔公式，判定有解可做，精确计数\textbf{全部满足赋值}一般不可做。SCC 缩点后\textbf{各分量不能独立选}；变量少可枚举，\textbf{变量交互图是树}时可按选值计数 DP。}
+\pdfbookmark[1]{C08 独立集总数}{C08}
+\entry{\phantomsection\label{C08}C08}{独立集总数}{选点不相邻 · 独立集 · 二分图 · 所有大小}{数图中\textbf{所有大小的独立集（含空集）}，即任意两选中点之间都没有边；即使二分图，一般也不可做。\textbf{最大独立集大小}才可在二分图中用点数减最大匹配；\textbf{树上用选／不选 DP}，一侧小时枚举该侧。}
+\pdfbookmark[1]{C09 简单路径计数}{C09}
+\entry{\phantomsection\label{C09}C09}{简单路径计数}{路径条数 · 不重复点 · 简单路径 · 游走}{一般图中指定不同点 \(s,t\)，数\textbf{不重复顶点}的所有 \(s\) 到 \(t\) 路径，一般不可做。\textbf{DAG 用拓扑 DP}，树中至多一条，小点数可状压；\textbf{允许重复点的定长游走}是另一模型，不能混算。}
+\pdfbookmark[1]{C10 生成树计数}{C10}
+\entry{\phantomsection\label{C10}C10}{生成树计数}{连通无环 · 选生成树 · 行列式 · 有向树}{无向图选边形成\textbf{覆盖全部点的一棵树}：取拉普拉斯矩阵 \(L=D-A\)，删同一行列后的行列式就是方案数，模素数高消 \(O(n^3)\)。\textbf{重边分别计数，自环不贡献}。有向图指定根时，入树为\textbf{所有点沿边可到根}；出树反向后再算。}
+\pdfbookmark[1]{C11 保持连通的选边计数}{C11}
+\entry{\phantomsection\label{C11}C11}{保持连通的选边计数}{选边方案 · 保持连通 · 网络可靠性 · 两点连通}{一般无向图任选边子集，数使指定不同点 \(s,t\) 仍连通的方案，一般不可做；\textbf{所选边可有环}，也可\textbf{留下其他孤立点}，不能套生成树公式。原图为树时，强制保留 \(s,t\) 唯一路径，\textbf{其余边各自任选}。}
+\pdfbookmark[1]{C12 异或方程解数}{C12}
+\entry{\phantomsection\label{C12}C12}{异或方程解数}{异或等式 · 线性基 · 自由变量 · 选子集异或}{GF(2) 线性方程组，无解则 0，否则 \(n\) 个二元变量、秩 \(r\) 时有 \(2^{n-r}\) 个解。把\textbf{每件物品是否选入}视作一个变量，可数目标异或的子集；\textbf{目标为 0 且排除空集}时减一。最少选几个、\textbf{恰选} \(k\) 个不能照搬。}
+\pdfbookmark[1]{C13 不同结果不等于操作序列数}{C13}
+\entry{\phantomsection\label{C13}C13}{不同结果不等于操作序列数}{结果去重 · 重复计数 · 操作序列 · 规范形}{不同操作序列或参数描述可能产生\textbf{同一结果}；数过程会重复，\textbf{除固定阶乘}也未必正确。例如每行任选一个可为空的前缀加 1、每列也任选一个可为空的前缀加 1，数不同最终矩阵，须先建立\textbf{每个结果唯一的规范形}，再做计数或容斥。}
+\pdfbookmark[1]{C14 有向链拓扑序计数：方向可反复改变}{C14}
+\entry{\phantomsection\label{C14}C14}{有向链拓扑序计数：方向可反复改变}{一条链 · 相邻大小 · 方向反复 · 排列计数}{\(n\) 个有标号点的底图是一条链，每条边\textbf{方向已给定}，求拓扑序数；等价于排列的\textbf{每对相邻项}必须满足给定 \(</>\)。末位排名 DP 为 \(O(n^2)\)；把每个 \(>\) 容斥成“任意减 \(<\)”，\textbf{按递增段分组}并除段长阶乘，用前缀 DP＋CDQ 卷积可 \(O(n\log^2n)\)。}
+\pdfbookmark[1]{C15 几条同向链互不相交}{C15}
+\entry{\phantomsection\label{C15}C15}{几条同向链互不相交}{链的交错 · 祖先先出现 · 森林顺序 · 多项式系数}{若干互不相交的链，\textbf{所有点可区分}，链内顺序固定且\textbf{链间无约束}：长 \(\ell_1,\ldots,\ell_k\)、总长 \(n\) 时为 \(n!/\prod_i\ell_i!\)。有根森林\textbf{仅限制祖先先于后代}时为 \(n!/\prod_v|\operatorname{subtree}(v)|\)；阶乘和子树大小可线性预处理。}
+\pdfbookmark[1]{C23 窄棋盘骨牌覆盖}{C23}
+\entry{\phantomsection\label{C23}C23}{窄棋盘骨牌覆盖}{窄棋盘 · 骨牌铺满 · 轮廓线 · 障碍格}{\(h\times n\) 棋盘（可有障碍）用 \(1\times2\) 骨牌覆盖\textbf{每个非障碍格恰一次}，\textbf{骨牌可旋转}。沿长边\textbf{逐格推进}，维护宽 \(h\) 的占用位，每格常数条转移：\(O(hn2^h)\) 时间、\(O(2^h)\) 空间。列模式相同或周期重复时可对整段转移矩阵幂，但 \(2^h\) 个状态的\textbf{矩阵运算仍须计入}。}
+\pdfbookmark[1]{C32 长度为 2 的短条铺满}{C32}
+\entry{\phantomsection\label{C32}C32}{长度为 2 的短条铺满}{短条铺满 · 一维铺砖 · 斐波那契 · 恰几块长二}{\(1\times n\) 棋盘用长 1、2 块\textbf{无重叠铺满}，\textbf{恰用} \(k\) 个长 2 块有 \(\binom{n-k}{k}\) 种（\(0\le2k\le n\)），总数 \(F_{n+1}\)。只准长 2 块则 \(n\) 偶数时 1、奇数时 0。\(2\times n\) 棋盘用\textbf{可旋转骨牌}铺满也为 \(F_{n+1}\)；\(F_0=0,F_1=1\)，\textbf{空棋盘计 1}，单值可倍增 \(O(\log(n+1))\)。}
+\pdfbookmark[1]{C33 长 2 短条允许重叠的全覆盖}{C33}
+\entry{\phantomsection\label{C33}C33}{长 2 短条允许重叠的全覆盖}{短条覆盖 · 允许重叠 · 每格至少一次 · 路径边覆盖}{直线上 \(n\ge2\) 个格子，每条短条恰盖相邻两格；\textbf{每个起点最多放一条}，\textbf{允许重叠}，要求\textbf{每格至少覆盖一次}。恰放 \(k\) 条有 \(\binom{k-1}{n-1-k}\) 种（\(\lceil n/2\rceil\le k\le n-1\)），总数 \(F_{n-1}\)。\textbf{首尾边必选}、内部不能连续漏两条边；\(n=1\) 无解，\(n=0\) 仅空方案。}
+\grouphead{组合计数与多项式模式}
+\pdfbookmark[1]{C37 只向右上走：经过一串指定点}{C37}
+\entry{\phantomsection\label{C37}C37}{只向右上走：经过一串指定点}{网格走路 · 必经点 · 固定顺序 · 分段相乘}{从 \((0,0)\) 到 \((A,B)\) \textbf{只走右／上单位步}，无障碍时有 \(\binom{A+B}{A}\) 条路。要求经过 \(r\) 个指定点：\textbf{先去重}、连同起终点按 x、再按 y 排序并检查坐标非递减，\textbf{每段相乘} \(\binom{\Delta x+\Delta y}{\Delta x}\)；点越界或某段\textbf{坐标差为负即 0}。模质数 \(p>A+B\) 时，含阶乘预处理总时 \(O(A+B+r\log r)\)。}
+\pdfbookmark[1]{C38 大网格、少量禁点：按首次撞点扣除}{C38}
+\entry{\phantomsection\label{C38}C38}{大网格、少量禁点：按首次撞点扣除}{网格走路 · 少量障碍 · 首次碰到 · 容斥DP}{从 \((0,0)\) 到 \((A,B)\) \textbf{只向右／上走}，矩形内有 \(r\) 个禁点；去重后排序，并加入终点。设 \(W(u,v)\) 为无障碍两点间的组合路径数，不可达则 0；\(f_i=W(0,p_i)-\sum_{j<i}f_jW(p_j,p_i)\)，和中 \(p_j\) \textbf{仅取禁点}。这是扣掉\textbf{首次经过的禁点}，最后的 \(f\) 即答案；\textbf{起终点被禁则 0}。模质数 \(p>A+B\)，总时 \(O(A+B+r^2)\)、空间 \(O(A+B+r)\)。}
+\pdfbookmark[1]{C39 不越过一条斜边界：反射／投票}{C39}
+\entry{\phantomsection\label{C39}C39}{不越过一条斜边界：反射／投票}{前缀不能亏 · 始终领先 · 一条边界 · 反射}{从 \((0,0)\) 右／上走到 \((a,b)\)，\textbf{全程要求} \(y\le x+H\)，其中 \(a,b,H\ge0\)；若 \(b>a+H\) 则 0，否则答案 \(\binom{a+b}{a}-\binom{a+b}{a+H+1}\)，越界组合数记 0。对\textbf{首次越界前}的路段作反射，把坏路与另一类自由格路配对。模质数 \(p>a+b\)，阶乘预处理 \(O(a+b)\) 后每问 \(O(1)\)。这里\textbf{允许贴边}；空路径计 1；非空路径若要求每个非空前缀 \(x>y\)，须 \(a>b\) 并\textbf{先固定第一步右}，再套同样反射。}
+\pdfbookmark[1]{C40 卡特兰：括号、非交叉配对、有序二叉树}{C40}
+\entry{\phantomsection\label{C40}C40}{卡特兰：括号、非交叉配对、有序二叉树}{括号 · 不交叉 · 二叉树形状 · 卡特兰}{\(C_n=\binom{2n}{n}/(n+1)\) 同时数：\(n\) 对单种括号的合法串；\textbf{圆周固定顺序} \(2n\) 点的非交叉完美匹配；\textbf{无标号、左右有别}的满二叉树，恰有 \(n\) 个\textbf{内部节点}（每个\textbf{内部节点}两儿子）。也数固定凸 \((n+2)\) 边形的三角剖分（\(n\ge1\)）。均\textbf{不按旋转、镜像合并}；模质数 \(p>2n\)，\(O(n)\) 预处理后 \(O(1)\) 求值。}
+\pdfbookmark[1]{C41 每盒相同上下限：先平移，再按超额盒容斥}{C41}
+\entry{\phantomsection\label{C41}C41}{每盒相同上下限：先平移，再按超额盒容斥}{分球装盒 · 每盒上限 · 隔板法 · 统一下界}{\(n\) 个\textbf{无标号球}放入 \(m\ge1\) 个\textbf{有标号盒}，每盒 \(\ell\) 到 \(u\) 个，\(0\le\ell\le u\)。\textbf{先令} \(N=n-m\ell,U=u-\ell\)；若 \(N<0\) 或 \(N>mU\) 则 0，否则为 \(\sum_{j=0}^{m}(-1)^j\binom mj\binom{N-j(U+1)+m-1}{m-1}\)，非法组合数记 0。枚举 \(j\) 个\textbf{超额盒}，各扣 \(U+1\) 球后隔板计数。模质数 \(p>N+m\)，预处理 \(O(N+m)\) 后求和 \(O(m)\)。}
+\pdfbookmark[1]{C42 允许集合真正嵌套：单射分配可直接连乘}{C42}
+\entry{\phantomsection\label{C42}C42}{允许集合真正嵌套：单射分配可直接连乘}{每人挑一个 · 不能重复选 · 越来越宽 · 嵌套集合}{\(n\) 个\textbf{有标号对象}各选一个\textbf{不同的有标号资源}，第 \(i\) 个允许集合为 \(S_i\)。若\textbf{真正满足} \(S_1\subseteq\cdots\subseteq S_n\)，依次分配时此前 \(i-1\) 个选择全在 \(S_i\) 中，答案 \(\prod_{i=1}^n(|S_i|-i+1)\)；任一因子不正即 0。嵌套关系及大小已知后 \(O(n)\)；\textbf{仅按集合大小排序}、或允许集合都是一般区间，均不足以套式。}
+\pdfbookmark[1]{C16 看到“分成若干非空组”先辨标号}{C16}
+\entry{\phantomsection\label{C16}C16}{看到“分成若干非空组”先辨标号}{分组 · 非空盒子 · 集合划分 · 第二类斯特林}{\(n\) 个\textbf{可区分元素}分成恰好 \(k\) 个\textbf{无序非空组}：\(S(n,k)\)；给这 \(k\) 组编号：\(k!S(n,k)\)；从 \(m\) 个指定标签中恰用 \(k\) 个：\(\binom mk k!S(n,k)\)。不限制组数时，无序组为 Bell 数 \(\sum_kS(n,k)\)，\textbf{组之间有顺序}则为 \(\sum_k k!S(n,k)\)。}
+\pdfbookmark[1]{C17 看到“排列有 k 个环／k 次前缀新最大”}{C17}
+\entry{\phantomsection\label{C17}C17}{看到“排列有 k 个环／k 次前缀新最大”}{排列环数 · 前缀新纪录 · 交换次数 · 第一类斯特林}{\(n\) 元排列恰有 \(k\) 个循环，或从左往右恰出现 \(k\) 次\textbf{前缀新最大值}，均为 \(c(n,k)\)。变成单位排列\textbf{最少需要} \(t\) 次任意两位置交换的排列数为 \(c(n,n-t)\)；\textbf{实际恰做} \(t\) 次时，\(n\ge2\) 须最少次数不超过 \(t\) 且同奇偶，\(n\le1\) 只能做 0 次。\textbf{组内有线性顺序}、组间无序的非空分组数为 Lah 数 \(\frac{n!}{k!}\binom{n-1}{k-1}\)（\(n,k\ge1\)）。}
+\pdfbookmark[1]{C18 第一类斯特林数：一整行}{C18}
+\entry{\phantomsection\label{C18}C18}{第一类斯特林数：一整行}{所有环数 · 第一类整行 · 上升阶乘 · 平移倍增}{固定 \(n\)，统计 \(n\) 元排列每种环数 \(k\) 的方案数 \(c(n,k)\)：它们是\textbf{连续一次式} \(x(x+1)\cdots(x+n-1)\) 的系数。\textbf{只递归算前半段}，把它整体平移半段长度后与原式相乘；奇数长度再补一个一次式。\textbf{Taylor 平移＋卷积倍增}为 \(O(n\log n)\)；普通乘积树多一层对数，\(n=0\) 时结果为常数 1。}
+\pdfbookmark[1]{C19 第二类斯特林数：一整行}{C19}
+\entry{\phantomsection\label{C19}C19}{第二类斯特林数：一整行}{所有组数 · 第二类整行 · 幂和 · 一次卷积}{固定 \(n\)，统计 \(n\) 个可区分元素分成每种无序非空组数 \(k\) 的方案数：数组 \(a_j=j^n/j!\) 与 \(b_j=(-1)^j/j!\) 卷积，第 \(k\) 项即答案。\textbf{逐个快速幂加卷积}共 \(O(n\log n)\)；\textbf{只问一个} \(k\)，将两列前 \(k+1\) 项\textbf{一正一反点积}为 \(O(k\log(n+1))\)。约定 \(0^0=1\)，\(n=0\) 仅 \(k=0\) 为 1。}
+\pdfbookmark[1]{C20 两类斯特林数：固定列到第 N 项}{C20}
+\entry{\phantomsection\label{C20}C20}{两类斯特林数：固定列到第 N 项}{固定组数 · 固定环数 · 斯特林列 · 全体规模}{固定 \(k\)，第一类数排列\textbf{恰有} \(k\) 个环，第二类数可区分元素分成 \(k\) 个\textbf{无序非空组}；\textbf{求所有规模} \(0\le n\le N\)。第一类底数组为 \(1/j\)，第二类为 \(1/j!\)（从 \(j=1\) 起）；求其 \(k\) 次幂，第 \(n\) 项乘 \(n!/k!\)。\textbf{先提出零前缀}再 Log／Exp，每列 \(O(N\log N)\)；\(k=0\) 仅第 0 项为 1，\(k>N\) 全零。}
+\pdfbookmark[1]{C21 无标号球与盒：整数划分}{C21}
+\entry{\phantomsection\label{C21}C21}{无标号球与盒：整数划分}{球盒无标号 · 整数划分 · 部件上限 · 至多几组}{把整数 \(n\) \textbf{无序拆成至多} \(m\) 个正数，等价于每个正数至多 \(m\)，记为 \(P_m(n)\)；\textbf{重复部件允许}。\textbf{求所有} \(n\le N\) 时，把 \(1\ldots\min(m,N)\) 各作为一种完全背包物品可 \(O(N\min(m,N))\)；实现上也可约数筛＋Exp 到 \(O(N\log N)\)。\(P_m(0)=1\)，\(m=0\) 时其他项均为 0；可区分元素分组不是此模型。}
+\pdfbookmark[1]{C22 无标号不能一律除阶乘}{C22}
+\entry{\phantomsection\label{C22}C22}{无标号不能一律除阶乘}{去标号 · 除阶乘 · 空盒 · 稳定子}{\textbf{可区分的球}放入 \(m\) 个\textbf{有标号非空盒}，去掉盒标签可除 \(m!\)，因为每个结果恰有 \(m!\) 种标号。允许空盒时空盒可互换；球也不可区分时，相同装量的盒也可互换，每个结果的\textbf{标号数不再恒定}。应按占用盒数用斯特林数，或直接数整数划分。}
+\pdfbookmark[1]{C24 长排列恰有 k 个逆序对}{C24}
+\entry{\phantomsection\label{C24}C24}{长排列恰有 k 个逆序对}{恰好几个逆序对 · 排列计数 · 少量逆序 · 约数筛}{\(1\ldots n\) 的排列，求逆序对数 \(0\ldots k\) 的\textbf{全部计数}。先令每个正下标 \(t\) 的\textbf{辅助值}为 \(n\)，再对每个 \(1\le d\le\min(n,k)\)，向 \(d\) 的倍数位置减 \(d\)；各项除以下标，常数项设 0，做\textbf{一次 Exp}，即得 \(O(k\log k)\) 算法。\textbf{单问}先排除 \(k>\binom n2\)，再利用逆序数关于 \(\binom n2/2\) 对称；\(k=0\) 答案 1。}
+\pdfbookmark[1]{C25 逆序数很小而排列很长}{C25}
+\entry{\phantomsection\label{C25}C25}{逆序数很小而排列很长}{排列很长 · 逆序很少 · 五边形数 · 稀疏容斥}{求长 \(n\ge1\) 排列恰有 \(k\) 个逆序对，且 \(n\ge k\)。先\textbf{放宽每次插入新最大值的逆序贡献上限}，\textbf{预处理} \(B_j=\binom{n+j-1}{j}\)；再在偏移 \(g=1,2,5,7,12,15,\ldots\) 处按“减、减、加、加”\textbf{循环加减} \(B_{k-g}\)，初值为 \(B_k\)。偏移为 \(r(3r\pm1)/2\)。\textbf{预处理} \(O(k)\)，\textbf{单问} \(O(\sqrt k)\)；全部前 \(k\) 项 \(O(k\sqrt k)\)。}
+\pdfbookmark[1]{C26 任意 n、k 的逆序数免 NTT 做法}{C26}
+\entry{\phantomsection\label{C26}C26}{任意 n、k 的逆序数免 NTT 做法}{任意长度排列 · 逆序计数 · 不用 NTT · 背包分层}{求长 \(n\) 排列的前 \(k+1\) 个逆序数计数，\(n,k\ge1\)。若 \(n\le\sqrt k\)，按插入位置做\textbf{滑窗 DP}。否则数组先设 \(A_j=\binom{n+j-1}{j}\)；第 \(r=1,2,\ldots\) 层给 \(A\) 加入一个体积 \(r\) 的\textbf{完全背包}，每层（\textbf{含第 0 层}）右移 \(r(n+1)\) 位累加。只需 \(r\le k/(n+1)\)，数组与移位均截断到下标 \(k\)，负下标视为 0；最后按\textbf{五边形偏移交错加减}，总 \(O(k\sqrt k)\)、空间 \(O(k)\)。}
+\pdfbookmark[1]{C27 无限件商品的全部体积计数}{C27}
+\entry{\phantomsection\label{C27}C27}{无限件商品的全部体积计数}{无限件 · 商品组合 · 全部容量 · 倍数筛}{\(n\) 类商品，每类可取任意件，\textbf{同类副本不区分}，\textbf{不计取出顺序}。求总体积 \(0\ldots m\) 的方案数：统计体积频次，清零辅助数组 \(g\)，每类体积 \(v\) 向 \(v\) 的\textbf{所有正倍数}位置加 \(v\)；令 \(h_0=0,h_t=g_t/t\)，\textbf{一次 Exp} 得答案。合并同体积后总 \(O(n+m\log m)\)；容量 0 为 1。}
+\pdfbookmark[1]{C28 每种物品有上限的背包计数}{C28}
+\entry{\phantomsection\label{C28}C28}{每种物品有上限的背包计数}{限量件数 · 多重背包计数 · 取零到上限 · 倍数加减}{\(n\) 类商品，第 i 类体积 \(v\)、\textbf{最多取} \(c\) 件，\textbf{同类副本不区分}，不计顺序。辅助数组清零；每类向 \(v\) 的正倍数位置加 \(v\)，再向 \((c+1)v\) 的\textbf{正倍数位置减} \((c+1)v\)；各项除以下标，常数项置 0 后 Exp。合并相同指数，总 \(O(n+m\log m)\) 求容量 \(0\ldots m\)；\textbf{二进制拆分会改变方案数}。}
+\pdfbookmark[1]{C29 可区分的 0/1 物品计数}{C29}
+\entry{\phantomsection\label{C29}C29}{可区分的 0/1 物品计数}{每件最多一次 · 子集个数 · 同重不同物 · 01 计数}{\(n\) 件\textbf{可区分物品}，每件取 0 或 1 次；即使同重，\textbf{选了哪件也算不同方案}。辅助数组清零，每件体积 \(v\) 向所有 \(v\) 的正倍数加 \(v\)，再向 \(2v\) 的\textbf{正倍数减} \(2v\)；各项除以下标，常数项置 0 后 Exp。按体积合并后 \(O(n+m\log m)\) 求容量 \(0\ldots m\)；\textbf{不能用于最大价值}。}
+\pdfbookmark[1]{C30 整数拆分与五边形数}{C30}
+\entry{\phantomsection\label{C30}C30}{整数拆分与五边形数}{无序拆数 · 整数分拆 · 五边形递推 · 互异与奇数}{把整数\textbf{无序拆成}任意多个正整数，\textbf{允许重复}。设 \(p(0)=1\)，求 \(p(t)\) 时依次取较早的第 \(t-1,t-2,t-5,t-7,\ldots\) 项，按“\textbf{加、加、减、减}”循环累加；偏移为 \(r(3r\pm1)/2\)。前 \(m\) 项 \(O(m\sqrt m)\)，用稀疏分母求逆可 \(O(m\log m)\)。互异部件与仅奇数部件等势；\textbf{限制最大部件}须另加限制。}
+\pdfbookmark[1]{C31 有序拼接与无序多重集}{C31}
+\entry{\phantomsection\label{C31}C31}{有序拼接与无序多重集}{按顺序拼接 · 重复选块 · 不计顺序 · 数量向量}{每类块长为正整数，\textbf{可重复使用}；长度 \(v\) 有 \(c_v\) 类。若\textbf{按顺序拼接}，最后一块分类得到 \(f_0=1,\ f_t=\sum_{v\le t}c_vf_{t-v}\)，前 \(m\) 项用一次多项式求逆；恰好 \(k\) 块则求长度分布的 \(k\) 次幂。若\textbf{只记录每类用了几块}，不计顺序，则用无限件计数的倍数筛＋Exp；求前 \(m\) 项为 \(O(m\log m)\)，幂的标量快速幂另加 \(O(\log(k+1))\)。}
+\pdfbookmark[1]{C34 多项式求逆、Log、Exp 的适用条件}{C34}
+\entry{\phantomsection\label{C34}C34}{多项式求逆、Log、Exp 的适用条件}{截断多项式 · 求逆条件 · 对数指数 · 模数限制}{求前 \(m\ge1\) 项，快速卷积下求逆／Log／Exp 常用 \(O(m\log m)\)。\textbf{求逆须常数项非零}；标准 \textbf{Log 的输入常数项为 1}，\textbf{Exp 的输入常数项为 0}。模素数 \(p\) 时，Log／Exp 中积分要除以 \(1\ldots m-1\)，须 \(m\le p\)；所用\textbf{卷积长度}也必须受 NTT 支持。}
+\pdfbookmark[1]{C35 巨大下标的有理生成函数}{C35}
+\entry{\phantomsection\label{C35}C35}{巨大下标的有理生成函数}{巨大下标 · 常系数递推 · 有理式第几项 · Bostan–Mori}{已知 \(P/Q\) 且 \(Q_0\ne0\)，\textbf{分子分母次数均至多} \(d\ge1\)，只求第 \(N\ge1\) 项：Bostan–Mori \textbf{每轮筛奇／偶项、下标减半}，\(O(d\log(d+1)\log(N+1))\)。\(N=0\) 直接取 \(P_0/Q_0\)；若 \(Q\) 为常数，直接取 \(P_N/Q_0\)，超次数则 0。\(d\) 阶\textbf{常系数递推}可转入此模型；\textbf{输出前} \(N\) 项仍需线性输出量。}
+\pdfbookmark[1]{C36 恰选 k 个有序对象的和分布}{C36}
+\entry{\phantomsection\label{C36}C36}{恰选 k 个有序对象的和分布}{重复独立选择 · 恰选几次 · 总权值分布 · 多项式幂}{每次独立选一个非负整数权值对象，\textbf{同一对象可重复}，\textbf{选择顺序计入方案}；恰选 \(k\ge0\) 次的总权值分布为单次分布 \(A\) 的 \(k\) 次幂。\(k=0\) 返回常数 1；\(k>0\) 且 \(A=0\) 返回全零。否则先\textbf{去零前缀}、提出首个非零系数，再用 Log／Exp 求幂并移回；前 \(m\) 项 \(O(m\log m+\log(k+1))\)，\textbf{最低可能次数}达 \(m\) 则全零。}
+\end{multicols}\clearpage\phantomsection\label{tables}\pdfbookmark[0]{计数计算表}{tables}\grouphead{C 计数计算表与链递推}
+\begingroup\fontsize{9.4}{13.5}\selectfont\setlength{\tabcolsep}{5pt}\renewcommand{\arraystretch}{1.55}
+\textbf{\color{Accent}十二重计数：n 个球全部放入 m 个盒子}\par\vspace{5pt}
+\(S\) 为第二类斯特林数；\(P_m(t)\) 表示把 \(t\) 无序拆成至多 \(m\) 个正整数的方案数，允许重复；方括号为条件是否成立。\par\vspace{4pt}
+\begin{tabularx}{\linewidth}{ll>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X}\toprule
+球 & 盒 & 允许空盒 & 每盒至多 1 个 & 每盒至少 1 个\\\midrule
+有标号 & 有标号 & \(m^n\) & \(m^{\underline n}=m!/(m-n)!\) & \(m!S(n,m)\)\\
+有标号 & 无标号 & \(\sum_{k=0}^{\min(n,m)}S(n,k)\) & \([n\le m]\) & \(S(n,m)\)\\
+无标号 & 有标号 & \(\binom{n+m-1}{m-1}\) & \(\binom mn\) & \(\binom{n-1}{m-1}\)\\
+无标号 & 无标号 & \(P_m(n)\) & \([n\le m]\) & \(P_m(n-m)\)\\
+\bottomrule\end{tabularx}\par\vspace{5pt}
+表中二项式／下降阶乘超范围为 0；负数下标的 \(P_m\) 为 0。统一单独处理 \(m=0\)：\(n=0\) 时十二种均为 1，否则均为 0。\(n=0,m>0\) 时允许空盒及至多 1 均为 1，至少 1 均为 0；\(0^0=1\)。\par\vspace{5pt}
+阶乘预处理后组合数可 \(O(1)\)；第二类整行一次卷积；划分数用对数系数约数筛加 exp。令 \(L=\max(n,m)\)，十二个答案一起可 \(O(L\log L)\)，无需十二套 DP。\par\vspace{8pt}
+\textbf{\color{Accent}斯特林数行／列计算表}\par\vspace{5pt}
+\(c(n,k)\) 固定表示无符号第一类，\(S(n,k)\) 为第二类；有符号第一类为 \((-1)^{n-k}c(n,k)\)。\par\vspace{4pt}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{28mm}>{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{40mm}}\toprule
+任务 & 计数对象／数组转化 & 方法与时间\\\midrule
+第一类，固定 n 求所有 k & \(F_n=\prod_{0\le i<n}(x+i)\)；\(F_{2m}=F_m(x)F_m(x+m)\) & Taylor 平移倍增，\(O(n\log n)\)\\
+第二类，固定 n 求所有 k & \(S(n,k)=\frac1{k!}\sum_{j=0}^k(-1)^{k-j}\binom kjj^n\) & 一次卷积，\(O(n\log n)\)\\
+第一类，固定 k 求 \(n\le N\) & 令 \(a_0=0,a_t=1/t\)；求底数组的 k 次幂，第 n 项乘 \(n!/k!\) & 去零前缀，Log／Exp 求幂，\(O(N\log N)\)\\
+第二类，固定 k 求 \(n\le N\) & 令 \(a_0=0,a_t=1/t!\)；求底数组的 k 次幂，第 n 项乘 \(n!/k!\) & 去零前缀，Log／Exp 求幂，\(O(N\log N)\)\\
+\bottomrule\end{tabularx}\par\vspace{5pt}
+一整张 \(n,k\le N\) 的三角表有 \(\Theta(N^2)\) 项，递推 \(c(n,k)=c(n-1,k-1)+(n-1)c(n-1,k)\)、\(S(n,k)=S(n-1,k-1)+kS(n-1,k)\) 已是 \(\Theta(N^2)\)；行列快速算法不使整表变成近线性。\par\vspace{5pt}
+\vspace{5pt}\textbf{\color{Accent}任意定向链：可直接还原的卷积递推}\par
+\(s_1,\ldots,s_{n-1}\in\{<,>\}\) 表示相邻约束；\(d_i\) 是前 \(i\) 个符号中的大于号数，\(d_0=0\)。\(f_i\) 是长度 \(i\) 前缀的合法排列数除以 \(i!\)，\(f_0=1\)。\par
+\(f_i=\sum_{0\le j<i,\ j=0\ \mathrm{or}\ s_j=\texttt{>}}f_j\,(-1)^{d_{i-1}-d_j}/(i-j)!\)。\par
+转移中的符号分解成 \((-1)^{d_{i-1}}(-1)^{d_j}\)，因此把已求出的 \(f_j(-1)^{d_j}[j=0\text{ 或 }s_j=\texttt{>}]\) 与 \(1/t!\) 卷积即可。答案为 \(n!f_n\)，CDQ+NTT 为 \(O(n\log^2n)\)。
+\endgroup
+
+\clearpage\begin{multicols}{2}\raggedcolumns
+\phantomsection\label{secQ}\pdfbookmark[0]{Q 二次瓶颈、背包与状态 DP}{secQ}
+\grouphead{Q 二次瓶颈、背包与状态 DP}
+{\small\color{Muted}同一族问题相邻排列；几何变式注意互异点、配色与退化情形。}\par\vspace{6pt}
+\pdfbookmark[1]{Q01 3SUM}{Q01}
+\entry{\phantomsection\label{Q01}Q01}{3SUM}{三数求和 · 凑目标 · 三个不同下标 · 3SUM}{\(n\) 个大值域数，找\textbf{三个不同下标}使数值和等于给定目标，按 \(O(n^2)\)：排序后枚举一项、其余双指针。\textbf{小整数值域}可做频次卷积，但要剔除同一下标重复使用的贡献；\textbf{数值相等的不同下标}仍可选。}
+\pdfbookmark[1]{Q02 三数线性等式／三项等差}{Q02}
+\entry{\phantomsection\label{Q02}Q02}{三数线性等式／三项等差}{三数等式 · 等差三项 · 三组选择 · 线性系数}{三组各 \(n\) 个数，\textbf{每组取一个}，满足 \(\alpha a+\beta b+\gamma c=T\)；三个\textbf{固定非零系数}直接乘入数组，就是三组 3SUM，按 \(O(n^2)\)。含 \(a+b=c\)、\(a+c=2b\)；系数为 0 时会降成更简单模型，同数组取数另需保证\textbf{下标互异}。}
+\pdfbookmark[1]{Q03 三点共线／零面积三角形}{Q03}
+\entry{\phantomsection\label{Q03}Q03}{三点共线／零面积三角形}{三点一线 · 零面积 · 斜率相同 · 几何三数和}{\(n\) 个\textbf{互异整点}找三个共线点：逐点按\textbf{精确规范化方向}分组，固定字长坐标下哈希期望 \(O(n^2)\)，排序分组 \(O(n^2\log n)\)。\textbf{互异数值}映到 \((x,x^3)\) 后，三点共线当且仅当三数和为 0。\textbf{坐标重合点}须先单独处理；方向计算与立方不能溢出。}
+\pdfbookmark[1]{Q04 三条平行线各取一点}{Q04}
+\entry{\phantomsection\label{Q04}Q04}{三条平行线各取一点}{三条平行线 · 各取一点 · 彩色共线 · 等距直线}{三条\textbf{等距平行线}归一化为 \(y=0,1,2\)，\textbf{各取一点} \((a,0),(b,1),(c,2)\) 共线，恰等价于三组数满足 \(a+c=2b\)，每组 \(n\) 点按 \(O(n^2)\)。\textbf{必须各取一组}；任选三个点会被同一条线上的三点轻易满足。}
+\pdfbookmark[1]{Q05 三条直线共点}{Q05}
+\entry{\phantomsection\label{Q05}Q05}{三条直线共点}{三线交一点 · 直线对偶 · 参数点 · 共点}{\textbf{斜率互异}的直线 \(y=a_ix+b_i\) 中找三条\textbf{共有限点}，等价于参数点 \((a_i,b_i)\) 三点共线，可用二次级枚举配合方向分组。只在\textbf{斜率互异}、\textbf{非竖直线}条件下直接套此对偶；平行、重合、竖直线应单独分类。}
+\pdfbookmark[1]{Q06 退化三角形与普通三角形}{Q06}
+\entry{\phantomsection\label{Q06}Q06}{退化三角形与普通三角形}{退化三角形 · 三根木棒 · 三角不等式 · 排序相邻}{正边长中选\textbf{三个不同下标}，恰构成退化三角形即 \(a+b=c\)，按 \(O(n^2)\)。只问能否构成\textbf{面积为正}的三角形，则排序后检查是否有相邻三项满足 \(a_i+a_{i+1}>a_{i+2}\)，总 \(O(n\log n)\)；\textbf{计数全部三角形}不能只检查相邻项。}
+\pdfbookmark[1]{Q07 两组 pair sum／4SUM}{Q07}
+\entry{\phantomsection\label{Q07}Q07}{两组 pair sum／4SUM}{四数求和 · 两两和 · 折半 · 互异下标}{四组各 \(n\) 个数，\textbf{每组取一个}使总和为 \(T\)：存一侧的\textbf{两两和}，查询另一侧的补数；哈希期望 \(O(n^2)\)、排序 \(O(n^2\log n)\)，空间 \(O(n^2)\)。同数组选四个不同下标时，\textbf{扫描第三个下标} \(k\)，只存 \(i<j<k\) 的和，再查询 \(k<l\)，保证\textbf{两对不交}。}
+\pdfbookmark[1]{Q08 下标卷积型 3SUM}{Q08}
+\entry{\phantomsection\label{Q08}Q08}{下标卷积型 3SUM}{下标相加 · 卷积型三数和 · 数值相等 · 不能直接 FFT}{数组下标范围内判断是否有 \(i,j\) 满足 \(A_i+A_j=A_{i+j}\)，按 \(O(n^2)\)。下标满足和式仅是必要结构，\textbf{还要逐对满足数值等式}，\textbf{不能直接当普通加乘卷积}。是否要求 \(i,j,i+j\) \textbf{互异}，以及下标从 0 还是 1 开始，均须按题意限定。}
+\pdfbookmark[1]{Q09 min/max-plus 卷积}{Q09}
+\entry{\phantomsection\label{Q09}Q09}{min/max-plus 卷积}{最小加卷积 · 最大加卷积 · 两段合并 · 离散凸}{两个任意长度 \(n\) 数组求所有 \(c_k=\min_{i+j=k}(a_i+b_j)\)，按 \(O(n^2)\)，max 版可取负。\textbf{一列离散凸}（相邻差分非递减）、\textbf{另一列任意}，转成 Monge 矩阵逐行求最小值：决策单调分治 \(O(n\log n)\)，SMAWK 可 \(O(n)\)。\textbf{两列都凸}时直接合并两列差分即 \(O(n)\)；\textbf{只有数值单调不能代替凸性}。}
+\pdfbookmark[1]{Q10 LCS／编辑距离}{Q10}
+\entry{\phantomsection\label{Q10}Q10}{LCS／编辑距离}{最长公共子序列 · 编辑距离 · 字符串相似 · 压位}{两串长 \(n\ge m\ge1\)，求 LCS 长度，或插入／删除／替换均代价 1 的\textbf{全局编辑距离}，普通 DP 为 \(O(nm)\)；\textbf{各自专用位并行算法}可 \(O(n\lceil m/w\rceil)\)。只检查编辑距离\textbf{是否不超过} \(k\)，可做带状 DP \(O(n(k+1))\)；\textbf{带外结果}只能判大于 \(k\)。}
+\pdfbookmark[1]{Q11 两串 SCS／仅增删编辑距离}{Q11}
+\entry{\phantomsection\label{Q11}Q11}{两串 SCS／仅增删编辑距离}{最短公共超序列 · 只增删 · 合并两串 · LCS 转化}{两串长 \(n,m\)，设 LCS 长度为 \(L\)。同时包含两串\textbf{为子序列}的最短串长是 \(n+m-L\)；\textbf{只准插入、删除}，且每次代价 1 的编辑距离是 \(n+m-2L\)。\textbf{只求长度}可沿用 LCS 压位；允许代价 1 的替换时不能套后式，\textbf{恢复具体串}需额外回溯。}
+\pdfbookmark[1]{Q12 最长回文子序列}{Q12}
+\entry{\phantomsection\label{Q12}Q12}{最长回文子序列}{回文子序列 · 最少删除 · 倒串 LCS · 恢复方案}{长 \(n\) 字符串的最长回文子序列长度等于它与倒串的 LCS 长度；普通区间 DP \(O(n^2)\)，\textbf{只求长度}可压位。\textbf{任意恢复的 LCS 未必回文}，输出具体回文要用区间 DP 或保证对称的正确回溯。最少删除数为 \(n-\mathrm{LPS}\)；\textbf{连续回文子串}另有线性算法。}
+\pdfbookmark[1]{Q13 任意集合判空交}{Q13}
+\entry{\phantomsection\label{Q13}Q13}{任意集合判空交}{两集合不相交 · 空交 · 正交向量 · 小全集}{两组各 \(n\) 个集合，全集大小 \(d\)，找一对\textbf{来自不同组}的集合使\textbf{交集为空}；压位枚举 \(O(n^2\lceil d/w\rceil)\)。全集很小时，把一组的出现掩码做\textbf{子集 OR 的 SOS DP}，另一组查其补集是否含已有子集；不可误写成\textbf{只查补集本身}。}
+\pdfbookmark[1]{Q14 子集和}{Q14}
+\entry{\phantomsection\label{Q14}Q14}{子集和}{凑目标 · 可达和 · 01 背包 · 折半搜索}{\(n\) 个非负整数，\textbf{每件最多选一次}，问能否凑成 \(T\ge0\)；布尔 DP \(O(nT)\)，位集移位或为 \(O(n\lceil(T+1)/w\rceil)\)，空间 \(O(T)\) 位。\textbf{允许空集}时 \(T=0\) 必可达，\textbf{零重量}不影响其他目标可达性。目标大而件数小可折半；计数或最大价值不能直接用\textbf{布尔位集}。}
+\pdfbookmark[1]{Q15 WQS 二分会跳过数量}{Q15}
+\entry{\phantomsection\label{Q15}Q15}{WQS 二分会跳过数量}{恰好几次 · 罚分二分 · 数量跳跃 · WQS}{令 \(f(t)\) 是\textbf{恰做} \(t\) 次的最小代价，优化 \(f(t)+\lambda t\) 时最优数量随罚分单调，仍可能\textbf{永远跳过}指定 \(k\)。如 \(f(0)=f(2)=0,f(1)=10\)，任何罚分都不选 1。恢复恰 \(k\) 次必须另证 \(f\) 的\textbf{离散凸性}或该点在下凸包上，并正确处理\textbf{同价时的数量范围}。}
+\pdfbookmark[1]{Q16 总重量小的全部可达和}{Q16}
+\entry{\phantomsection\label{Q16}Q16}{总重量小的全部可达和}{总重量很小 · 全部可达和 · 同重合并 · 压位背包}{\textbf{正整数 0/1} 重量总和 \(S\)。将三个同重 \(a\) 替换成一件 \(a\) 和一件 \(2a\)，\textbf{仅保持可达和}及总重量；按重量桶不断进位，使\textbf{每个重量至多两件}，剩 \(O(\sqrt S)\) 件后做 bitset。总 \(O(S+\sqrt S\lceil(S+1)/w\rceil)\)；位集占 \(O(S)\) 位，直接\textbf{计数桶另占} \(O(S)\) 个机器字。不能保方案数或最大价值。}
+\pdfbookmark[1]{Q17 可达和的卷积乘积树}{Q17}
+\entry{\phantomsection\label{Q17}Q17}{可达和的卷积乘积树}{背包可行性 · 布尔卷积 · 乘积树 · 模数消零}{正整数 0/1 重量总和 \(S\)，求所有可达和：每件用仅下标 0 和其重量为 1 的布尔数组，平衡乘积树逐层卷积，并在\textbf{每次卷积后立刻}把非零项改成 1。用支持所需长度且 \(p>S+1\) 的 NTT 素数，保证\textbf{单层整数系数不会绕回}，可确定性 \(O(S\log^2S)\)。完整计数积\textbf{最后才取模判非零}，会漏解。}
+\phantomsection\label{secI}\pdfbookmark[0]{I 信息论、查询与状态压缩}{secI}
+\grouphead{I 信息论、查询与状态压缩}
+{\small\color{Muted}比较次数、查询次数、输出量、存储位数分别计算。}\par\vspace{6pt}
+\pdfbookmark[1]{I01 显式输出量}{I01}
+\entry{\phantomsection\label{I01}I01}{显式输出量}{输出太多 · 所有方案 · 下标解 · 只求个数}{\textbf{显式输出} L 个机器字，至少需 \(\Omega(L)\) 时间。n 个 0 的零和三元组有 \(\binom n3\) 个\textbf{不同下标解}；但只判存在或\textbf{只统计下标解数}，不需逐个列举，一般 3SUM 可按 \(O(n^2)\) 做。输出量下界\textbf{不能直接用于只求一个计数值}。}
+\pdfbookmark[1]{I02 任意函数查询}{I02}
+\entry{\phantomsection\label{I02}I02}{任意函数查询}{黑盒函数 · 找最小值 · 没有单调 · 取值查询}{只允许查询\textbf{独立黑盒} \(f(1),\ldots,f(n)\)，无单调、单峰或数值下界保证，\textbf{确定性算法}精确找最小值最坏必须\textbf{查询全部 n 个位置}。知道函数公式并能利用代数结构，或只求近似值，均\textbf{不属于此模型}。}
+\pdfbookmark[1]{I03 比较排序与选择}{I03}
+\entry{\phantomsection\label{I03}I03}{比较排序与选择}{排序下界 · 第 k 小 · 比较模型 · 整数排序}{n 个互异元素\textbf{仅通过两两比较}排序，最坏需 \(\Omega(n\log n)\) 次比较；但\textbf{单个第 k 小}可 \(O(n)\)，最小值只需 n-1 次比较。\textbf{整数基数排序}使用位表示和桶操作，不受纯比较排序下界限制，其耗时另依\textbf{字长与值域}计算。}
+\pdfbookmark[1]{I04 交互询问的信息量}{I04}
+\entry{\phantomsection\label{I04}I04}{交互询问的信息量}{交互题 · 问几次 · 信息量 · 决策树}{确定性询问需区分 \textbf{R 种不同正确答案}，且任何一次询问\textbf{至多有} \(b\ge2\) 种可能反馈，则\textbf{最坏至少问} \(\lceil\log_b R\rceil\) 次。R 数的是必须区分的答案，\textbf{不一定是输入总数}；一个整数反馈可能携带多位信息。}
+\pdfbookmark[1]{I05 精确集合摘要}{I05}
+\entry{\phantomsection\label{I05}I05}{精确集合摘要}{集合压缩 · 成员查询 · 精确摘要 · 空间下界}{U 元全集的\textbf{任意 k 元子集}，若只保存摘要且须\textbf{无误回答}所有“元素是否在集合中”的查询，至少需 \(\lceil\log_2\binom Uk\rceil\) 位。前提是只依靠摘要、\textbf{不回读原集合}；这是\textbf{空间下界}，不能直接当作查询时间下界。}
+\pdfbookmark[1]{I06 状态何时能合并}{I06}
+\entry{\phantomsection\label{I06}I06}{状态何时能合并}{DP 压状态 · 历史合并 · 未来区分 · 状态数}{确定性状态压缩若把两份历史合并，却存在\textbf{同一个对二者都合法的后续}使正确答案不同，该合并就不正确。R 份历史若\textbf{两两能由某个共同合法后续区分}，至少需 R 种状态；这\textbf{不意味着算法必须显式枚举}全部 R 种。}
+\pdfbookmark[1]{I07 固定哈希与精确判等}{I07}
+\entry{\phantomsection\label{I07}I07}{固定哈希与精确判等}{哈希碰撞 · 双哈希 · 绝对正确 · 判等}{对象取值超过 \(2^b\) 种时，\textbf{固定 b 位摘要必有碰撞}；两个哈希拼接后也只按\textbf{总位数}计算，不能给出确定性判等保证。随机选哈希需按\textbf{具体输入与对手模型}估错率；要求绝对正确时，摘要相等还须\textbf{核验原对象}或使用无碰撞表示。}
+\pdfbookmark[1]{I08 两两贡献求和}{I08}
+\entry{\phantomsection\label{I08}I08}{两两贡献求和}{两两求和 · 总贡献 · 网格可达 · 不用逐对}{只求所有点对贡献的\textbf{总和}，不能用点对数量推出二次下界。例如 \(N\times N\) 网格可有任意障碍，\textbf{每步只向右或下走}；每空格 u 有权 \(a_u\)，求所有互异、u 可达 v 的有序点对的 \(a_ua_v\) \textbf{总和}，可分治 \(O(N^2\log N)\)。\textbf{每对只计一次}，\textbf{不按路径条数计}。}
+\pdfbookmark[1]{I09 指数参数已经写入输入}{I09}
+\entry{\phantomsection\label{I09}I09}{指数参数已经写入输入}{指数输入 · 所有短串 · 共同子序列 · 出现于多串}{输入用 \(\Theta(2^n)\) 个\textbf{成员位}列出长至多 n 的所有 01 串是否属于集合 S。可用 \(O(n2^n)\) 共享子序列 DP，求每个候选串被 S 中多少条\textbf{不同原串}包含，从而找至少被 K 条原串包含的最长子序列。这里\textbf{一条原串只计一次}；这是\textbf{相对输入近线性}的算法，非一般多串 LCS 的多项式算法。}
+\end{multicols}\end{document}

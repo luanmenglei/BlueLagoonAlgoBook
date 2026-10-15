@@ -1,0 +1,27 @@
+\begingroup\fontsize{9.4}{13.5}\selectfont\setlength{\tabcolsep}{5pt}\renewcommand{\arraystretch}{1.55}
+\textbf{\color{Accent}十二重计数：n 个球全部放入 m 个盒子}\par\vspace{5pt}
+\(S\) 为第二类斯特林数；\(P_m(t)\) 表示把 \(t\) 无序拆成至多 \(m\) 个正整数的方案数，允许重复；方括号为条件是否成立。\par\vspace{4pt}
+\begin{tabularx}{\linewidth}{ll>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X}\toprule
+球 & 盒 & 允许空盒 & 每盒至多 1 个 & 每盒至少 1 个\\\midrule
+有标号 & 有标号 & \(m^n\) & \(m^{\underline n}=m!/(m-n)!\) & \(m!S(n,m)\)\\
+有标号 & 无标号 & \(\sum_{k=0}^{\min(n,m)}S(n,k)\) & \([n\le m]\) & \(S(n,m)\)\\
+无标号 & 有标号 & \(\binom{n+m-1}{m-1}\) & \(\binom mn\) & \(\binom{n-1}{m-1}\)\\
+无标号 & 无标号 & \(P_m(n)\) & \([n\le m]\) & \(P_m(n-m)\)\\
+\bottomrule\end{tabularx}\par\vspace{5pt}
+表中二项式／下降阶乘超范围为 0；负数下标的 \(P_m\) 为 0。统一单独处理 \(m=0\)：\(n=0\) 时十二种均为 1，否则均为 0。\(n=0,m>0\) 时允许空盒及至多 1 均为 1，至少 1 均为 0；\(0^0=1\)。\par\vspace{5pt}
+阶乘预处理后组合数可 \(O(1)\)；第二类整行一次卷积；划分数用对数系数约数筛加 exp。令 \(L=\max(n,m)\)，十二个答案一起可 \(O(L\log L)\)，无需十二套 DP。\par\vspace{8pt}
+\textbf{\color{Accent}斯特林数行／列计算表}\par\vspace{5pt}
+\(c(n,k)\) 固定表示无符号第一类，\(S(n,k)\) 为第二类；有符号第一类为 \((-1)^{n-k}c(n,k)\)。\par\vspace{4pt}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{28mm}>{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{40mm}}\toprule
+任务 & 计数对象／数组转化 & 方法与时间\\\midrule
+第一类，固定 n 求所有 k & \(F_n=\prod_{0\le i<n}(x+i)\)；\(F_{2m}=F_m(x)F_m(x+m)\) & Taylor 平移倍增，\(O(n\log n)\)\\
+第二类，固定 n 求所有 k & \(S(n,k)=\frac1{k!}\sum_{j=0}^k(-1)^{k-j}\binom kjj^n\) & 一次卷积，\(O(n\log n)\)\\
+第一类，固定 k 求 \(n\le N\) & 令 \(a_0=0,a_t=1/t\)；求底数组的 k 次幂，第 n 项乘 \(n!/k!\) & 去零前缀，Log／Exp 求幂，\(O(N\log N)\)\\
+第二类，固定 k 求 \(n\le N\) & 令 \(a_0=0,a_t=1/t!\)；求底数组的 k 次幂，第 n 项乘 \(n!/k!\) & 去零前缀，Log／Exp 求幂，\(O(N\log N)\)\\
+\bottomrule\end{tabularx}\par\vspace{5pt}
+一整张 \(n,k\le N\) 的三角表有 \(\Theta(N^2)\) 项，递推 \(c(n,k)=c(n-1,k-1)+(n-1)c(n-1,k)\)、\(S(n,k)=S(n-1,k-1)+kS(n-1,k)\) 已是 \(\Theta(N^2)\)；行列快速算法不使整表变成近线性。\par\vspace{5pt}
+\vspace{5pt}\textbf{\color{Accent}任意定向链：可直接还原的卷积递推}\par
+\(s_1,\ldots,s_{n-1}\in\{<,>\}\) 表示相邻约束；\(d_i\) 是前 \(i\) 个符号中的大于号数，\(d_0=0\)。\(f_i\) 是长度 \(i\) 前缀的合法排列数除以 \(i!\)，\(f_0=1\)。\par
+\(f_i=\sum_{0\le j<i,\ j=0\ \mathrm{or}\ s_j=\texttt{>}}f_j\,(-1)^{d_{i-1}-d_j}/(i-j)!\)。\par
+转移中的符号分解成 \((-1)^{d_{i-1}}(-1)^{d_j}\)，因此把已求出的 \(f_j(-1)^{d_j}[j=0\text{ 或 }s_j=\texttt{>}]\) 与 \(1/t!\) 卷积即可。答案为 \(n!f_n\)，CDQ+NTT 为 \(O(n\log^2n)\)。
+\endgroup
