@@ -8,8 +8,25 @@
   "version": "单列可读版",
   "compiler": "Built-in document editor compiler",
   "compile_status": "success",
-  "pdf_export": "Current single-column source was compiled in the existing editor; no separate PDF was exported.",
+  "pdf_export": "dictionary.pdf: current 31-page single-column edition",
   "keywords": 629,
   "search_checks": 12,
-  "source_sha256": "de1fd54b16a4f7085d7f71abba2c66b18b240988abb754dbb331a17651cf381f"
+  "source_sha256": "89da895768d544680ba6faf566d797ea0938972e252e5aa86b6b4a054af641c9",
+  "export_compiler": "Tectonic",
+  "pdf_pages": 31,
+  "pdf_sha256": "c2ff145045978cd8e757d36309ee72f8faadc157e5cdb0e72b5b6a6b45aadd03",
+  "tex_sha256": "091b26d897e22a305a48a26db72557723d9d4ab2dd14e82654ee777f2e82a067",
+  "rendered_pages": 31,
+  "visual_review": "All 31 pages reviewed in page overviews; pages 23, 25 and 27 inspected at page scale. No clipping, overlap or table overflow found.",
+  "layout_warning_count": 0,
+  "font_warnings": [
+    "Songti SC lacks requested fontspec script tag; Chinese text rendered correctly.",
+    "CJK monospace fallback warning; no missing-character diagnostics."
+  ],
+  "pdf_entry_labels": 157,
+  "pdf_entry_bookmarks": 157,
+  "pdf_internal_links": 325,
+  "pdf_shape_index_references": 162,
+  "pdf_page_targets_match_aux": true,
+  "pdf_title_and_body_text_present": true
 }
