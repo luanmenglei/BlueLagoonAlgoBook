@@ -156,3 +156,13 @@ LaTeX 组织参考 [KACTL 的维护说明](https://github.com/kth-competitive-pr
 | `performance/FlatHash.h` | BlueLagoon | BlueLagoon implementation; linear probing with SplitMix64 | CC0-1.0 |
 | `performance/Montgomery.h` | BlueLagoon | BlueLagoon implementation; Montgomery REDC and Newton inverse | CC0-1.0 |
 | `performance/Simd.h` | BlueLagoon | BlueLagoon implementation; GCC x86 function targets and intrinsics | CC0-1.0 |
+
+## 2026-10-18 Beats 与路径工具
+
+三份新增源码为 BlueLagoon 编写；Mandatory 仅将现有支配树拆边封装，其依赖的来源与许可证保持原样。算法与复杂度核对 [kmyk 的 Beats 作者文档](https://kmyk.github.io/competitive-programming-library/data_structure/segment_tree_beats.hpp.html)、[Kare 的正权替换路论文](https://arxiv.org/abs/1511.06905)；[Vassilevska Williams 的 Faster Replacement Paths](https://arxiv.org/abs/1007.2216)说明有向替换路不是不可解问题。没有直接导入上述页面的实现。
+
+| 本册文件 | 作者 / 改编者 | 来源 | 许可证记录 |
+|---|---|---|---|
+| `data-structures/SegmentTreeBeats.h` | BlueLagoon | 极值／严格次极值与摊还递归 | CC0-1.0 |
+| `graph/Mandatory.h` | BlueLagoon | 最短路子图、边拆点和现有 Dominator | 包装代码 CC0-1.0；依赖保留原许可证 |
+| `graph/ReplacementPaths.h` | BlueLagoon | 两棵共享选定最短路的 SPT、区间最小值 | CC0-1.0 |
