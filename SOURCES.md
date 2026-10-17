@@ -142,3 +142,17 @@ LaTeX 组织参考 [KACTL 的维护说明](https://github.com/kth-competitive-pr
 | `various/KnuthDP.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
 | `various/SMAWK.h` | BlueLagoon | SMAWK; oracle interface inspired by ecnerwala/cp-book/src/smawk.hpp; BlueLagoon recursive implementation | CC0-1.0 |
 | `various/Simpson.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+
+## 2026-10-17 性能工具
+
+新增代码为 BlueLagoon 按标准算法编写。Barrett 使用向下取整倒数和一次向下修正，与 [ACL 的向上取整倒数实现](https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp)不同；ACL 用于核对用途与范围，未直接导入其源码。AVX2 的函数属性与检测方式核对 [GCC x86 built-ins](https://gcc.gnu.org/onlinedocs/gcc/x86-Built-in-Functions.html) 和 [函数属性](https://gcc.gnu.org/onlinedocs/gcc/x86-Function-Attributes.html)。
+
+| 本册文件 | 作者 / 改编者 | 来源 | 许可证记录 |
+|---|---|---|---|
+| `performance/Arena.h` | BlueLagoon | BlueLagoon implementation; aligned bump allocation | CC0-1.0 |
+| `performance/Barrett.h` | BlueLagoon | BlueLagoon implementation; reciprocal division with floor(2^64/m) | CC0-1.0 |
+| `performance/BitTricks.h` | BlueLagoon | BlueLagoon implementation; Gosper's hack | CC0-1.0 |
+| `performance/FastDiv.h` | BlueLagoon | BlueLagoon implementation; x86 DIV instruction | CC0-1.0 |
+| `performance/FlatHash.h` | BlueLagoon | BlueLagoon implementation; linear probing with SplitMix64 | CC0-1.0 |
+| `performance/Montgomery.h` | BlueLagoon | BlueLagoon implementation; Montgomery REDC and Newton inverse | CC0-1.0 |
+| `performance/Simd.h` | BlueLagoon | BlueLagoon implementation; GCC x86 function targets and intrinsics | CC0-1.0 |
