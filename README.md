@@ -4,11 +4,13 @@
 
 [查看／下载已提交的打印版](output/BlueLagoon.pdf) · [自动构建与下载](https://github.com/luanmenglei/BlueLagoonAlgoBook/actions/workflows/verify.yml) · [来源与许可证](SOURCES.md)
 
-GNU C++20；A4 竖版双栏；代码 8.5pt，行距 10.2pt，tab 按 4 字符展开，与源码对齐。版面参考原始 `teamnote.pdf`，代码按队员习惯使用 tab、`i64`、同行大括号和 `i ++`。142 个代码条目、7 个速查条目，分为 12 章。打印文件是 **`output/BlueLagoon.pdf`**，建议按实际大小打印，长边翻转；行折叠箭头表示同一行的续行。关键词及函数名使用深色加粗，注释使用中灰色斜体；数字、字符串用深色区分，灰度打印仍靠字重和字形区分。
+GNU C++20；A4 竖版双栏；代码 8.5pt，行距 10.2pt，tab 按 4 字符展开，与源码对齐。版面参考原始 `teamnote.pdf`，代码按队员习惯使用 tab、`i64`、同行大括号和 `i ++`。142 个代码条目、8 个速查条目，分为 12 章。打印文件是 **`output/BlueLagoon.pdf`**，建议按实际大小打印，长边翻转；行折叠箭头表示同一行的续行。关键词及函数名使用深色加粗，注释使用中灰色斜体；数字、字符串用深色区分，灰度打印仍靠字重和字形区分。
 
 第10章为“常用补充”，第11章为“进阶附录”，第12章为“性能工具与卡常技巧”。各章用 `chapter.tex` 中的导入行选择板子，注释掉对应行即可不印入书中。新增板子带调用例；第11章包含重型算法，各段给出的规模和适用前提仍是使用条件。
 
 第12章提供 Barrett／Montgomery、受限范围的 x86 除法、位运算、开放寻址哈希、内存池，以及带 CPU 检测的 AVX2 数组异或和展开回退；选用前提与测试方法见 `content/performance/Guide.md`。这些工具按需使用，未替换原有数论与 NTT 实现。
+
+第7章的 `content/algebra/TransformsGuide.md` 给出 FWT／FMT 的定义、逆变换、蝶形公式与子集卷积分层公式，并说明如何用已有的二元高斯消元求异或线性空间的正交补。
 
 2026-10-18 增补 Segment Tree Beats（chmin/chmax/add 与和、最值查询）、固定端点必经点／边及最短路必经关系、无向严格正权图独立删边最短路。图论选型说明见 `content/graph/PathGuide.md`；必经关系使用支配树精确求解，不依赖哈希。
 

@@ -166,3 +166,7 @@ LaTeX 组织参考 [KACTL 的维护说明](https://github.com/kth-competitive-pr
 | `data-structures/SegmentTreeBeats.h` | BlueLagoon | 极值／严格次极值与摊还递归 | CC0-1.0 |
 | `graph/Mandatory.h` | BlueLagoon | 最短路子图、边拆点和现有 Dominator | 包装代码 CC0-1.0；依赖保留原许可证 |
 | `graph/ReplacementPaths.h` | BlueLagoon | 两棵共享选定最短路的 SPT、区间最小值 | CC0-1.0 |
+
+## 2026-10-18 FWT／FMT 公式速查
+
+`algebra/TransformsGuide.md` 按已有实现整理变换定义、逆变换、蝶形与正交补说明；子集卷积的分层 Zeta／Möbius 方法参考 Björklund、Husfeldt、Kaski、Koivisto 的 [Fourier meets Möbius: fast subset convolution](https://arxiv.org/abs/cs/0611101)。说明为自行撰写，没有导入论文源码。
