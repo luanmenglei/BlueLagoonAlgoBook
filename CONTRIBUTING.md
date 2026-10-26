@@ -123,7 +123,13 @@ python3 scripts/pack.py                           # 生成 ../BlueLagoon.zip
 
 ## 发布与来源
 
-GitHub Actions 在 push、pull request 和手动触发时执行完整验证、PDF 构建与打包。`BlueLagoon-print` 附件包括打印文件和验证报告，`BlueLagoon-portable` 包括便携源码包；失败时保留诊断日志。
+GitHub Actions 在 main 分支 push、pull request 和手动触发时运行；开发分支 push 由 PR 事件验证，避免同一提交重复构建。尚未开 PR 的分支可以手动运行。
+
+流程分为两个任务：`C++20 verification` 完成全部代码验证并上传 `BlueLagoon-verification` 报告；成功后，`Printable PDF and portable package` 下载同一次运行的报告，先核对代码指纹与出版条件，再安装 TeX、构建 PDF 和打包。排版失败时可以使用 GitHub 的 **Re-run failed jobs**，无需重复已经通过的代码测试。
+
+测试任务总时限为 10 分钟，其中完整验证步骤上限 8 分钟；排版任务总时限为 15 分钟，其中依赖安装上限 8 分钟、PDF 构建上限 3 分钟。TeX 安装使用 Ubuntu 官方主镜像替换 runner 中的 Azure 镜像，APT 网络等待设为 30 秒、最多重试 2 次。网络或软件源异常仍可能失败，但不会一直等到原来的 30 分钟总上限；失败后检查步骤日志和诊断附件。
+
+`BlueLagoon-print` 附件包括打印文件和验证报告，`BlueLagoon-portable` 包括便携源码包；排版诊断附件还保留 `apt-install.log`，方便区分依赖下载、字体和排版问题。
 
 `output/BlueLagoon.pdf` 是提交的打印快照；需要更新它时，先完整验证、构建并检查页面。报告、生成的 JSON 和排版中间文件不进入 Git。只改速查文档或排版时，若已有与当前代码一致的完整报告，可以直接重建；新 clone 仍须先验证。
 
