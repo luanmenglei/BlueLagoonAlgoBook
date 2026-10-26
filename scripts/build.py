@@ -1,21 +1,19 @@
 """Prepare import fragments and compile the maintained BlueLagoon.tex entry point."""
 from pathlib import Path
 import argparse,hashlib,json,re,shutil,subprocess
-from manifest import source_manifest,print_manifest
+from manifest import print_manifest
 from typeset import style_definitions,tex
 from metadata import load_chapters
 from print_entry import render_entry
+from verification import publication_coverage
 ROOT=Path(__file__).resolve().parents[1]
 
 def write_json(path,value):
     path.write_text(json.dumps(value,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 
 def prepare():
-    report=json.loads((ROOT/'tests/report.json').read_text(encoding='utf-8'))
-    if report.get('source_manifest')!=source_manifest():
-        raise SystemExit('Sources changed since full verification; run scripts/verify.py first.')
-    if any(not x['passed'] for k in ('headers','suites') for x in report[k]):
-        raise SystemExit('Verification contains failures; run scripts/verify.py first.')
+    try:tested=publication_coverage()
+    except ValueError as ex:raise SystemExit(str(ex))
     chapters=load_chapters();es=[e for c in chapters for e in c['entries']]
     labels={e['path']:'code:'+re.sub(r'[^a-zA-Z0-9]','-',e['path']) for e in es}
     built=ROOT/'build';out=ROOT/'output'
@@ -25,10 +23,6 @@ def prepare():
               for name,key in [('team','team'),('standard','standard'),('date','date')]]
     (built/'book-settings.tex').write_text('\n'.join(settings)+'\n',encoding='utf-8')
     (built/'highlight-style.tex').write_text(style_definitions(),encoding='utf-8')
-    tested={}
-    for src in (ROOT/'tests').glob('test_*.cpp'):
-        for inc in re.findall(r'#include "../content/(.*?)"',src.read_text(encoding='utf-8')):
-            tested.setdefault(inc,[]).append(src.stem)
     hashes={}
     for e in es:
         fragment,h=render_entry(ROOT,e,labels,tested)

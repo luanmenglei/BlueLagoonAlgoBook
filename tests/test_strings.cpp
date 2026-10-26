@@ -4,6 +4,7 @@
 #include "../content/strings/Manacher.h"
 #include "../content/strings/AhoCorasick.h"
 #include "../content/strings/SuffixLCP.h"
+#include "../content/strings/SuffixArray.h"
 #include "../content/strings/SAM.h"
 #include "../content/strings/Eertree.h"
 #include "../content/strings/Duval.h"

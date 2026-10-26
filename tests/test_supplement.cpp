@@ -1,4 +1,5 @@
 #include "Test.h"
+#include "../content/data-structures/HLD.h"
 #include "../content/supplement/Fenwick2D.h"
 #include "../content/supplement/Mo.h"
 #include "../content/supplement/BinaryLifting.h"

@@ -2,6 +2,7 @@ name: Verify and print BlueLagoon
 
 on:
   push:
+    branches: [main]
   pull_request:
   workflow_dispatch:
 
@@ -13,10 +14,10 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  notebook:
-    name: C++20 tests and printable PDF
+  verify:
+    name: C++20 verification
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 10
     env:
       PYTHONUTF8: '1'
       CXX: g++
@@ -27,21 +28,81 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
         with:
           python-version: '3.12'
-          cache: pip
-      - name: Install highlighting dependency
-        run: python -m pip install -r requirements.txt
       - name: Independent compilation and stress tests
+        timeout-minutes: 8
         run: python scripts/verify.py
-      - name: Install print dependencies
+      - name: Upload complete verification report
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: BlueLagoon-verification
+          path: tests/report.json
+          if-no-files-found: error
+          retention-days: 90
+      - name: Upload verification diagnostics
+        if: failure()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: BlueLagoon-test-diagnostics
+          path: |
+            tests/report.json
+            build/tests/*.log
+          if-no-files-found: warn
+          retention-days: 14
+
+  print:
+    name: Printable PDF and portable package
+    needs: verify
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PYTHONUTF8: '1'
+      DEBIAN_FRONTEND: noninteractive
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Download this run's verification report
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
+        with:
+          name: BlueLagoon-verification
+          path: tests
+      - name: Check publication gate before installing TeX
         run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends \
+          python - <<'PY'
+          import sys
+          sys.path.insert(0, 'scripts')
+          from verification import publication_coverage
+          print(f'Publication gate passed: {len(publication_coverage())} headers')
+          PY
+      - name: Install highlighting dependency
+        timeout-minutes: 2
+        run: python -m pip install --retries 2 --timeout 30 -r requirements.txt
+      - name: Install print dependencies
+        timeout-minutes: 8
+        run: |
+          mkdir -p build
+          # The runner's Azure mirror can become extremely slow; use Ubuntu's primary mirror.
+          for source in /etc/apt/sources.list /etc/apt/sources.list.d/ubuntu.sources; do
+            if [[ -f "$source" ]]; then
+              sudo sed -i -E 's@https?://azure\.archive\.ubuntu\.com/ubuntu@https://archive.ubuntu.com/ubuntu@g' "$source"
+            fi
+          done
+          apt_options=(-o Acquire::Retries=2 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30)
+          sudo apt-get "${apt_options[@]}" update 2>&1 | tee build/apt-install.log
+          sudo apt-get "${apt_options[@]}" install -y --no-install-recommends \
             texlive-xetex texlive-latex-extra texlive-lang-chinese texlive-fonts-recommended \
-            fonts-noto-cjk lmodern tex-gyre fonts-texgyre fonts-texgyre-math
+            fonts-noto-cjk lmodern tex-gyre fonts-texgyre fonts-texgyre-math \
+            2>&1 | tee -a build/apt-install.log
           fc-cache -f
       - name: Generate PDF
+        timeout-minutes: 3
         run: python scripts/build.py
       - name: Package portable notebook
+        timeout-minutes: 2
         run: |
           python scripts/pack.py
           cp ../BlueLagoon.zip build/BlueLagoon.zip
@@ -62,14 +123,14 @@ jobs:
           path: build/BlueLagoon.zip
           if-no-files-found: error
           retention-days: 90
-      - name: Upload failure diagnostics
+      - name: Upload print diagnostics
         if: failure()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
-          name: BlueLagoon-diagnostics
+          name: BlueLagoon-print-diagnostics
           path: |
             tests/report.json
-            build/tests/*.log
+            build/apt-install.log
             build/xelatex-console.log
           if-no-files-found: warn
           retention-days: 14
