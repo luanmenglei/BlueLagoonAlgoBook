@@ -30,7 +30,7 @@ jobs:
           python-version: '3.12'
       - name: Independent compilation and stress tests
         timeout-minutes: 8
-        run: python scripts/verify.py
+        run: python scripts/verify.py --pch
       - name: Upload complete verification report
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:

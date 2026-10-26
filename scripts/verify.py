@@ -8,6 +8,11 @@ from metadata import entries
 from verification import coverage_map, assertion_count, validate_report
 ROOT=Path(__file__).resolve().parents[1]
 
+def base_first(text):
+    """Only accelerate headers that include Base before any other directive/code."""
+    text=re.sub(r'\A\s*/\*\*.*?\*/', '', text, count=1, flags=re.S)
+    return re.match(r'\s*#pragma once\s+#include "\.\./contest/Base\.h"(?=\s|$)',text) is not None
+
 def run(args,timeout=120):
     try:
         p=subprocess.run(args,cwd=ROOT,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,
@@ -21,6 +26,7 @@ def main():
     ap.add_argument('--compiler',default=os.environ.get('CXX','g++'))
     ap.add_argument('--jobs',type=int,default=4)
     ap.add_argument('--skip-headers',action='store_true')
+    ap.add_argument('--pch',action='store_true',help='Use a fresh GCC Base PCH for eligible header checks')
     ap.add_argument('--suite')
     a=ap.parse_args(); cxx=shutil.which(a.compiler) or a.compiler
     if a.jobs < 1:ap.error('--jobs must be positive')
@@ -48,15 +54,29 @@ def main():
         standard='GNU C++20',seed=712367,
         compiler=run([cxx,'--version'])[1].splitlines()[0],headers=[],suites=[])
     flags=['-std=c++20','-O2','-Wall','-Wextra','-I',str(ROOT/'content')]
+    pch_flags=[]
+    if a.pch and not a.skip_headers:
+        pch=build/'base-pch.hpp'
+        pch.write_text('#include "contest/Base.h"\n',encoding='utf-8')
+        compiled=Path(str(pch)+'.gch')
+        compiled.unlink(missing_ok=True)
+        code,log=run([cxx,*flags,'-x','c++-header',str(pch),'-o',str(compiled)])
+        (build/'base-pch.log').write_text(log,encoding='utf-8')
+        if code:
+            old.unlink(missing_ok=True)
+            raise SystemExit('Base PCH compilation failed; see build/tests/base-pch.log')
+        pch_flags=['-include',str(pch),'-Werror=invalid-pch']
+        print('Fresh Base PCH ready; Base itself and runtime suites still compile without PCH',flush=True)
     def compile_header(e):
         name=e['path'].replace('/','_').replace('.h','')
         src=build/(name+'.cpp')
         text=f'#include "{e["path"]}"\n'
         if e['path']!='contest/Template.h': text+='int main() { return 0; }\n'
         src.write_text(text,encoding='utf-8')
-        code,out=run([cxx,*flags,'-fsyntax-only',str(src)])
+        use_pch=bool(pch_flags) and base_first((ROOT/'content'/e['path']).read_text(encoding='utf-8-sig'))
+        code,out=run([cxx,*flags,*(pch_flags if use_pch else []),'-fsyntax-only',str(src)])
         if code: (build/(name+'.log')).write_text(out,encoding='utf-8')
-        return dict(path=e['path'],passed=code==0,diagnostics=out if code else '')
+        return dict(path=e['path'],passed=code==0,pch=use_pch,diagnostics=out if code else '')
     if not a.skip_headers:
         with concurrent.futures.ThreadPoolExecutor(a.jobs) as pool:
             report['headers']=list(pool.map(compile_header,[e for e in es if e['kind']=='code']))

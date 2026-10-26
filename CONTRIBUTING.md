@@ -55,6 +55,10 @@ python3 scripts/verify.py
 python3 scripts/build.py
 ```
 
+CI 使用 `python3 scripts/verify.py --pch` 加速头文件检查。该选项每次从当前源码和当前 GCC 参数重新生成 `Base.h` 的预编译头，不复用旧验证结果；仅用于文件头注解之后直接以 `#pragma once`、`#include "../contest/Base.h"` 开头的模块。此前有其他代码、宏或 include 的头文件走普通编译，避免改变预处理顺序。
+
+`Base.h` 自身及全部运行测试始终不用预编译头，仍逐个编译、执行原有断言；PCH 生成失败或失效会导致验证失败。省略 `--pch` 即可使用原来的完整编译方式，便于排查编译器差异。
+
 ## 构建环境
 
 需要 Python 3.10+、GNU g++（C++20）和 `requirements.txt` 中的 Pygments。排版需要 XeLaTeX。Ubuntu 24.04 可使用与 CI 一致的依赖：
