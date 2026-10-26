@@ -135,6 +135,7 @@ class RunnerTests(unittest.TestCase):
         (self.root / 'tests').mkdir()
         (self.root / 'tests/test_a.cpp').write_text('// fixture\n')
         self.output = 'fixture: 2 assertions; seed 712367\n'
+        self.commands = []
         self.report_path = self.root / 'tests/report.json'
         for name, value in [('ROOT', self.root), ('validate', lambda: None),
                             ('check_tools', lambda: None),
@@ -147,6 +148,7 @@ class RunnerTests(unittest.TestCase):
             self.addCleanup(patcher.stop)
 
     def run_command(self, args, timeout=120):
+        self.commands.append(args)
         if '--version' in args:
             return 0, 'fixture compiler\n'
         if 'unittest' in args:
@@ -195,6 +197,53 @@ class RunnerTests(unittest.TestCase):
         with patch.object(sys, 'stderr', io.StringIO()):
             self.assertEqual(self.run_verify('--suite', 'missing'), 2)
         self.assertFalse(self.report_path.exists())
+
+    def test_pch_only_accelerates_base_first_headers(self):
+        content = self.root / 'content'
+        (content / 'contest').mkdir(parents=True)
+        (content / 'contest/Base.h').write_text('#include <bits/stdc++.h>\n')
+        (content / 'A.h').write_text('#pragma once\n#include "../contest/Base.h"\n')
+        (content / 'B.h').write_text('#define BEFORE_BASE 1\n#include "../contest/Base.h"\n')
+        names = ['contest/Base.h', 'A.h', 'B.h']
+        with patch.object(verify, 'entries', lambda: [dict(path=p, kind='code') for p in names]), \
+             patch.object(verify, 'coverage_map', lambda: {p: ['test_a'] for p in names}):
+            self.assertEqual(self.run_verify('--pch'), 0)
+        report = json.loads(self.report_path.read_text())
+        self.assertEqual({r['path']: r['pch'] for r in report['headers']},
+                         {'contest/Base.h': False, 'A.h': True, 'B.h': False})
+        syntax = [args for args in self.commands if '-fsyntax-only' in args]
+        self.assertEqual(sum('-include' in args for args in syntax), 1)
+        runtime_build = next(args for args in self.commands if any(str(a).endswith('test_a.cpp') for a in args))
+        self.assertNotIn('-include', runtime_build)
+
+    def test_pch_failure_revokes_publication_report(self):
+        self.assertEqual(self.run_verify(), 0)
+        original = self.run_command
+        def fail_pch(args, timeout=120):
+            return (1, 'broken Base') if 'c++-header' in args else original(args, timeout)
+        with patch.object(verify, 'run', fail_pch):
+            self.assertIn('PCH compilation failed', self.run_verify('--pch', '--suite', 'a'))
+        self.assertFalse(self.report_path.exists())
+
+    def test_skipped_headers_do_not_build_pch(self):
+        self.assertEqual(self.run_verify('--pch', '--skip-headers'), 0)
+        self.assertFalse(any('c++-header' in args for args in self.commands))
+
+
+class PreambleTests(unittest.TestCase):
+    def test_conventional_prefix_can_use_pch(self):
+        self.assertTrue(verify.base_first('/** documentation */\n#pragma once\n#include "../contest/Base.h"\nint x;'))
+
+    def test_other_prefixes_use_ordinary_compilation(self):
+        for text in [
+            '#pragma once\n#define X 1\n#include "../contest/Base.h"\n',
+            '#pragma once\n#include "Other.h"\n#include "../contest/Base.h"\n',
+            '#pragma once\n#include <bits/stdc++.h>\n',
+            'int x;\n#pragma once\n#include "../contest/Base.h"\n',
+            '#pragma once\n#include "../contest/Base.h"garbage\n',
+        ]:
+            with self.subTest(text=text):
+                self.assertFalse(verify.base_first(text))
 
 
 if __name__ == '__main__':
