@@ -11,6 +11,7 @@
 #include "../content/data-structures/UnionFindRollback.h"
 #include "../content/data-structures/Treap.h"
 #include "../content/data-structures/VirtualTree.h"
+#include "../content/data-structures/HLD.h"
 #include "../content/data-structures/Centroid.h"
 #include "../content/data-structures/LCT.h"
 #include "../content/data-structures/LiChao.h"

@@ -6,9 +6,9 @@ ROOT = Path(__file__).resolve().parents[1]
 def source_manifest():
     paths = []
     paths += list((ROOT / 'content').rglob('*.h'))
-    paths += list((ROOT / 'tests').glob('test_*.cpp'))
-    paths += [ROOT / 'tests/Test.h']
-    paths += [ROOT/'scripts'/p for p in ('metadata.py','selection.py','validate.py','check_tools.py','verify.py')]
+    paths += [p for p in (ROOT / 'tests').rglob('*') if p.suffix in ('.cpp', '.h', '.py')]
+    paths += [ROOT/'scripts'/p for p in ('metadata.py','selection.py','validate.py',
+        'check_tools.py','verify.py','verification.py','manifest.py','hash.py','bundle.py')]
     return {p.relative_to(ROOT).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
             for p in sorted(paths)}
 

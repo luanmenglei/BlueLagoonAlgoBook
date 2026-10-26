@@ -1,13 +1,13 @@
 """Package a portable notebook, including PDF, maintained source and tests."""
 from pathlib import Path
 import zipfile,json,hashlib
-from manifest import source_manifest,print_manifest
+from manifest import print_manifest
+from verification import publication_coverage
 ROOT=Path(__file__).resolve().parents[1]
 
 def main():
-    report=json.loads((ROOT/'tests/report.json').read_text(encoding='utf-8'))
-    if report.get('source_manifest') != source_manifest():raise SystemExit('Run full verification first.')
-    if any(not x['passed'] for k in ('headers','suites') for x in report[k]):raise SystemExit('Verification failed.')
+    try:publication_coverage()
+    except ValueError as ex:raise SystemExit(str(ex))
     stamp=json.loads((ROOT/'output/build.json').read_text(encoding='utf-8'))
     if stamp['inputs']!=print_manifest():raise SystemExit('Print inputs changed: rebuild PDF first.')
     if stamp['pdf_sha256']!=hashlib.sha256((ROOT/'output/BlueLagoon.pdf').read_bytes()).hexdigest():raise SystemExit('PDF differs from last build.')
