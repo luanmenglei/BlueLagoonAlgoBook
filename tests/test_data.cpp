@@ -10,6 +10,7 @@
 #include "../content/data-structures/DSU.h"
 #include "../content/data-structures/UnionFindRollback.h"
 #include "../content/data-structures/Treap.h"
+#include "../content/data-structures/OrderedTreap.h"
 #include "../content/data-structures/VirtualTree.h"
 #include "../content/data-structures/HLD.h"
 #include "../content/data-structures/Centroid.h"
@@ -70,6 +71,68 @@ int main() {
    CHECK(t.tr[root].sum==accumulate(a.begin(),a.end(),0LL)); CHECK(t.tr[root].sz==(int)a.size());
   }
  }
+	for (int it = 0; it < 100; it ++) {
+		OrderedTreap t;
+		int root = 0;
+		vector<i64> a;
+		auto check = [&](i64 v) {
+			int l = lower_bound(a.begin(), a.end(), v) - a.begin();
+			int r = upper_bound(a.begin(), a.end(), v) - a.begin();
+			int p = t.search(root, v);
+			CHECK(bool(p) == (l < r));
+			if (p) CHECK(t.tr[p].val == v);
+			CHECK(t.rk(root, v) == l + 1);
+			p = t.pre(root, v);
+			CHECK(bool(p) == (l > 0));
+			if (p) CHECK(t.tr[p].val == a[l - 1]);
+			p = t.nxt(root, v);
+			CHECK(bool(p) == (r < (int)a.size()));
+			if (p) CHECK(t.tr[p].val == a[r]);
+			CHECK(t.tr[root].sz == (int)a.size());
+			CHECK(t.kth(root, 0) == 0);
+			CHECK(t.kth(root, -1) == 0);
+			CHECK(t.kth(root, a.size() + 1) == 0);
+			for (int k = 1; k <= (int)a.size(); k ++) {
+				p = t.kth(root, k);
+				CHECK(p && t.tr[p].val == a[k - 1]);
+				for (int q : { t.tr[p].l, t.tr[p].r })
+					if (q) CHECK(t.tr[p].pri <= t.tr[q].pri);
+				CHECK(t.tr[p].sz == t.tr[t.tr[p].l].sz + t.tr[t.tr[p].r].sz + 1);
+			}
+		};
+		check(0);
+		root = t.erase(root, 0);
+		for (int j = 0; j < 300; j ++) {
+			i64 v = ri(-10, 10);
+			if (j % 17 == 0) v = LLONG_MIN;
+			if (j % 19 == 0) v = LLONG_MAX;
+			if (ri(0, 2)) {
+				root = t.insert(root, v);
+				a.insert(upper_bound(a.begin(), a.end(), v), v);
+			} else {
+				root = t.erase(root, v);
+				auto pos = lower_bound(a.begin(), a.end(), v);
+				if (pos != a.end() && *pos == v) a.erase(pos);
+			}
+			check(v);
+			check(ri(-12, 12));
+			auto [x, y] = t.split(root, v);
+			CHECK(t.tr[x].sz == upper_bound(a.begin(), a.end(), v) - a.begin());
+			CHECK(t.tr[x].sz + t.tr[y].sz == (int)a.size());
+			root = t.merge(x, y);
+			check(v);
+		}
+		while (!a.empty()) {
+			i64 v = a.back();
+			root = t.erase(root, v);
+			a.pop_back();
+			check(v);
+		}
+		CHECK(root == 0);
+		root = t.insert(root, 0);
+		a.push_back(0);
+		check(0);
+	}
  for(int it=0;it<100;it++) {
   int n=ri(1,50); HLD h(n); Centroid c(n);
   for(int i=1;i<n;i++) { int p=ri(0,i-1); h.g[p].push_back(i); h.g[i].push_back(p); }

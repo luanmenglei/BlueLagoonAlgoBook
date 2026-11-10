@@ -60,6 +60,7 @@ LaTeX 组织参考 [KACTL 的维护说明](https://github.com/kth-competitive-pr
 | `data-structures/SegmentTree.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
 | `data-structures/SparseTable.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
 | `data-structures/Treap.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
+| `data-structures/OrderedTreap.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
 | `data-structures/UnionFindRollback.h` | Lukas Polacek, Simon Lindholm; BlueLagoon adaptation | [kactl](https://github.com/kth-competitive-programming/kactl/blob/27faa89f9b47e5fa4578eadea6122b59da544052/content/data-structures/UnionFindRollback.h) | CC0 |
 | `data-structures/VirtualTree.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
 | `flow/BipartiteEdgeColor.h` | BlueLagoon | BlueLagoon implementation; standard algorithm | CC0-1.0 |
